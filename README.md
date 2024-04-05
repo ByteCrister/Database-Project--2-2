@@ -5,7 +5,7 @@
 
 ## Overview
 
-<p>This project is a personal e-commerce platform tailored for the sale of PC components. Developed as a group project for [University Name], this platform empowers website owners to efficiently manage their PC component inventory while providing a seamless shopping experience for users.</p>p<br>
+<p>This project is a personal e-commerce platform tailored for the sale of PC components. Developed as a group project for [University Name], this platform empowers website owners to efficiently manage their PC component inventory while providing a seamless shopping experience for users.</p><br>
 
 ## Features
 
@@ -29,8 +29,8 @@
 - Database: MySQL
 
 ## Contributors
-- Sadiqul Islam Shakib
-- Anik Chowdhury
+- <b>Sadiqul Islam Shakib</b>
+- <b>Anik Chowdhury</b>
 
 
   ## Status
