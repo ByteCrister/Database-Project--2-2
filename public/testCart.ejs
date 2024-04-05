@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pc Carts</title>
+    <link rel="stylesheet" href="./test.cart.css" />
+</head>
+
+<body>
+    <div class="All-pc-area">
+        <h3>All Pc - Carts</h3>
+    </div>
+
+    <div class="laptops-main-container">
+        <% pcList.forEach(pc=> { %>
+            <div class="laptop-id-<%= pc.pc_information_No %> PcStyle">
+                <span id="pc_id">
+                    <%= pc.pc_information_No %>
+                </span>
+                <div class="upper-div">
+                    <% if(pc.cut_price && pc.cut_price.length> 0) { %>
+                        <% const saveAmount=parseInt(pc.cut_price.replace(',', '' )) - parseInt(pc.price.replace(',', ''
+                            )); %>
+                            <div class="save-text"><span>Save: <%= saveAmount %>
+                                        $</span></div>
+                            <% } %>
+                                <div class="images">
+                                    <div class="product-image" data-image-path="<%= pc.product_image_path %>"></div>
+
+                                </div>
+                </div>
+                <!-- data-image-path="<%= pc.product_image_path %>" -->
+                <div class="lower-div">
+                    <div class="laptop-name">
+                        <a href="#">
+                            <%= pc.brand %>
+                        </a>
+                    </div>
+                    <div class="laptop-price">
+                        <div class="final-price">
+                            <%= pc.price %>
+                        </div>
+                        <% if(pc.cut_price && pc.cut_price.length> 0) { %>
+                            <div class="cut-price">
+                                <%= pc.cut_price %>
+                            </div>
+                            <% } %>
+                    </div>
+                    <div class="buttons">
+                        <div class="update-button"><a href="/update-pc/<%= pc.pc_information_No %>">Update</a></div>
+                        <div class="remove-button"><a href="/remove-pc/<%= pc.pc_information_No %>">Remove</a></div>
+                    </div>
+                </div>
+            </div>
+            <% }); %>
+    </div>
+
+    <!-- Store pcList as a data attribute -->
+    <div id="pcListData" data-pc-list='<%= JSON.stringify(pcList) %>' style="display: none;"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const pcListDataElement = document.getElementById('pcListData');
+            const pcList = JSON.parse(pcListDataElement.getAttribute('data-pc-list'));
+
+            pcList.forEach(pc => {
+                const element = document.querySelector(`.laptop-id-${pc.pc_information_No} .product-image`);
+                if (element) {
+                    const imagePath = `http://localhost:4000/Images/PC/${encodeURIComponent(pc.product_image_path)}`;
+                    console.log('Before log');
+                    console.log('Image ' + pc.pc_information_No + ' path -> ' + imagePath);
+                    console.log('After log');
+                    element.style.backgroundImage = `url(${imagePath})`;
+                    element.style.backgroundSize = 'contain';
+                    element.style.backgroundRepeat = 'no-repeat';
+                    element.style.backgroundPosition = 'center';
+                    element.style.height = '200px';
+                }
+            });
+        });
+
+
+    </script>
+
+</body>
+
+</html>

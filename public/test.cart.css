@@ -1,0 +1,147 @@
+/* Reset some default styles for better consistency */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: aliceblue;
+}
+.laptops-main-container{
+    background-color: rgb(220, 235, 231);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+.laptops-main-container>div{
+    margin: 15px;
+}
+.PcStyle{
+    width: 250px; 
+    min-width: 250px;
+    margin: 20px auto;
+    padding: 10px;
+}
+.All-pc-area{
+    width: 100%;
+    background-color: rgb(68, 68, 129);
+    margin: 10px 0px;
+    color: azure;
+    padding: 10px;
+    text-align: center;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#pc_id{
+    visibility: hidden;
+}
+
+.laptops-main-container {
+    padding: 10px;
+    /* background-color: blue; */
+
+}
+
+/* .laptop-id-1 {
+    max-width: 250px;
+    margin: 20px auto;
+    padding: 10px;
+    /* background-color: blue; 
+} */
+
+.upper-div {
+    border-radius: 5px 5px 0px 0px;
+    position: relative;
+    background-color: #ffffff;
+    margin-bottom: 2px;
+}
+
+.save-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 30px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #5d0092;
+    color: white;
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 15px;
+    border-radius: 0px 1dvw 10px 0px;
+}
+
+/* .product-image {
+    background-image: url('C:\Users\WD-OLY\OneDrive\Desktop\DB3\Images\PC\1708716070803-pentium-gold-g7400-budget-desktop-pc-01-500x500.webp');
+    background-size:contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 200px; 
+} */
+
+.lower-div {
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 0px 0px 5px 5px;
+}
+
+.laptop-name {
+  
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.laptop-name a{
+    text-decoration: none;
+    color: #302d2d;
+}
+
+.laptop-price {
+    display: flex;
+    align-items: center;
+}
+
+.final-price {
+    color: #4CAF50;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.cut-price {
+    margin-left: 10px;
+    color: #888;
+    text-decoration: line-through;
+    font-size: 15px;
+}
+
+
+.buttons{
+    margin-top: 10px;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
+
+.buttons div{
+    background-color: rgb(178, 221, 191);
+    padding: 8px;
+    border-radius: 5px;
+}
+.buttons div a{
+    text-decoration: none;
+    color: rgb(60, 95, 192);
+    font-size: 18px;
+    font-weight: 700;
+}
+.update-button:hover  a,.update-button:hover {
+    background-color: rgb(62, 112, 170);
+    color: aliceblue;
+}
+.remove-button:hover  a,.remove-button:hover {
+    color: aliceblue;
+    background-color: rgb(197, 36, 90);
+}

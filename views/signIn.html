@@ -1,0 +1,38 @@
+<!-- signIn.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./signIn.css">
+    <title>Sign In</title>
+</head>
+
+<body>
+
+    <div class="signin-container">
+        <form action="/signIn" method="post">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" required>
+
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <span class="toggle-password" onclick="togglePassword()">Show Password</span>
+
+            <button type="submit">Sign In</button>
+            <h4 id="link-to-log-in">Or are you already registered? <a href="/logIn">LogIn.</a></h4>
+        </form>
+    </div>
+
+  
+    <script src="./signIn.js"></script>
+</body>
+</html>

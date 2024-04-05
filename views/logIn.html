@@ -1,0 +1,35 @@
+<!-- login.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./logIn.css" />
+  <title>LogIn</title>
+</head>
+
+<body>
+  <div class="main-form">
+    <div class="div" id="p-for-incorrect-information">
+      <p>
+        <sup>*</sup>Your email Or password is incorrect. Please try again.
+      </p>
+    </div>
+    <div class="login-container">
+      <form action="/logIn" method="post" onsubmit=" event.preventDefault(); logIn();">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required />
+        <span class="toggle-password" onclick="togglePassword()">Show Password</span>
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="./logIn.js"></script>
+</body>
+
+</html>
