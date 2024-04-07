@@ -10,70 +10,102 @@
 
 <body>
     <div class="All-pc-area">
-        <h3>All Pc - Carts</h3>
+        <h3>Pc Information's</h3>
     </div>
 
     <div class="laptops-main-container">
+        <!-- Loop through each PC in the pcList -->
         <% pcList.forEach(pc=> { %>
             <div class="laptop-id-<%= pc.pc_information_No %> PcStyle">
+                <!-- Display PC ID -->
                 <span id="pc_id">
                     <%= pc.pc_information_No %>
                 </span>
+
                 <div class="upper-div">
-                    <% if(pc.cut_price && pc.cut_price.length> 0) { %>
-                        <% const saveAmount = parseInt(pc.cut_price.replace(',', '')) - parseInt(pc.price.replace(',', '')); %>
-                        <div class="save-text"><span>Save: <%= saveAmount.toLocaleString() %>
-                                $</span></div>
-                    <% } %>
-                    <div class="images">
-                        <div class="product-image" data-image-path="<%= pc.product_image_path %>"></div>
-                    </div>
+                    <!-- Display save amount if applicable -->
+                    <% if(pc.cut_price && pc.cut_price.length> 0) { %> <% const
+                            cutPrice=parseFloat(pc.cut_price.replace(',', '' )); %>
+                            <% const price=parseFloat(pc.price.replace(',', '' )); %>
+                                <% const saveAmount=cutPrice - price; %>
+                                    <div class="save-text">
+                                        <span>Save: <%= saveAmount.toLocaleString('en-US', { style: 'currency' ,
+                                                currency: 'BDT' , minimumFractionDigits: 0, maximumFractionDigits: 0 })
+                                                %></span>
+                                    </div>
+                                    <% } %>
+
+                                        <!-- Display PC image -->
+                                        <div class="images">
+                                            <div class="product-image" data-image-path="<%= pc.product_image_path %>">
+                                            </div>
+                                        </div>
                 </div>
+
                 <div class="lower-div">
+                    <!-- Display PC name -->
                     <div class="laptop-name">
                         <a href="#">
                             <%= pc.brand %>
                         </a>
                     </div>
+
+                    <!-- Display PC price -->
                     <div class="laptop-price">
                         <div class="final-price">
-                            <%= pc.price.toLocaleString() %>
+                            <% const formattedPrice=parseFloat(pc.price.replace(/[^0-9.-]+/g,"")); %>
+                                <%= formattedPrice.toLocaleString('en-US', { style: 'currency' , currency: 'BDT' ,
+                                    minimumFractionDigits: 0, maximumFractionDigits: 0 }) %>
                         </div>
-                        <% if(pc.cut_price && pc.cut_price.length> 0) { %>
-                            <div class="cut-price">
-                                <%= pc.cut_price.toLocaleString() %>
-                            </div>
-                        <% } %>
+
+                        <!-- Display cut price if applicable -->
+                        <% if(pc.cut_price && pc.cut_price.length> 0) { %> <% const
+                                formattedCutPrice=parseFloat(pc.cut_price.replace(/[^0-9.-]+/g,"")); %>
+                                <div class="cut-price">
+                                    <%= formattedCutPrice.toLocaleString('en-US', { style: 'currency' , currency: 'BDT'
+                                        , minimumFractionDigits: 0, maximumFractionDigits: 0 }) %>
+                                </div>
+                                <% } %>
                     </div>
+
+                    <!-- Buttons for updating and removing PC -->
                     <div class="buttons">
-                        <div class="update-button"><a href="/update-pc/<%= pc.pc_information_No %>">Update</a></div>
-                        <div class="remove-button"><a href="/remove-pc/<%= pc.pc_information_No %>">Remove</a></div>
+                        <div class="update-button">
+                            <a href="/update-pc/<%= pc.pc_information_No %>">Update</a>
+                        </div>
+                        <div class="remove-button">
+                            <a href="/remove-pc/<%= pc.pc_information_No %>">Remove</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        <% }); %>
+            <% }); %>
     </div>
 
     <!-- Store pcList as a data attribute -->
-    <div id="pcListData" data-pc-list='<%= JSON.stringify(pcList) %>' style="display: none;"></div>
+    <div id="pcListData" data-pc-list="<%= JSON.stringify(pcList) %>" style="display: none"></div>
 
+    <!-- JavaScript to load PC images -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const pcListDataElement = document.getElementById('pcListData');
-            const pcList = JSON.parse(pcListDataElement.getAttribute('data-pc-list'));
+        document.addEventListener("DOMContentLoaded", function () {
+            const pcListDataElement = document.getElementById("pcListData");
+            const pcList = JSON.parse(
+                pcListDataElement.getAttribute("data-pc-list")
+            );
 
-            pcList.forEach(pc => {
-                const element = document.querySelector(`.laptop-id-${pc.pc_information_No} .product-image`);
+            pcList.forEach((pc) => {
+                const element = document.querySelector(
+                    `.laptop-id-${pc.pc_information_No} .product-image`
+                );
                 if (element) {
-                    const imagePath = `http://localhost:4000/Images/PC/${encodeURIComponent(pc.product_image_path)}`;
-                    console.log('Before log');
-                    console.log('Image ' + pc.pc_information_No + ' path -> ' + imagePath);
-                    console.log('After log');
+                    const imagePath = `http://localhost:7000/Images/PC/${encodeURIComponent(
+                        pc.product_image_path
+                    )}`;
                     element.style.backgroundImage = `url(${imagePath})`;
-                    element.style.backgroundSize = 'contain';
-                    element.style.backgroundRepeat = 'no-repeat';
-                    element.style.backgroundPosition = 'center';
-                    element.style.height = '200px';
+                    element.style.backgroundSize = "contain";
+                    element.style.backgroundRepeat = "no-repeat";
+                    element.style.backgroundPosition = "center";
+                    element.style.height = "200px";
                 }
             });
         });
