@@ -21,17 +21,14 @@
                 </span>
                 <div class="upper-div">
                     <% if(pc.cut_price && pc.cut_price.length> 0) { %>
-                        <% const saveAmount=parseInt(pc.cut_price.replace(',', '' )) - parseInt(pc.price.replace(',', ''
-                            )); %>
-                            <div class="save-text"><span>Save: <%= saveAmount %>
-                                        $</span></div>
-                            <% } %>
-                                <div class="images">
-                                    <div class="product-image" data-image-path="<%= pc.product_image_path %>"></div>
-
-                                </div>
+                        <% const saveAmount = parseInt(pc.cut_price.replace(',', '')) - parseInt(pc.price.replace(',', '')); %>
+                        <div class="save-text"><span>Save: <%= saveAmount.toLocaleString() %>
+                                $</span></div>
+                    <% } %>
+                    <div class="images">
+                        <div class="product-image" data-image-path="<%= pc.product_image_path %>"></div>
+                    </div>
                 </div>
-                <!-- data-image-path="<%= pc.product_image_path %>" -->
                 <div class="lower-div">
                     <div class="laptop-name">
                         <a href="#">
@@ -40,13 +37,13 @@
                     </div>
                     <div class="laptop-price">
                         <div class="final-price">
-                            <%= pc.price %>
+                            <%= pc.price.toLocaleString() %>
                         </div>
                         <% if(pc.cut_price && pc.cut_price.length> 0) { %>
                             <div class="cut-price">
-                                <%= pc.cut_price %>
+                                <%= pc.cut_price.toLocaleString() %>
                             </div>
-                            <% } %>
+                        <% } %>
                     </div>
                     <div class="buttons">
                         <div class="update-button"><a href="/update-pc/<%= pc.pc_information_No %>">Update</a></div>
@@ -54,7 +51,7 @@
                     </div>
                 </div>
             </div>
-            <% }); %>
+        <% }); %>
     </div>
 
     <!-- Store pcList as a data attribute -->
@@ -80,10 +77,7 @@
                 }
             });
         });
-
-
     </script>
-
 </body>
 
 </html>

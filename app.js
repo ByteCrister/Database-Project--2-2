@@ -17,6 +17,8 @@ const homeAfterSignIn = require('./routes/homeAfterSignInRoute');
 const logOutRoutes = require('./routes/logOutRoutes');
 const addPCRoutes = require('./routes/Add-pc');
 const PcCartsRouters = require('./routes/Pc-Carts');
+const UpdatePc = require('./routes/Update-pc');
+const DeletePC = require('./routes/Delete-pc');
 const cors = require('cors');
 
 
@@ -35,6 +37,8 @@ app.use(homeAfterSignIn);
 app.use(logOutRoutes);
 app.use(addPCRoutes);
 app.use(PcCartsRouters);
+app.use(UpdatePc);
+app.use(DeletePC);
 
 
 app.use((request, response, next)=>{

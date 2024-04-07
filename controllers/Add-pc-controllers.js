@@ -11,7 +11,7 @@ exports.getAddPc = (request, response) => {
 // Set up multer storage
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'C:/Users/WD-OLY/OneDrive/Desktop/DB3/public/Images/PC'); // Set the destination folder for uploaded images
+        cb(null, 'C:/Users/WD-OLY/OneDrive/Database-Project--2-2/public/Images/PC'); // Set the destination folder for uploaded images
     },
     filename: function (req, file, cb) {
         cb(null, Date.now() + '-' + file.originalname); // Create a unique filename
