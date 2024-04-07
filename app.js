@@ -3,6 +3,7 @@ const session = require('express-session');
 const app = express();
 
 
+/************ session variable setup *************/
 app.use(session({
     secret: '---pc_gallery---',
     resave: false,
@@ -25,6 +26,7 @@ const UpdatePc = require('./routes/Update-pc');
 const DeletePC = require('./routes/Delete-pc');
 
 
+/************** required environments setup *****************/
 const cors = require('cors');
 
 app.use(express.urlencoded({extended:true}));
@@ -34,6 +36,8 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
 
+
+/*************** all usable Routes ***************/
 app.use(homeRoutes);
 app.use(logInRoutes);
 app.use(adminLogInRoutes);
