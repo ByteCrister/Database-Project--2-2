@@ -9,18 +9,23 @@ app.use(session({
     saveUninitialized: true,
 }));
 
+/**************** Home Routes Handling *****************/
 const homeRoutes = require('./routes/homeBeforeSignInRoutes');
 const logInRoutes = require('./routes/logInRoutes');
 const adminLogInRoutes = require('./routes/adminLogInRoute');
 const signInRoutes = require('./routes/signInRoutes');
 const homeAfterSignIn = require('./routes/homeAfterSignInRoute');
 const logOutRoutes = require('./routes/logOutRoutes');
+
+
+/*************** Pc cart  Routes Handling ****************/
 const addPCRoutes = require('./routes/Add-pc');
 const PcCartsRouters = require('./routes/Pc-Carts');
 const UpdatePc = require('./routes/Update-pc');
 const DeletePC = require('./routes/Delete-pc');
-const cors = require('cors');
 
+
+const cors = require('cors');
 
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
