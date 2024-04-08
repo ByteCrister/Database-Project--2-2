@@ -1,5 +1,3 @@
-<!-- signIn.html -->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +11,8 @@
 <body>
 
     <div class="signin-container">
-        <form action="/signIn" method="post">
+        <p id="p-for-incorrect-information" style="visibility:hidden; color:red;"><sup>*</sup> Email already exists</p>
+        <form id="signInForm"> <!-- Add an ID to the form -->
             <label for="firstName">First Name:</label>
             <input type="text" id="firstName" name="firstName" required>
 
@@ -27,12 +26,14 @@
             <input type="password" id="password" name="password" required>
             <span class="toggle-password" onclick="togglePassword()">Show Password</span>
 
-            <button type="submit">Sign In</button>
+            <button type="button" id="signInButton">Sign In</button> <!-- Change type to 'button' -->
             <h4 id="link-to-log-in">Or are you already registered? <a href="/logIn">LogIn.</a></h4>
+            
         </form>
     </div>
 
-  
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Add jQuery -->
     <script src="./signIn.js"></script>
 </body>
+
 </html>

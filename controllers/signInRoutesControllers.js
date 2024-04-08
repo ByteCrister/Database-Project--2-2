@@ -34,14 +34,15 @@ exports.postSignIn = (request, response) => {
                             request.session.isLoggedIn = true;
                             request.session.userId = data.insertId;
                             console.log('New user entered successfully - User ID : '+request.session.userId);
-                            response.redirect('/');
-
+                            response.json({ success: true });
+                            // response.redirect('/');
+                            
                         }
                     });
                 } else {
                     // Email already exists, handle accordingly
                     console.log('Email already exists:', returnEmail[0].email);
-                    response.redirect('/signIn')
+                    response.json({ success: false });
                 }
             }
         });
