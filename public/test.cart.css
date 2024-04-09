@@ -10,7 +10,7 @@ body {
     background-color: aliceblue;
 }
 .laptops-main-container{
-    background-color: rgb(220, 235, 231);
+    background-color: rgb(201, 241, 231);
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -20,10 +20,11 @@ body {
     margin: 15px;
 }
 .PcStyle{
-    width: 250px; 
-    min-width: 250px;
+    width: 310px; 
+    min-width: 310px;
     margin: 20px auto;
     padding: 10px;
+    /* background-color: #302d2d; */
 }
 .All-pc-area{
     width: 100%;
@@ -87,6 +88,11 @@ body {
     padding: 10px;
     background-color: #ffffff;
     border-radius: 0px 0px 5px 5px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-around;
+    align-items: center;
 }
 
 .laptop-name {
@@ -117,8 +123,21 @@ body {
     text-decoration: line-through;
     font-size: 15px;
 }
+.list{
+    /* background-color: #302d2d; */
+    padding: 10px;
+}
+ul li{
+    font-size: 12px;
+    line-height: 30px;
+    font-family:'Times New Roman', Times, serif;
+    color: #888;
+}
 
-
+.price-and-buttons{
+    /* background-color: #302d2d; */
+    width: 100%;
+}
 .buttons{
     margin-top: 10px;
     display: flex;
