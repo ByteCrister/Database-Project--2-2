@@ -19,15 +19,21 @@
             </p>
         </div>
 
-
+        <div class="log-in-admin">
+            <h3>Log in as Admin</h3>
+        </div>
         <div class="login-container">
             <form action="/adminLogIn" method="post" onsubmit=" event.preventDefault(); logIn();">
-                <label for="adminName">Admin Name:</label>
-                <input type="text" id="adminName" name="adminName" required />
+                <div class="admin-name box-style" >
+                    <label for="adminName">Admin Name</label>
+                <input type="text" id="adminName" name="adminName" placeholder="Admin" required />
+                </div>
 
-                <label for="adminPassword">Admin Password:</label>
-                <input type="password" id="adminPassword" name="adminPassword" required />
+                <div class="admin-password box-style">
+                    <label for="adminPassword">Admin Password:</label>
+                <input type="password" id="adminPassword" name="adminPassword" placeholder="Password" required />
                 <span class="toggle-password" onclick="togglePassword()">Show Password</span>
+                </div>
                 <button type="submit">Login</button>
             </form>
         </div>

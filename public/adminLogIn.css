@@ -16,20 +16,27 @@ body {
     justify-content: center;
     align-items: center;
 }
+.log-in-admin{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #333;
+
+}
+
 
 .login-container {
     width: 40%;
     min-width: 30%;
-    background-color: white;
+    /* background-color: white; */
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
     margin-top: 20px;
 }
 
 form {
     display: flex;
     flex-direction: column;
+
 }
 
 label {
@@ -61,4 +68,15 @@ button:hover {
     visibility: hidden;
     color: red;
     font-weight: 700;
+}
+
+.box-style{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 5px 0px 5px 0px;
+}
+
+input{
+    padding: 10px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    
 }

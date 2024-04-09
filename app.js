@@ -37,7 +37,7 @@ app.set('view engine', 'ejs');
 
 
 
-/*************** all usable Routes ***************/
+/*************** Home and Authentication Routes ***************/
 app.use(homeRoutes);
 app.use(logInRoutes);
 app.use(adminLogInRoutes);
@@ -46,7 +46,7 @@ app.use(homeAfterSignIn);
 app.use(logOutRoutes);
 
 
-/**************** all PC Routes Handling ************/
+/**************** PC Routes ************/
 app.use(addPCRoutes);
 app.use(PcCartsRouters);
 app.use(UpdatePc);
