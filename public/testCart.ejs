@@ -21,15 +21,12 @@
 
         <div class="upper-div">
           <!-- Display save amount if applicable -->
-          <% if(pc.cut_price && pc.cut_price.length> 0) { %> <% const
-          cutPrice=parseFloat(pc.cut_price.replace(',', '' )); %> <% const
-          price=parseFloat(pc.price.replace(',', '' )); %> <% const
-          saveAmount=cutPrice - price; %>
+          <% if(pc.cut_price && pc.cut_price.length> 0) { %> 
+        <% const cutPrice=parseFloat(pc.cut_price.replace(',', '' )); %> 
+        <% const price=parseFloat(pc.price.replace(',', '' )); %> 
+        <% const saveAmount=cutPrice - price; %>
           <div class="save-text">
-            <span
-              >Save: <%= saveAmount.toLocaleString('en-US', { style: 'currency'
-              , currency: 'BDT' , minimumFractionDigits: 0,
-              maximumFractionDigits: 0 }) %></span
+            <span>Save: <%= saveAmount.toLocaleString('en-US', { style: 'currency' , currency: 'BDT' , minimumFractionDigits: 0, maximumFractionDigits: 0 }) %></span
             >
           </div>
           <% } %>
@@ -63,21 +60,14 @@
             <!-- Display PC price -->
             <div class="laptop-price">
               <div class="final-price">
-                <% const
-                formattedPrice=parseFloat(pc.price.replace(/[^0-9.-]+/g,"")); %>
-                <%= formattedPrice.toLocaleString('en-US', { style: 'currency' ,
-                currency: 'BDT' , minimumFractionDigits: 0,
-                maximumFractionDigits: 0 }) %>
+                <% const formattedPrice=parseFloat(pc.price.replace(/[^0-9.-]+/g,"")); %>
+                <%= formattedPrice.toLocaleString('en-US', { style: 'currency' , currency: 'BDT' , minimumFractionDigits: 0, maximumFractionDigits: 0 }) %>
               </div>
 
               <!-- Display cut price if applicable -->
-              <% if(pc.cut_price && pc.cut_price.length> 0) { %> <% const
-              formattedCutPrice=parseFloat(pc.cut_price.replace(/[^0-9.-]+/g,""));
-              %>
+              <% if(pc.cut_price && pc.cut_price.length> 0) { %> <% const formattedCutPrice=parseFloat(pc.cut_price.replace(/[^0-9.-]+/g,"")); %>
               <div class="cut-price">
-                <%= formattedCutPrice.toLocaleString('en-US', { style:
-                'currency' , currency: 'BDT' , minimumFractionDigits: 0,
-                maximumFractionDigits: 0 }) %>
+                <%= formattedCutPrice.toLocaleString('en-US', { style:'currency' , currency: 'BDT' , minimumFractionDigits: 0, maximumFractionDigits: 0 }) %>
               </div>
               <% } %>
             </div>
@@ -113,13 +103,9 @@
         );
 
         pcList.forEach((pc) => {
-          const element = document.querySelector(
-            `.laptop-id-${pc.pc_information_No} .product-image`
-          );
+          const element = document.querySelector(`.laptop-id-${pc.pc_information_No} .product-image`);
           if (element) {
-            const imagePath = `http://localhost:7000/Images/PC/${encodeURIComponent(
-              pc.product_image_path
-            )}`;
+            const imagePath = `http://localhost:7000/Images/PC/${encodeURIComponent(pc.product_image_path)}`;
             element.style.backgroundImage = `url(${imagePath})`;
             element.style.backgroundSize = "contain";
             element.style.backgroundRepeat = "no-repeat";

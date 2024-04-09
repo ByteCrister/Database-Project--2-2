@@ -21,7 +21,8 @@ exports.postSignIn = (request, response) => {
                 response.status(500).json({ success: false, message: 'Internal Server Error' });
             } else {
                 if (returnEmail.length === 0) {
-                    const insertUserInfoSql = 'INSERT INTO users (first_name, last_name, email, email_password) VALUES (?, ?, ?, ?)';
+
+                    const insertUserInfoSql = 'INSERT INTO users (first_name, last_name, email, email_password, sign_In_time, sign_In_date) VALUES (?, ?, ?, ?, CURRENT_TIME, CURRENT_DATE)';
                     dataBase.query(insertUserInfoSql, [firstName, lastName, email, password], (error, data) => {
                         if (error) {
                             console.log(error);
@@ -33,10 +34,10 @@ exports.postSignIn = (request, response) => {
 
                             request.session.isLoggedIn = true;
                             request.session.userId = data.insertId;
-                            console.log('New user entered successfully - User ID : '+request.session.userId);
+                            console.log('New user entered successfully - User ID : ' + data.insertId);
                             response.json({ success: true });
-                            // response.redirect('/');
-                            
+                           
+
                         }
                     });
                 } else {
