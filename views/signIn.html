@@ -2,37 +2,61 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./signIn.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./signIn.css" />
     <title>Sign In</title>
 </head>
 
 <body>
-
     <div class="signin-container">
-        <p id="p-for-incorrect-information" style="visibility:hidden; color:red;"><sup>*</sup> Email already exists</p>
-        <form id="signInForm"> <!-- Add an ID to the form -->
-            <label for="firstName">First Name:</label>
-            <input type="text" id="firstName" name="firstName" required>
+        <div class="register-account">
+            <h3>Register Account</h3>
+        </div>
+        <div class="email-exists-text">
+            <p id="p-for-incorrect-information" style="visibility: hidden; color: red">
+                <sup>*</sup> Email already exists
+            </p>
+        </div>
+        <form id="signInForm">
+            <!-- Add an ID to the form -->
+            <div class="first-last-name">
+                <div class="fist-name box-style">
+                    <label for="firstName" class="label-style">First Name <sup class="red-sup">*</sup></label>
+                    <input type="text" id="firstName" name="firstName" placeholder="First Name" required />
+                </div>
 
-            <label for="lastName">Last Name:</label>
-            <input type="text" id="lastName" name="lastName" required>
+                <div class="last-name box-style">
+                    <label for="lastName" class="label-style">Last Name<sup class="red-sup">*</sup></label>
+                    <input type="text" id="lastName" name="lastName" placeholder="Last Name" required />
+                </div>
+            </div>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+            <div class="email-box box-style">
+                <label for="email" class="label-style">E-Mail<sup class="red-sup">*</sup></label>
+                <input type="email" id="email" name="email" placeholder="E-Mail" required />
+            </div>
 
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            <span class="toggle-password" onclick="togglePassword()">Show Password</span>
+            <div class="password-box box-style">
+                <label for="password" class="label-style">Password<sup class="red-sup">*</sup></label>
+                <input type="password" id="password" name="password" placeholder="Password" required />
+                <span class="toggle-password label-style" onclick="togglePassword()">Show Password</span>
+            </div>
 
-            <button type="button" id="signInButton">Sign In</button> <!-- Change type to 'button' -->
-            <h4 id="link-to-log-in">Or are you already registered? <a href="/logIn">LogIn.</a></h4>
-            
+            <div class="continue box-style">
+                <button type="button" id="signInButton">Continue</button>
+            </div>
+            <div class="link-to-log-in">
+                <!-- Change type to 'button' -->
+                <h4 id="link-to-log-in">
+                    Or are you already registered? <a href="/logIn">LogIn.</a>
+                </h4>
+            </div>
         </form>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Add jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Add jQuery -->
     <script src="./signIn.js"></script>
 </body>
 

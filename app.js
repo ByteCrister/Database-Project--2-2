@@ -44,10 +44,16 @@ app.use(adminLogInRoutes);
 app.use(signInRoutes);
 app.use(homeAfterSignIn);
 app.use(logOutRoutes);
+
+
+/**************** all PC Routes Handling ************/
 app.use(addPCRoutes);
 app.use(PcCartsRouters);
 app.use(UpdatePc);
 app.use(DeletePC);
+
+
+
 
 
 app.use((request, response, next)=>{

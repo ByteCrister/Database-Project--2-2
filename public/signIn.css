@@ -8,16 +8,23 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f2f2f2;
+    background-color: #ffffff;
 }
 
 .signin-container {
-    background-color: white;
+    /* background-color: white; */
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
 }
-
+.register-account{
+    color: #333;
+    font-size: large;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
 form {
     display: flex;
     flex-direction: column;
@@ -51,5 +58,40 @@ button:hover {
     text-decoration: none;
     color: #333;
     font-size: large;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.email-exists-text{
+    /* background-color: #333; */
+    height: 25px;
+    width: 50%;
+}
+.first-last-name{
+    display: flex;
+    justify-content:space-around;
+}
+
+.fist-name{
+    margin-right: 10px;
+}
+
+.box-style{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+}
+
+.label-style{
+    margin-bottom: 10px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.red-sup{
+    color: red;
+}
+
+input{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 10px;
+
 }

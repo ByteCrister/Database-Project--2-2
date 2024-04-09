@@ -18,13 +18,22 @@
       </p>
     </div>
     <div class="login-container">
+      <div class="account-login">
+        <h3 style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: #333">Account Login</h3>
+      </div>
       <form action="/logIn" method="post" onsubmit=" event.preventDefault(); logIn();">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required />
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required />
-        <span class="toggle-password" onclick="togglePassword()">Show Password</span>
-        <button type="submit">Login</button>
+        <div class="email box-style">
+          <label for="email">E-Mail</label>
+          <input type="email" id="email" name="email" placeholder="E-Mail" required />
+        </div>
+        <div class="password box-style">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Password" name="password" required />
+          <span class="toggle-password" onclick="togglePassword()">Show Password</span>
+        </div>
+        <div class="log-in box-style" style="margin-top: 10px;">
+          <button type="submit">Login</button>
+        </div>
       </form>
     </div>
   </div>
