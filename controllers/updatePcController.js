@@ -19,33 +19,36 @@ exports.uploadMultipart = upload.single('productImage');
 
 
 
-exports.updatePcControllerGet = (request, response)=>{
-    const pcID = request.params.pc_information_No;
-    console.log(pcID);
+exports.updatePcControllerGet = (request, response) => {
+    if (request.session.isAdminLoggedIn) {
+        const pcID = request.params.pc_information_No;
+        console.log(pcID);
 
-    const q = `SELECT * FROM pc_information WHERE pc_information_No = ?`;
+        const q = `SELECT * FROM pc_information WHERE pc_information_No = ?`;
 
-    database.connect((error)=>{
-        if(error){
-            response.status(500).send('Internal server error from UpdatePcRouter get/');
-        }else{
-            database.query(
-                q,
-                [pcID],
-                (err, data)=>{
-                    if(err){
-                        response.status(500).send('Internal server error form UpdatePcRouter get/ data');
-                    }else{
-                        response.render(path.join(__dirname, '../public', 'update-pc-information'), { data });
+        database.connect((error) => {
+            if (error) {
+                response.status(500).send('Internal server error from UpdatePcRouter get/');
+            } else {
+                database.query(
+                    q,
+                    [pcID],
+                    (err, data) => {
+                        if (err) {
+                            response.status(500).send('Internal server error form UpdatePcRouter get/ data');
+                        } else {
+                            response.render(path.join(__dirname, '../public', 'update-pc-information'), { data });
+                        }
                     }
-                }
-            );
-        }
-    });
+                );
+            }
+        });
+
+    }
 
 };
 
-exports.updatePcControllerPost = (request, response)=>{
+exports.updatePcControllerPost = (request, response) => {
     const {
         brand,
         model,
@@ -75,17 +78,17 @@ exports.updatePcControllerPost = (request, response)=>{
     const q = `UPDATE pc_information 
     SET brand=?, model=?, processor=?, processor_warranty=?, motherboard=?, motherboard_warranty=?, ram=?, ram_warranty=?, storage=?, storage_warranty=?, casing=?, casing_warranty=?, price=?, cut_price=?, description=?, product_image_path=?
     WHERE pc_information_No = ?`;
-    database.connect((error)=>{
-        if(error){
+    database.connect((error) => {
+        if (error) {
             response.status(500).send("Internal server error from /update-pc post");
-        }else{
+        } else {
             database.query(
                 q,
                 [brand, model, processor, processorWarranty, motherboard, motherboardWarranty, ram, ramWarranty, storage, storageWarranty, casing, casingWarranty, price, cut_price, description, product_image_path, pcID],
-                (err, data)=>{
-                    if(err){
+                (err, data) => {
+                    if (err) {
                         response.status(500).send("Internal server error from /update-pc post data");
-                    }else{
+                    } else {
                         response.redirect('/Pc-Carts');
 
                     }

@@ -1,17 +1,9 @@
+const togglePasswordVisibility = () => {
+    const passwordInput = document.getElementById("adminPassword");
+    const showPasswordCheckbox = document.getElementById("show-password-checkbox");
 
-
-function togglePassword() {
-    var passwordInput = document.getElementById("adminPassword");
-    var togglePassword = document.querySelector(".toggle-password");
-    
-    if (passwordInput.type === "password") {
-        passwordInput.type = "text";
-        togglePassword.textContent = "Hide Password";
-    } else {
-        passwordInput.type = "password";
-        togglePassword.textContent = "Show Password";
-    }
-}
+    passwordInput.type = showPasswordCheckbox.checked ? "text" : "password";
+};
 
 const logIn = () => {
     console.log("logIn function called");

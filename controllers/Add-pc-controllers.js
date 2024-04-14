@@ -1,9 +1,12 @@
 const path = require('path');
-const  dataBase  = require('../models/DB');
+const dataBase = require('../models/DB');
 const multer = require('multer');
 exports.getAddPc = (request, response) => {
+    if (request.session.isAdminLoggedIn) {
+        response.sendFile(path.join(__dirname + '/../views/Add-pc.html'))
 
-    response.sendFile(path.join(__dirname + '/../views/Add-pc.html'))
+    }
+
 };
 
 
@@ -25,68 +28,70 @@ exports.uploadMultipart = upload.single('productImage');
 
 // Define the route handler for handling the PC information and image upload
 exports.postAddPC = async (request, response) => {
-    try {
-        // Extract PC information from the request body
-        const {
-            brand,
-            model,
-            processor,
-            processorWarranty,
-            motherboard,
-            motherboardWarranty,
-            ram,
-            ramWarranty,
-            storage,
-            storageWarranty,
-            casing,
-            casingWarranty,
-            price,
-            cut_price,
-            description
-        } = request.body;
+    if (request.session.isAdminLoggedIn) {
+        try {
+            // Extract PC information from the request body
+            const {
+                brand,
+                model,
+                processor,
+                processorWarranty,
+                motherboard,
+                motherboardWarranty,
+                ram,
+                ramWarranty,
+                storage,
+                storageWarranty,
+                casing,
+                casingWarranty,
+                price,
+                cut_price,
+                description
+            } = request.body;
 
-        // Get the path of the uploaded image
-        const imagePath = request.file.filename;
+            // Get the path of the uploaded image
+            const imagePath = request.file.filename;
 
-        // Insert PC information into the database
-        const pcInfo = {
-            brand,
-            model,
-            processor,
-            processorWarranty,
-            motherboard,
-            motherboardWarranty,
-            ram,
-            ramWarranty,
-            storage,
-            storageWarranty,
-            casing,
-            casingWarranty,
-            price,
-            cut_price,
-            description,
-            product_image_path: imagePath // Save the image path in the database
-        };
+            // Insert PC information into the database
+            const pcInfo = {
+                brand,
+                model,
+                processor,
+                processorWarranty,
+                motherboard,
+                motherboardWarranty,
+                ram,
+                ramWarranty,
+                storage,
+                storageWarranty,
+                casing,
+                casingWarranty,
+                price,
+                cut_price,
+                description,
+                product_image_path: imagePath // Save the image path in the database
+            };
 
-        const sql1 = `
-        INSERT INTO pc_information
-        (brand, model, processor, processor_warranty, motherboard, motherboard_warranty, ram, ram_warranty, storage, storage_warranty, casing, casing_warranty, price, cut_price,  description, product_image_path)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    `;
+            const sql1 = `
+            INSERT INTO pc_information
+            (brand, model, processor, processor_warranty, motherboard, motherboard_warranty, ram, ram_warranty, storage, storage_warranty, casing, casing_warranty, price, cut_price,  description, product_image_path)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        `;
 
 
-        dataBase.query(sql1, [brand, model, processor, processorWarranty, motherboard, motherboardWarranty, ram, ramWarranty, storage, storageWarranty, casing, casingWarranty, price, cut_price, description, imagePath], (err, data) => {
-            if (err) {
-                console.error('Error inserting PC information:', err);
-            } else {
-                console.log('PC - '+data.insertId+' inserted information successfully.');
-            }
-        });
-        
-       response.redirect('/Pc-Carts');
+            dataBase.query(sql1, [brand, model, processor, processorWarranty, motherboard, motherboardWarranty, ram, ramWarranty, storage, storageWarranty, casing, casingWarranty, price, cut_price, description, imagePath], (err, data) => {
+                if (err) {
+                    console.error('Error inserting PC information:', err);
+                } else {
+                    console.log('PC - ' + data.insertId + ' inserted information successfully.');
+                }
+            });
 
-    } catch (error) {
-        console.error('Error adding PC information:', error);
-        response.status(500).json({ message: 'Internal Server Error' });
+            response.redirect('/Pc-Carts');
+
+        } catch (error) {
+            console.error('Error adding PC information:', error);
+            response.status(500).json({ message: 'Internal Server Error' });
+        }
     }
 }

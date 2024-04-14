@@ -1,15 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const togglePassword = () => {
-        var passwordInput = document.getElementById("password");
-        var togglePassword = document.querySelector(".toggle-password");
-
-        if (passwordInput.type === "password") {
-            passwordInput.type = "text";
-            togglePassword.textContent = "Hide Password";
-        } else {
-            passwordInput.type = "password";
-            togglePassword.textContent = "Show Password";
-        }
+    const togglePasswordVisibility = () => {
+        const passwordInput = document.getElementById("password");
+        const showPasswordCheckbox = document.getElementById("show-password-checkbox");
+    
+        passwordInput.type = showPasswordCheckbox.checked ? "text" : "password";
     };
 
     const signIn = () => {
@@ -42,6 +36,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const signInButton = document.getElementById('signInButton');
     signInButton.addEventListener('click', signIn);
 
-    const togglePasswordButton = document.querySelector(".toggle-password");
-    togglePasswordButton.addEventListener('click', togglePassword);
+    const togglePasswordButton = document.querySelector("#show-password-checkbox");
+    togglePasswordButton.addEventListener('click', togglePasswordVisibility);
 });

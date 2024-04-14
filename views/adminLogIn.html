@@ -24,17 +24,22 @@
         </div>
         <div class="login-container">
             <form action="/adminLogIn" method="post" onsubmit=" event.preventDefault(); logIn();">
-                <div class="admin-name box-style" >
+                <div class="admin-name box-style">
                     <label for="adminName">Admin Name</label>
-                <input type="text" id="adminName" name="adminName" placeholder="Admin" required />
+                    <input type="text" id="adminName" name="adminName" placeholder="Admin" required />
                 </div>
 
                 <div class="admin-password box-style">
                     <label for="adminPassword">Admin Password:</label>
-                <input type="password" id="adminPassword" name="adminPassword" placeholder="Password" required />
-                <span class="toggle-password" onclick="togglePassword()">Show Password</span>
+                    <input type="password" id="adminPassword" name="adminPassword" placeholder="Password" required />
+                    <div class="check-box">
+                        <input type="checkbox" id="show-password-checkbox" onclick="togglePasswordVisibility()">
+                        <label for="show-password-checkbox">Show Password</label>
+                    </div>
                 </div>
-                <button type="submit">Login</button>
+                <div class="log-in-button box-style">
+                    <button type="submit">Login</button>
+                </div>
             </form>
         </div>
     </div>
