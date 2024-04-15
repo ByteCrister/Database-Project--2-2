@@ -1,5 +1,6 @@
 const database = require('../models/DB');
 const path = require('path');
+const fs = require('fs');
 const multer = require('multer');
 
 
@@ -71,9 +72,7 @@ exports.updatePcControllerPost = (request, response) => {
     if (!request.file || !request.file.filename) {
         return response.status(400).send('No file uploaded');
     }
-    const product_image_path = request.file.filename;
-    console.log(product_image_path);
-
+    const newImagePath = request.file.filename;
 
     const q = `UPDATE pc_information 
     SET brand=?, model=?, processor=?, processor_warranty=?, motherboard=?, motherboard_warranty=?, ram=?, ram_warranty=?, storage=?, storage_warranty=?, casing=?, casing_warranty=?, price=?, cut_price=?, description=?, product_image_path=?
@@ -82,19 +81,41 @@ exports.updatePcControllerPost = (request, response) => {
         if (error) {
             response.status(500).send("Internal server error from /update-pc post");
         } else {
+            // Retrieve current image path from the database
+            const getCurrentImagePathQuery = `SELECT product_image_path FROM pc_information WHERE pc_information_No = ?`;
             database.query(
-                q,
-                [brand, model, processor, processorWarranty, motherboard, motherboardWarranty, ram, ramWarranty, storage, storageWarranty, casing, casingWarranty, price, cut_price, description, product_image_path, pcID],
-                (err, data) => {
+                getCurrentImagePathQuery,
+                [pcID],
+                (err, result) => {
                     if (err) {
-                        response.status(500).send("Internal server error from /update-pc post data");
+                        response.status(500).send("Error retrieving current image path");
                     } else {
-                        response.redirect('/Pc-Carts');
+                        const currentImagePath = result[0].product_image_path;
 
+                        // Update the database with the new image path
+                        database.query(
+                            q,
+                            [brand, model, processor, processorWarranty, motherboard, motherboardWarranty, ram, ramWarranty, storage, storageWarranty, casing, casingWarranty, price, cut_price, description, newImagePath, pcID],
+                            (err, data) => {
+                                if (err) {
+                                    response.status(500).send("Internal server error from /update-pc post data");
+                                } else {
+                                    // Delete the old image file
+                                    fs.unlink(path.join('C:/Users/WD-OLY/OneDrive/Database-Project--2-2/public/Images/PC', currentImagePath), (err) => {
+                                        if (err) {
+                                            console.error("Error deleting old image file:", err);
+                                        } else {
+                                            console.log("Old image file deleted successfully");
+                                        }
+                                    });
+
+                                    response.redirect('/Pc-Carts');
+                                }
+                            }
+                        );
                     }
                 }
             );
         }
     });
-
 }
