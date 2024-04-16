@@ -24,6 +24,14 @@ const addPCRoutes = require('./routes/Add-pc');
 const PcCartsRouters = require('./routes/Pc-Carts');
 const UpdatePc = require('./routes/Update-pc');
 const DeletePC = require('./routes/Delete-pc');
+const DesktopView = require('./routes/Desktop-views-Routes');
+
+
+/****************** Brand PC Routes Handling ***********/
+const addBrandPcRoutes = require('./routes/Add-brand-pc');
+const BrandPcCartsRoutes = require('./routes/Brand-Pc-Carts');
+const UpdateBrandPC  = require('./routes/Update-brand-pc');
+const DeleteBrandPC = require('./routes/Delete-brand-pc');
 
 
 /************** required environments setup *****************/
@@ -51,9 +59,15 @@ app.use(addPCRoutes);
 app.use(PcCartsRouters);
 app.use(UpdatePc);
 app.use(DeletePC);
+app.use(DesktopView);
 
 
 
+/***************** Brand Pc Routes **********/
+app.use(addBrandPcRoutes);
+app.use(BrandPcCartsRoutes);
+app.use(UpdateBrandPC);
+app.use(DeleteBrandPC);
 
 
 app.use((request, response, next)=>{

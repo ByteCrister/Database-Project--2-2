@@ -5,5 +5,4 @@ const { getPcCarts } = require('../controllers/Pc-Carts-Controllers');
 
 PcCartsRouter.get('/Pc-Carts', getPcCarts);
 
-
 module.exports = PcCartsRouter;

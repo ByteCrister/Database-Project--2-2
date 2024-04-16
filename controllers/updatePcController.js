@@ -53,6 +53,7 @@ exports.updatePcControllerPost = (request, response) => {
     const {
         brand,
         model,
+        category,
         processor,
         processorWarranty,
         motherboard,
@@ -75,14 +76,14 @@ exports.updatePcControllerPost = (request, response) => {
     const newImagePath = request.file.filename;
 
     const q = `UPDATE pc_information 
-    SET brand=?, model=?, processor=?, processor_warranty=?, motherboard=?, motherboard_warranty=?, ram=?, ram_warranty=?, storage=?, storage_warranty=?, casing=?, casing_warranty=?, price=?, cut_price=?, description=?, product_image_path=?
-    WHERE pc_information_No = ?`;
+    SET brand=?, model=?, category =?, processor=?, processor_warranty=?, motherboard=?, motherboard_warranty=?, ram=?, ram_warranty=?, storage=?, storage_warranty=?, casing=?, casing_warranty=?, price=?, cut_price=?, description=?, product_image_path=?
+    WHERE pc_information_No = ?;`;
     database.connect((error) => {
         if (error) {
             response.status(500).send("Internal server error from /update-pc post");
         } else {
             // Retrieve current image path from the database
-            const getCurrentImagePathQuery = `SELECT product_image_path FROM pc_information WHERE pc_information_No = ?`;
+            const getCurrentImagePathQuery = `SELECT product_image_path FROM pc_information WHERE pc_information_No = ?;`;
             database.query(
                 getCurrentImagePathQuery,
                 [pcID],
@@ -95,7 +96,7 @@ exports.updatePcControllerPost = (request, response) => {
                         // Update the database with the new image path
                         database.query(
                             q,
-                            [brand, model, processor, processorWarranty, motherboard, motherboardWarranty, ram, ramWarranty, storage, storageWarranty, casing, casingWarranty, price, cut_price, description, newImagePath, pcID],
+                            [brand, model, category, processor, processorWarranty, motherboard, motherboardWarranty, ram, ramWarranty, storage, storageWarranty, casing, casingWarranty, price, cut_price, description, newImagePath, pcID],
                             (err, data) => {
                                 if (err) {
                                     response.status(500).send("Internal server error from /update-pc post data");

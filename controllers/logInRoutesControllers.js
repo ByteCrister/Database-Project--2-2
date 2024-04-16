@@ -18,7 +18,12 @@ exports.postLogIn = (request, response) => {
                 response.status(500).json({ success: false, message: 'Internal Server Error' });
             } else {
                 if (data && data.length > 0 && data[0].email === email && data[0].email_password === password) {
+
+                    request.session.isLogOut = false;
+                    request.session.isAdminLoggedIn = false;
+
                     request.session.isLoggedIn = true;
+
                     request.session.userId = data[0].user_id;
                     console.log('Old user successfully logged in  - User ID : ' + request.session.userId);
                     response.json({ success: true });

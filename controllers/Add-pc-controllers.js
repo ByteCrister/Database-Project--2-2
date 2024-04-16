@@ -33,6 +33,7 @@ exports.postAddPC = async (request, response) => {
             // Extract PC information from the request body
             const {
                 brand,
+                category,
                 model,
                 processor,
                 processorWarranty,
@@ -55,6 +56,7 @@ exports.postAddPC = async (request, response) => {
             // Insert PC information into the database
             const pcInfo = {
                 brand,
+                category,
                 model,
                 processor,
                 processorWarranty,
@@ -74,12 +76,12 @@ exports.postAddPC = async (request, response) => {
 
             const sql1 = `
             INSERT INTO pc_information
-            (brand, model, processor, processor_warranty, motherboard, motherboard_warranty, ram, ram_warranty, storage, storage_warranty, casing, casing_warranty, price, cut_price,  description, product_image_path)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            (brand, category, model, processor, processor_warranty, motherboard, motherboard_warranty, ram, ram_warranty, storage, storage_warranty, casing, casing_warranty, price, cut_price,  description, product_image_path)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
         `;
 
 
-            dataBase.query(sql1, [brand, model, processor, processorWarranty, motherboard, motherboardWarranty, ram, ramWarranty, storage, storageWarranty, casing, casingWarranty, price, cut_price, description, imagePath], (err, data) => {
+            dataBase.query(sql1, [brand, category, model, processor, processorWarranty, motherboard, motherboardWarranty, ram, ramWarranty, storage, storageWarranty, casing, casingWarranty, price, cut_price, description, imagePath], (err, data) => {
                 if (err) {
                     console.error('Error inserting PC information:', err);
                 } else {

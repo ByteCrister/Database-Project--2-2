@@ -1,0 +1,151 @@
+/* Reset some default styles for better consistency */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: aliceblue;
+}
+
+.brand-pc-area {
+    width: 100%;
+    background-color: rgb(68, 68, 129);
+    margin: 10px 0px;
+    color: azure;
+    padding: 10px;
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.pcs-main-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.pc-style {
+    width: 310px;
+    min-width: 310px;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+.upper-div {
+    border-radius: 5px 5px 0px 0px;
+    position: relative;
+    background-color: #ffffff;
+    margin-bottom: 2px;
+}
+.images{
+    padding: 10px;
+}
+.save-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 30px;
+    position: absolute;
+    background-color: #5d0092;
+    color: white;
+    padding: 10px;
+    margin-top: 5px;
+    font-size: 15px;
+    border-radius: 0px 1dvw 10px 0px;
+}
+
+.lower-div {
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 0px 0px 5px 5px;
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.pc-name {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.pc-name a {
+    text-decoration: none;
+    color: #302d2d;
+}
+
+.list {
+    padding: 10px;
+}
+
+ul li {
+    font-size: 12px;
+    line-height: 30px;
+    font-family: 'Times New Roman', Times, serif;
+    color: #888;
+}
+
+.price-and-buttons {
+    width: 100%;
+}
+
+.pc-price {
+    display: flex;
+    align-items: center;
+}
+
+.final-price {
+    color: #4CAF50;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.cut-price {
+    margin-left: 10px;
+    color: #888;
+    text-decoration: line-through;
+    font-size: 15px;
+}
+
+.buttons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.buttons div {
+    background-color: rgb(178, 221, 191);
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.buttons div a {
+    text-decoration: none;
+    color: rgb(60, 95, 192);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.update-button:hover a,
+.update-button:hover {
+    background-color: rgb(62, 112, 170);
+    color: aliceblue;
+}
+
+.remove-button:hover a,
+.remove-button:hover {
+    color: aliceblue;
+    background-color: rgb(197, 36, 90);
+}
+
+.product-image {
+    height: 200px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
