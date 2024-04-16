@@ -1,5 +1,6 @@
 const express = require('express');
 const session = require('express-session');
+const cors = require('cors');
 const app = express();
 
 
@@ -32,11 +33,14 @@ const addBrandPcRoutes = require('./routes/Add-brand-pc');
 const BrandPcCartsRoutes = require('./routes/Brand-Pc-Carts');
 const UpdateBrandPC  = require('./routes/Update-brand-pc');
 const DeleteBrandPC = require('./routes/Delete-brand-pc');
+const DesktopBrandPcView = require('./routes/Desktop-brand-pc-Routes');
+
+
+
+
 
 
 /************** required environments setup *****************/
-const cors = require('cors');
-
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.use(cors());
@@ -68,8 +72,11 @@ app.use(addBrandPcRoutes);
 app.use(BrandPcCartsRoutes);
 app.use(UpdateBrandPC);
 app.use(DeleteBrandPC);
+app.use(DesktopBrandPcView);
 
 
+
+/*************** Route Related Error Handling *************/
 app.use((request, response, next)=>{
     response.status(404).send('<h1>Invalid Url 404 !</h1>');
     next();

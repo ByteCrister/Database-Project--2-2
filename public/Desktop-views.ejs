@@ -88,45 +88,12 @@
               <!-- Add shopping emoji -->
 
               <span class="shopping-emoji">🛒</span>
-              <a href="/Buy-Now/pc/<%= pc.pc_information_No %>">Buy Now</a>
+              <a href="/Buy-Now/pc-<%= pc.pc_information_No %>">Buy Now</a>
             </div>
           </div>
         </div>
       </div>
       <% }); %>
     </div>
-
-    <!-- Store pcList as a data attribute -->
-    <!-- <div
-      id="pcListData"
-      data-pc-list="<%= JSON.stringify(pcList) %>"
-      style="display: none"
-    ></div> -->
-
-    <!-- JavaScript to load PC images -->
-    <script>
-      /*document.addEventListener("DOMContentLoaded", function () {
-        const pcListDataElement = document.getElementById("pcListData");
-        const pcList = JSON.parse(
-          pcListDataElement.getAttribute("data-pc-list")
-        );
-
-        pcList.forEach((pc) => {
-          const element = document.querySelector(
-            `.laptop-id-${pc.pc_information_No} .product-image`
-          );
-          if (element) {
-            const imagePath = `http://localhost:7000/Images/PC/${encodeURIComponent(
-              pc.product_image_path
-            )}`;
-            element.style.backgroundImage = `url(${imagePath})`;
-            element.style.backgroundSize = "contain";
-            element.style.backgroundRepeat = "no-repeat";
-            element.style.backgroundPosition = "center";
-            element.style.height = "200px";
-          }
-        });
-      });*/
-    </script>
   </body>
 </html>

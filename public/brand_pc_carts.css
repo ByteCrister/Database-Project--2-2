@@ -149,3 +149,20 @@ ul li {
     background-repeat: no-repeat;
     background-position: center;
 }
+
+.buy-now-button, .buy-now-button a{
+    text-align: center;
+    padding: 10px;
+    background-color: rgb(208, 235, 232);
+    text-decoration: none;
+    color: rgb(27, 110, 110);
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-radius: 5px;
+    margin: 10px 0px 10px 0px;
+
+}
+
+.buy-now-button:hover, .buy-now-button:hover a{
+    color: rgb(255, 255, 255);
+    background-color: rgb(138, 212, 212);
+}
