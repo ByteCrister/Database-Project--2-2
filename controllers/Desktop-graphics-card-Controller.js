@@ -1,25 +1,23 @@
 const dataBase = require('../models/DB');
 const path = require('path');
 
-exports.getDesktopViews = (request, response) => {
+exports.getDesktopGraphicsCard = (request, response) => {
     console.log("is logged in -> " + request.session.isLoggedIn);
 
     if (request.session.isLoggedIn) {
-        let sql = '';
 
-        const pcType = request.params.pcType;
-        console.log(pcType);
+        const GraphicsCardType = request.params.GraphicsCardType;
+        let sql = ' ';
 
-        if(pcType == 'all'){
-            sql = `SELECT * FROM pc_information ;`;
-            
-        }else{
-            sql = `SELECT * FROM pc_information WHERE category = "${pcType}";`;
+        console.log(GraphicsCardType);
+
+        if (GraphicsCardType == 'all') {
+            sql = `SELECT * FROM graphics_card ;`;
+        } else {
+            sql = `SELECT * FROM graphics_card WHERE brand = "${GraphicsCardType}";`;
 
         }
 
-
-        console.log(sql);
         dataBase.query(
             sql,
             (error, data) => {
@@ -27,8 +25,7 @@ exports.getDesktopViews = (request, response) => {
                     console.error('Error fetching PC information:', error);
                     response.status(500).send('Internal Server Error');
                 } else {
-                    console.log(pcType);
-                    response.render(path.join(__dirname, '../public/Desktop-views'), { pcList: data });
+                    response.render(path.join(__dirname, '../public/Desktop-graphics-card-views'), { graphicsCardList: data });
                 }
 
             }
@@ -37,4 +34,4 @@ exports.getDesktopViews = (request, response) => {
         response.status(403).send('Unauthorized');
     }
 
-}
+};

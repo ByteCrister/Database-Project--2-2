@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Add-graphics-card.css">
+    <title>Update Graphics Card Information</title>
+</head>
+
+<body>
+    <div class="form-container">
+        <form action="/update-graphics-card" method="post" enctype="multipart/form-data">
+            <div class="form-section">
+                <h2>Update Graphics Card Information</h2>
+                <input type="text" id="pc-id" name="pcID"  value="<%= data[0].gp_card_No %>" hidden>
+                <div class="form-group">
+                    <label for="brand">Brand:</label>
+                    <input type="text" id="brand" name="brand" value="<%= data[0].brand %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="model">Model:</label>
+                    <input type="text" id="model" name="model" value="<%= data[0].model %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="type">Type:</label>
+                    <input type="text" id="type" name="type" value="<%= data[0].type %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="size">Size:</label>
+                    <input type="text" id="size" name="size" value="<%= data[0].size %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="resolution">Resolution:</label>
+                    <input type="text" id="resolution" name="resolution" value="<%= data[0].resolution %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="boost_clock">Boost Clock:</label>
+                    <input type="text" id="boost_clock" name="boost_clock" value="<%= data[0].boost_clock %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="game_clock">Game Clock:</label>
+                    <input type="text" id="game_clock" name="game_clock" value="<%= data[0].game_clock %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="memory_clock">Memory Clock:</label>
+                    <input type="text" id="memory_clock" name="memory_clock" value="<%= data[0].memory_clock %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="bus_type">Bus Type:</label>
+                    <input type="text" id="bus_type" name="bus_type" value="<%= data[0].bus_type %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="memory_interface">Memory Interface:</label>
+                    <input type="text" id="memory_interface" name="memory_interface" value="<%= data[0].memory_interface %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="stream_processors">Stream Processors:</label>
+                    <input type="text" id="stream_processors" name="stream_processors" value="<%= data[0].stream_processors %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="display_port">Display Port:</label>
+                    <input type="text" id="display_port" name="display_port" value="<%= data[0].display_port %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="hdmi">HDMI:</label>
+                    <input type="text" id="hdmi" name="hdmi" value="<%= data[0].hdmi %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="connectors">Connectors:</label>
+                    <input type="text" id="connectors" name="connectors" value="<%= data[0].connectors %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="recommended_psu">Recommended PSU:</label>
+                    <input type="text" id="recommended_psu" name="recommended_psu" value="<%= data[0].recommended_psu %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="consumption">Consumption:</label>
+                    <input type="text" id="consumption" name="consumption" value="<%= data[0].consumption %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="multi_display">Multi Display:</label>
+                    <input type="text" id="multi_display" name="multi_display" value="<%= data[0].multi_display %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="directX">DirectX:</label>
+                    <input type="text" id="directX" name="directX" value="<%= data[0].directX %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="dimension">Dimension:</label>
+                    <input type="text" id="dimension" name="dimension" value="<%= data[0].dimensions %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="others">Others:</label>
+                    <input type="text" id="others" name="others" value="<%= data[0].others %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="warranty">Warranty:</label>
+                    <input type="text" id="warranty" name="warranty" value="<%= data[0].warranty %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="cut-price">Cut price (Optional):</label>
+                    <input type="text" id="cut_price" name="cut_price" value="<%= data[0].cut_price %>">
+                </div>
+                <div class="form-group">
+                    <label for="final_price">Final Price:</label>
+                    <input type="text" id="final_price" name="final_price" value="<%= data[0].final_price %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="productImage">Product Image:</label>
+                    <input type="file" id="productImage" name="productImage"  required>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>Enter Additional Information</h2>
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" rows="4" required><%= data[0].description %></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit">Update Graphics Card</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

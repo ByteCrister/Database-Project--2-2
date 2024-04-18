@@ -20,7 +20,7 @@ const homeAfterSignIn = require('./routes/homeAfterSignInRoute');
 const logOutRoutes = require('./routes/logOutRoutes');
 
 
-/*************** Pc cart  Routes Handling ****************/
+/*************** Pc cart  Routes Requiring ****************/
 const addPCRoutes = require('./routes/Add-pc');
 const PcCartsRouters = require('./routes/Pc-Carts');
 const UpdatePc = require('./routes/Update-pc');
@@ -28,7 +28,7 @@ const DeletePC = require('./routes/Delete-pc');
 const DesktopView = require('./routes/Desktop-views-Routes');
 
 
-/****************** Brand PC Routes Handling ***********/
+/****************** Brand PC Routes Requiring *************/
 const addBrandPcRoutes = require('./routes/Add-brand-pc');
 const BrandPcCartsRoutes = require('./routes/Brand-Pc-Carts');
 const UpdateBrandPC  = require('./routes/Update-brand-pc');
@@ -36,11 +36,16 @@ const DeleteBrandPC = require('./routes/Delete-brand-pc');
 const DesktopBrandPcView = require('./routes/Desktop-brand-pc-Routes');
 
 
+/*******************  Graphics Card Requiring ****************/
+const addGraphicsCardRoutes = require('./routes/Add-graphics-card');
+const GraphicsCardCartsRoutes = require('./routes/Graphics-Card-Carts-Routes');
+const UpdateGraphicsCard = require('./routes/Update-graphics-card');
+const DeleteGraphicsCard = require('./routes/Delete-graphics-card');
+const DesktopGraphicsCardViews = require('./routes/Desktop-graphics-card-Routes');
 
 
 
-
-/************** required environments setup *****************/
+/************** required environment setup *****************/
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.use(cors());
@@ -73,6 +78,16 @@ app.use(BrandPcCartsRoutes);
 app.use(UpdateBrandPC);
 app.use(DeleteBrandPC);
 app.use(DesktopBrandPcView);
+
+
+
+/******************* Graphics Card Routes  ***********/
+app.use(addGraphicsCardRoutes);
+app.use(GraphicsCardCartsRoutes);
+app.use(UpdateGraphicsCard);
+app.use(DeleteGraphicsCard);
+app.use(DesktopGraphicsCardViews);
+
 
 
 

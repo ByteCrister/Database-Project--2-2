@@ -150,4 +150,4 @@ exports.updateBrandPcControllerPost = (request, response) => {
             );
         }
     });
-}
+};

@@ -3,26 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brand PC Carts</title>
-    <link rel="stylesheet" href="/brand_pc_carts.css">
+    <title>Graphics Card Carts</title>
+    <link rel="stylesheet" href="./graphics_card_carts.css">
 </head>
 <body>
     <div class="brand-pc-area">
-        <h3>Brand PC Cart</h3>
+        <h3>Graphics Card Information's</h3>
     </div>
 
     <div class="pcs-main-container">
         <!-- Loop through each PC in the pcList -->
-        <% brandPcList.forEach(pc => { %>
-        <div class="pc-id-<%= pc.brand_pc_No %> pc-style">
+        <% graphicsCardList.forEach(card => { %>
+        <div class="pc-id-<%= card.brand_pc_No %> pc-style">
             <!-- Display PC ID -->
-            <span class="pc-id" style="display: none;"> <%= pc.brand_pc_No %> </span>
+            <span class="pc-id" style="display: none;"> <%= card.gp_card_No %> </span>
 
             <div class="upper-div">
                 <!-- Display save amount if applicable -->
-                <% if(pc.cut_price && pc.cut_price.length > 0) { %> 
-                <% const cutPrice = parseFloat(pc.cut_price.replace(',', '' )); %> 
-                <% const price = parseFloat(pc.final_price.replace(',', '' )); %> 
+                <% if(card.cut_price && card.cut_price.length > 0) { %> 
+                <% const cutPrice = parseFloat(card.cut_price.replace(',', '' )); %> 
+                <% const price = parseFloat(card.final_price.replace(',', '' )); %> 
                 <% const saveAmount = cutPrice - price; %>
                 <div class="save-text">
                     <span>Save: <%= saveAmount.toLocaleString('en-US', { style: 'currency' , currency: 'USD' , minimumFractionDigits: 0, maximumFractionDigits: 0 }) %></span>
@@ -31,21 +31,21 @@
 
                 <!-- Display PC image -->
                 <div class="images">
-                    <div class="product-image" style="background-image: url('/Images/BrandPC/<%= pc.product_image_path %>')"></div>
+                    <div class="product-image" style="background-image: url('/Images/GraphicsCard/<%= card.product_image_path %>')"></div>
                 </div>
             </div>
 
             <div class="lower-div">
                 <!-- Display PC name -->
                 <div class="pc-name">
-                    <a href="#"> <%= pc.model %> </a>
+                    <a href="#"> <%= card.model %> </a>
                     <!-- Add list of items -->
                     <div class="list">
                         <ul>
-                            <li><%= pc.processor %></li>
-                            <li><%= pc.motherboard %></li>
-                            <li><%= pc.ram %></li>
-                            <li><%= pc._storage_ %></li>
+                            <li>Type : <%= card.type %></li>
+                            <li>Resolution : <%= card.resolution %></li>
+                            <li>Stream Processor : <%= card.stream_processors %></li>
+                            <li>Warranty : <%= card.warranty %></li>
                         </ul>
                     </div>
                     <hr class="line" />
@@ -55,25 +55,28 @@
                     <!-- Display PC price -->
                     <div class="pc-price">
                         <div class="final-price">
-                            <% const formattedPrice = parseFloat(pc.final_price.replace(/[^0-9.-]+/g,"")); %>
+                            <% const formattedPrice = parseFloat(card.final_price.replace(/[^0-9.-]+/g,"")); %>
                             <%= formattedPrice.toLocaleString('en-US', { style: 'currency' , currency: 'USD' , minimumFractionDigits: 0, maximumFractionDigits: 0 }) %>
                         </div>
 
                         <!-- Display cut price if applicable -->
-                        <% if(pc.cut_price && pc.cut_price.length > 0) { %> 
-                        <% const formattedCutPrice = parseFloat(pc.cut_price.replace(/[^0-9.-]+/g,"")); %>
+                        <% if(card.cut_price && card.cut_price.length > 0) { %> 
+                        <% const formattedCutPrice = parseFloat(card.cut_price.replace(/[^0-9.-]+/g,"")); %>
                         <div class="cut-price">
                             <%= formattedCutPrice.toLocaleString('en-US', { style: 'currency' , currency: 'USD' , minimumFractionDigits: 0, maximumFractionDigits: 0 }) %>
                         </div>
                         <% } %>
                     </div>
 
-                    <div class="buy-now-button">
-                        <!-- Add shopping emoji -->
-          
-                        <span class="shopping-emoji">🛒</span>
-                        <a href="/Buy-Now/brand-pc-<%= pc.brand_pc_No %>">Buy Now</a>
-                      </div>
+                    <!-- Buttons for updating and removing PC -->
+                    <div class="buttons">
+                        <div class="update-button">
+                            <a href="/update-graphics-card/<%= card.gp_card_No %>">Update</a>
+                        </div>
+                        <div class="remove-button">
+                            <a href="/remove-graphics-card/<%= card.gp_card_No %>">Remove</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

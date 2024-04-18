@@ -6,10 +6,19 @@ exports.getDesktopBrandPc = (request, response) => {
 
     if (request.session.isLoggedIn) {
 
+        let sql = '';
+
         const pcType = request.params.pcType;
         console.log(pcType);
 
-        const sql = `SELECT * FROM brand_pc WHERE brand = "${pcType}";`;
+        if (pcType == 'all') {
+            sql = `SELECT * FROM brand_pc ;`;
+            
+        } else {
+            sql = `SELECT * FROM brand_pc WHERE brand = "${pcType}";`;
+
+        }
+
         dataBase.query(
             sql,
             (error, data) => {
@@ -26,4 +35,4 @@ exports.getDesktopBrandPc = (request, response) => {
         response.status(403).send('Unauthorized');
     }
 
-}
+};

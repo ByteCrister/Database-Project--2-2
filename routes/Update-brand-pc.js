@@ -3,8 +3,6 @@ const{updateBrandPcControllerGet,  updateBrandPcControllerPost, uploadBrandPCIma
 
 
 UpdateBrandPcRouter.get('/update-brand-pc/:brand_pc_No', updateBrandPcControllerGet);
-
-
 UpdateBrandPcRouter.post('/update-brand-pc',uploadBrandPCImage, updateBrandPcControllerPost );
 
 

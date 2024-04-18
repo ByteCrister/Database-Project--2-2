@@ -37,7 +37,26 @@ body {
     box-sizing: border-box;
 }
 
-/* Responsive Styles */
+button{
+    padding: 10px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 15px;
+    background-color: rgb(172, 224, 198);
+    border: none;
+    box-shadow: 2px 2px 10px 0.5px  rgb(61, 58, 58);
+    color: rgb(9, 59, 63);
+    border-radius: 10px;
+    transition: ease-in-out 0.2s;
+}
+
+button:hover{
+    background-color: rgb(10, 61, 57);
+    box-shadow: 2px 2px 15px 1px  rgb(61, 58, 58);
+    color: rgb(114, 189, 196);
+    cursor: pointer;
+    
+}
+
 @media screen and (max-width: 600px) {
     .form-container {
         max-width: 100%;

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Add-graphics-card.css">
+    <title>Enter Graphics Card Information</title>
+</head>
+
+<body>
+    <div class="form-container">
+        <form action="/add-graphics-card" method="post" enctype="multipart/form-data">
+            <div class="form-section">
+                <h2>Enter Graphics Card Information</h2>
+                <div class="form-group">
+                    <label for="brand">Brand:</label>
+                    <input type="text" id="brand" name="brand" required>
+                </div>
+                <div class="form-group">
+                    <label for="model">Model:</label>
+                    <input type="text" id="model" name="model" required>
+                </div>
+                <div class="form-group">
+                    <label for="type">Type:</label>
+                    <input type="text" id="type" name="type" required>
+                </div>
+                <div class="form-group">
+                    <label for="size">Size:</label>
+                    <input type="text" id="size" name="size" required>
+                </div>
+                <div class="form-group">
+                    <label for="resolution">Resolution:</label>
+                    <input type="text" id="resolution" name="resolution" required>
+                </div>
+                <div class="form-group">
+                    <label for="boost_clock">Boost Clock:</label>
+                    <input type="text" id="boost_clock" name="boost_clock" required>
+                </div>
+                <div class="form-group">
+                    <label for="game_clock">Game Clock:</label>
+                    <input type="text" id="game_clock" name="game_clock" required>
+                </div>
+                <div class="form-group">
+                    <label for="memory_clock">Memory Clock:</label>
+                    <input type="text" id="memory_clock" name="memory_clock" required>
+                </div>
+                <div class="form-group">
+                    <label for="bus_type">Bus Type:</label>
+                    <input type="text" id="bus_type" name="bus_type" required>
+                </div>
+                <div class="form-group">
+                    <label for="memory_interface">Memory Interface:</label>
+                    <input type="text" id="memory_interface" name="memory_interface" required>
+                </div>
+                <div class="form-group">
+                    <label for="stream_processors">Stream Processors:</label>
+                    <input type="text" id="stream_processors" name="stream_processors" required>
+                </div>
+                <div class="form-group">
+                    <label for="display_port">Display Port:</label>
+                    <input type="text" id="display_port" name="display_port" required>
+                </div>
+                <div class="form-group">
+                    <label for="hdmi">HDMI:</label>
+                    <input type="text" id="hdmi" name="hdmi" required>
+                </div>
+                <div class="form-group">
+                    <label for="connectors">Connectors:</label>
+                    <input type="text" id="connectors" name="connectors" required>
+                </div>
+                <div class="form-group">
+                    <label for="recommended_psu">Recommended PSU:</label>
+                    <input type="text" id="recommended_psu" name="recommended_psu" required>
+                </div>
+                <div class="form-group">
+                    <label for="consumption">Consumption:</label>
+                    <input type="text" id="consumption" name="consumption" required>
+                </div>
+                <div class="form-group">
+                    <label for="multi_display">Multi Display:</label>
+                    <input type="text" id="multi_display" name="multi_display" required>
+                </div>
+                <div class="form-group">
+                    <label for="directX">DirectX:</label>
+                    <input type="text" id="directX" name="directX" required>
+                </div>
+                <div class="form-group">
+                    <label for="dimension">Dimension:</label>
+                    <input type="text" id="dimension" name="dimensions" required>
+                </div>
+                <div class="form-group">
+                    <label for="others">Others:</label>
+                    <input type="text" id="others" name="others" required>
+                </div>
+                <div class="form-group">
+                    <label for="warranty">Warranty:</label>
+                    <input type="text" id="warranty" name="warranty" required>
+                </div>
+                <div class="form-group">
+                    <label for="cut-price">Cut price (Optional):</label>
+                    <input type="text" id="cut_price" name="cut_price">
+                </div>
+                <div class="form-group">
+                    <label for="final_price">Final Price:</label>
+                    <input type="text" id="final_price" name="final_price" required>
+                </div>
+                <div class="form-group">
+                    <label for="productImage">Product Image:</label>
+                    <input type="file" id="productImage" name="productImage" required>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>Enter Additional Information</h2>
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" rows="4" required></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit">Add Graphics Card</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
