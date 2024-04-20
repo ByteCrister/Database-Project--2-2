@@ -1,5 +1,3 @@
-// Add-brand-pc-controllers.js
-
 const path = require('path');
 const dataBase = require('../../models/DB');
 const multer = require('multer');
@@ -10,25 +8,24 @@ exports.getAddBrandPC = (request, response) => {
     }
 };
 
-// Set up multer storage for brand PC image
+// Set up multer storage 
 const brandPCStorage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'C:/Users/WD-OLY/OneDrive/Database-Project--2-2/public/Images/BrandPC'); // Set the destination folder for uploaded brand PC images
+        cb(null, 'C:/Users/WD-OLY/OneDrive/Database-Project--2-2/public/Images/BrandPC'); // Set the destination folder 
     },
     filename: function (req, file, cb) {
         cb(null, Date.now() + '-' + file.originalname); // Create a unique filename
     }
 });
 
-// Set up multer with the configured storage for brand PC image
+// Set up multer 
 const brandPCUpload = multer({ storage: brandPCStorage });
 exports.uploadBrandPCImage = brandPCUpload.single('productImage');
 
-// Define the route handler for handling the brand PC information and image upload
+
 exports.postAddBrandPC = async (request, response) => {
     if (request.session.isAdminLoggedIn) {
         try {
-            // Extract brand PC information from the request body
             const {
                 brand,
                 model,
@@ -54,7 +51,7 @@ exports.postAddBrandPC = async (request, response) => {
                 description
             } = request.body;
 
-            // Get the path of the uploaded image for brand PC
+            
             const product_image_path = request.file.filename;
 
             const sql = `

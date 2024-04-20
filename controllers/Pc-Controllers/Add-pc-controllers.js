@@ -14,23 +14,22 @@ exports.getAddPc = (request, response) => {
 // Set up multer storage
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'C:/Users/WD-OLY/OneDrive/Database-Project--2-2/public/Images/PC'); // Set the destination folder for uploaded images
+        cb(null, 'C:/Users/WD-OLY/OneDrive/Database-Project--2-2/public/Images/PC'); // Set the destination folder 
     },
     filename: function (req, file, cb) {
         cb(null, Date.now() + '-' + file.originalname); // Create a unique filename
     }
 });
 
-// Set up multer with the configured storage
+// Set up multer 
 const upload = multer({ storage: storage });
 exports.uploadMultipart = upload.single('productImage');
 
 
-// Define the route handler for handling the PC information and image upload
 exports.postAddPC = async (request, response) => {
     if (request.session.isAdminLoggedIn) {
         try {
-            // Extract PC information from the request body
+            
             const {
                 brand,
                 category,
@@ -50,7 +49,7 @@ exports.postAddPC = async (request, response) => {
                 description
             } = request.body;
 
-            // Get the path of the uploaded image
+           
             const product_image_path = request.file.filename;
 
             const sql1 = `

@@ -8,17 +8,17 @@ exports.getAddGraphicsCard = (request, response) => {
     }
 };
 
-// Set up multer storage for brand PC image
+// Set up multer storage
 const GraphicsCardStorage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'C:/Users/WD-OLY/OneDrive/Database-Project--2-2/public/Images/GraphicsCard'); // Set the destination folder for uploaded brand PC images
+        cb(null, 'C:/Users/WD-OLY/OneDrive/Database-Project--2-2/public/Images/GraphicsCard'); // Set the destination folder 
     },
     filename: function (req, file, cb) {
         cb(null, Date.now() + '-' + file.originalname); // Create a unique filename
     }
 });
 
-// Set up multer with the configured storage for Graphics Card image
+// Set up multer 
 const GraphicsCardUpload = multer({ storage: GraphicsCardStorage });
 exports.uploadGraphicsCardImage = GraphicsCardUpload.single('productImage');
 
@@ -30,7 +30,7 @@ exports.uploadGraphicsCardImage = GraphicsCardUpload.single('productImage');
 exports.postAddGraphicsCard = async (request, response) => {
     if (request.session.isAdminLoggedIn) {
         try {
-            // Extract graphics card information from the request body
+            
             const {
                 brand,
                 model,
@@ -58,7 +58,7 @@ exports.postAddGraphicsCard = async (request, response) => {
                 description
             } = request.body;
 
-            // Get the path of the uploaded image for the graphics card
+            
             const product_image_path = request.file.filename;
 
             const sql = `

@@ -7,14 +7,14 @@ const multer = require('multer');
 // Set up multer storage
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'C:/Users/WD-OLY/OneDrive/Database-Project--2-2/public/Images/PC'); // Set the destination folder for uploaded images
+        cb(null, 'C:/Users/WD-OLY/OneDrive/Database-Project--2-2/public/Images/PC'); // Set the destination folder 
     },
     filename: function (req, file, cb) {
         cb(null, Date.now() + '-' + file.originalname); // Create a unique filename
     }
 });
 
-// Set up multer with the configured storage
+// Set up multer 
 const upload = multer({ storage: storage });
 exports.uploadMultipart = upload.single('productImage');
 

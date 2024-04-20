@@ -3,17 +3,17 @@ const fs = require('fs');
 const dataBase = require('../../models/DB');
 const multer = require('multer');
 
-// Set up multer storage for brand PC image
+// Set up multer storage 
 const GraphicsCardStorage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'C:/Users/WD-OLY/OneDrive/Database-Project--2-2/public/Images/GraphicsCard'); // Set the destination folder for uploaded brand PC images
+        cb(null, 'C:/Users/WD-OLY/OneDrive/Database-Project--2-2/public/Images/GraphicsCard'); // Set the destination folder 
     },
     filename: function (req, file, cb) {
         cb(null, Date.now() + '-' + file.originalname); // Create a unique filename
     }
 });
 
-// Set up multer with the configured storage for Graphics Card image
+// Set up multer 
 const GraphicsCardUpload = multer({ storage: GraphicsCardStorage });
 exports.uploadGraphicsCardImage = GraphicsCardUpload.single('productImage');
 

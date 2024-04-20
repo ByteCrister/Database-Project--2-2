@@ -8,17 +8,17 @@ exports.getAddRam = (request, response) => {
     }
 };
 
-// Set up multer storage for brand PC image
+// Set up multer
 const ramStorage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'C:/Users/WD-OLY/OneDrive/Database-Project--2-2/public/Images/Ram'); // Set the destination folder for uploaded Ram images
+        cb(null, 'C:/Users/WD-OLY/OneDrive/Database-Project--2-2/public/Images/Ram'); // Set the destination folder
     },
     filename: function (req, file, cb) {
         cb(null, Date.now() + '-' + file.originalname); // Create a unique filename
     }
 });
 
-// Set up multer with the configured storage for Ram image
+// Set up multer 
 const RamUpload = multer({ storage: ramStorage });
 exports.uploadAddRamImage = RamUpload.single('productImage');
 
@@ -30,7 +30,7 @@ exports.uploadAddRamImage = RamUpload.single('productImage');
 exports.postAddRam = async (request, response) => {
     if (request.session.isAdminLoggedIn) {
         try {
-            // Extract graphics card information from the request body
+            
             const {
                 brand,
                 model,
@@ -47,7 +47,7 @@ exports.postAddRam = async (request, response) => {
                 description
             } = request.body;
 
-            // Get the path of the uploaded image for the graphics card
+            
             const product_image_path = request.file.filename;
 
             const sql = `
