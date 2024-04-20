@@ -12,36 +12,46 @@ app.use(session({
 }));
 
 /**************** Home Routes Handling *****************/
-const homeRoutes = require('./routes/homeBeforeSignInRoutes');
-const logInRoutes = require('./routes/logInRoutes');
-const adminLogInRoutes = require('./routes/adminLogInRoute');
-const signInRoutes = require('./routes/signInRoutes');
-const homeAfterSignIn = require('./routes/homeAfterSignInRoute');
-const logOutRoutes = require('./routes/logOutRoutes');
+const homeRoutes = require('./routes/Home-Routes/homeBeforeSignInRoutes');
+const logInRoutes = require('./routes/Home-Routes/logInRoutes');
+const adminLogInRoutes = require('./routes/Home-Routes/adminLogInRoute');
+const signInRoutes = require('./routes/Home-Routes/signInRoutes');
+const homeAfterSignIn = require('./routes/Home-Routes/homeAfterSignInRoute');
+const logOutRoutes = require('./routes/Home-Routes/logOutRoutes');
 
 
 /*************** Pc cart  Routes Requiring ****************/
-const addPCRoutes = require('./routes/Add-pc');
-const PcCartsRouters = require('./routes/Pc-Carts');
-const UpdatePc = require('./routes/Update-pc');
-const DeletePC = require('./routes/Delete-pc');
-const DesktopView = require('./routes/Desktop-views-Routes');
+const addPCRoutes = require('./routes/Pc-Routes/Add-pc');
+const PcCartsRouters = require('./routes/Pc-Routes/Pc-Carts');
+const UpdatePc = require('./routes/Pc-Routes/Update-pc');
+const DeletePC = require('./routes/Pc-Routes/Delete-pc');
+const DesktopView = require('./routes/Pc-Routes/Desktop-views-Routes');
 
 
 /****************** Brand PC Routes Requiring *************/
-const addBrandPcRoutes = require('./routes/Add-brand-pc');
-const BrandPcCartsRoutes = require('./routes/Brand-Pc-Carts');
-const UpdateBrandPC  = require('./routes/Update-brand-pc');
-const DeleteBrandPC = require('./routes/Delete-brand-pc');
-const DesktopBrandPcView = require('./routes/Desktop-brand-pc-Routes');
+const addBrandPcRoutes = require('./routes/Brand-Pc-Routes/Add-brand-pc');
+const BrandPcCartsRoutes = require('./routes/Brand-Pc-Routes/Brand-Pc-Carts');
+const UpdateBrandPC  = require('./routes/Brand-Pc-Routes/Update-brand-pc');
+const DeleteBrandPC = require('./routes/Brand-Pc-Routes/Delete-brand-pc');
+const DesktopBrandPcView = require('./routes/Brand-Pc-Routes/Desktop-brand-pc-Routes');
 
 
 /*******************  Graphics Card Requiring ****************/
-const addGraphicsCardRoutes = require('./routes/Add-graphics-card');
-const GraphicsCardCartsRoutes = require('./routes/Graphics-Card-Carts-Routes');
-const UpdateGraphicsCard = require('./routes/Update-graphics-card');
-const DeleteGraphicsCard = require('./routes/Delete-graphics-card');
-const DesktopGraphicsCardViews = require('./routes/Desktop-graphics-card-Routes');
+const addGraphicsCardRoutes = require('./routes/Graphics-Card-Routes/Add-graphics-card');
+const GraphicsCardCartsRoutes = require('./routes/Graphics-Card-Routes/Graphics-Card-Carts-Routes');
+const UpdateGraphicsCard = require('./routes/Graphics-Card-Routes/Update-graphics-card');
+const DeleteGraphicsCard = require('./routes/Graphics-Card-Routes/Delete-graphics-card');
+const DesktopGraphicsCardViews = require('./routes/Graphics-Card-Routes/Desktop-graphics-card-Routes');
+
+
+/******************* Ram Module Requiring ***********************/
+const addRamRoutes = require('./routes/Ram-Routes/Add-ram');
+const RamCartsRoutes = require('./routes/Ram-Routes/Ram-Carts-Routes');
+const UpdateRam = require('./routes/Ram-Routes/Update-ram');
+const DeleteRam = require('./routes/Ram-Routes/Delete-ram');
+const DesktopRamViews = require('./routes/Ram-Routes/Desktop-Ram-Views-Routes');
+
+
 
 
 
@@ -87,6 +97,20 @@ app.use(GraphicsCardCartsRoutes);
 app.use(UpdateGraphicsCard);
 app.use(DeleteGraphicsCard);
 app.use(DesktopGraphicsCardViews);
+
+
+
+
+/******************* Ram Routes *********************/
+app.use(addRamRoutes);
+app.use(RamCartsRoutes);
+app.use(UpdateRam);
+app.use(DeleteRam);
+app.use(DesktopRamViews);
+
+
+
+
 
 
 

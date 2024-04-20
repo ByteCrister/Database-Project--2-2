@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Add-pc-items.css">
+    <title>Update Ram Information's</title>
+</head>
+
+<body>
+    <div class="form-container">
+        <form action="/update-ram" method="post" enctype="multipart/form-data">
+            <div class="form-section">
+                <h2>Enter Ram Specifications</h2>
+                <input type="text" id="pc-id" name="pcID"  value="<%= data[0].ram_id %>" hidden>
+                <div class="form-group">
+                    <label for="brand">Brand:</label>
+                    <input type="text" id="brand" name="brand" value="<%= data[0].brand %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="model">Model:</label>
+                    <input type="text" id="model" name="model" value="<%= data[0].model %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="type">Type:</label>
+                    <input type="text" id="type" name="type" value="<%= data[0].type %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="capacity">Capacity:</label>
+                    <input type="text" id="capacity" name="capacity" value="<%= data[0].capacity %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="frequency">Frequency:</label>
+                    <input type="text" id="frequency" name="frequency" value="<%= data[0].frequency %>" required> 
+                </div>
+                <div class="form-group">
+                    <label for="operatingVoltage">Operating Voltage:</label>
+                    <input type="text" id="operatingVoltage" name="operatingVoltage" value="<%= data[0].operatingVoltage %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="latency">Latency:</label>
+                    <input type="text" id="latency" name="latency" value="<%= data[0].latency %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="dimension">Dimension:</label>
+                    <input type="text" id="dimension" name="dimension" value="<%= data[0].dimension %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="pin">Pin:</label>
+                    <input type="text" id="pin" name="pin" value="<%= data[0].pin %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="warranty">Warranty:</label>
+                    <input type="text" id="warranty" name="warranty" value="<%= data[0].warranty %>" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="cut-price">Cut price (Optional):</label>
+                    <input type="text" id="cut_price" name="cut_price" value="<%= data[0].cut_price %>" >
+                </div>
+                <div class="form-group">
+                    <label for="price">Price:</label>
+                    <input type="text" id="price" name="price" value="<%= data[0].price %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="productImage">Product Image:</label>
+                    <input type="file" id="productImage" name="productImage" required>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>Enter Basic Information</h2>
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" rows="4"><%= data[0].description %></textarea required>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit">Update</button>
+            </div>
+        </form>
+
+    </div>
+</body>
+
+</html>
