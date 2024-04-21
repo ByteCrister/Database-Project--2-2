@@ -15,34 +15,60 @@
             <div class="image-name-dives-features-view-mores">
                 <div class="ram-image">
                     <div class="product-image"
-                        style="background-image: url('/Images/Ram/1713603094900-xlr8-01-500x500.jpg')"></div>
+                        style="background-image: url('/Images/Ram/<%= ramData[0].product_image_path %>')"></div>
                 </div>
 
                 <div class="name-dives-features-view-mores">
                     <div class="name">
-                        <h2>Netac Basic DDR3 4GB 1600MHZ Desktop RAM</h3>
+                        <h2>
+                            <%= ramData[0].brand %>
+                                <%= ramData[0].type %>
+                                    <%= ramData[0].capacity %>
+                                        <%= ramData[0].frequency %> Desktop RAM</h3>
                     </div>
-                    <div class="prices-and-brand">
-                        <div class="price"><span></span>Price: <span class="bold">1,500৳</span></div>
-                        <div class="regular-price"><span>Regular Price: <span class="bold">1,650৳</span></span></div>
-                        <div class="brand"><span>Brand: <span class="bold">Netac</span></span></div>
-                    </div>
-                    <div class="key-features">
 
-                        <ul style="font-family:'Times New Roman', Times, serif;">
-                            <li>
-                                <h3 style="font-family: 'Times New Roman', Times, serif;">Key Features</h3>
-                            </li>
-                            <li>Model: Basic DDR3</li>
-                            <li>Capacity: 4GB</li>
-                            <li>Frequency: DDR3 1600MHz</li>
-                            <li>Form Factor: 240-Pin UDIMM</li>
-                            <li>Voltage & Cas Latency: 1.5V/11-11-11-28</li>
-                            <li>
-                                <h4><a href="#four-div" style="color: rgb(218, 77, 52);">View More Info</a></h4>
-                            </li>
-                        </ul>
-                    </div>
+                    <% const formattedPrice=parseFloat(ramData[0].price.replace(/[^0-9.-]+/g,"")); %>
+                        <div class="prices-and-brand">
+                            <div class="price"><span></span>Price: <span class="bold">
+                                    <%= formattedPrice.toLocaleString('en-US', { style: 'currency' , currency: 'BTD' ,
+                                        minimumFractionDigits: 0, maximumFractionDigits: 0 }) %>৳
+                                </span></div>
+
+                            <% const formattedCutPrice=parseFloat(ramData[0].cut_price.replace(/[^0-9.-]+/g,"")); %>
+                                <div class="regular-price"><span>Regular Price:
+                                        <span class="bold">
+                                            <%= formattedCutPrice.toLocaleString('en-US', { style: 'currency' ,
+                                                currency: 'BDT' , minimumFractionDigits: 0, maximumFractionDigits: 0 })
+                                                %>৳
+                                        </span></span></div>
+                                <div class="brand"><span>Brand: <span class="bold">
+                                            <%= ramData[0].brand %>
+                                        </span></span></div>
+                        </div>
+                        <div class="key-features">
+
+                            <ul style="font-family:'Times New Roman', Times, serif;">
+                                <li>
+                                    <h3 style="font-family: 'Times New Roman', Times, serif;">Key
+                                        Features</h3>
+                                </li>
+                                <li>Model: <%= ramData[0].model %>
+                                </li>
+                                <li>Capacity: <%= ramData[0].capacity %>
+                                </li>
+                                <li>Frequency: <%= ramData[0].type %>
+                                        <%= ramData[0].frequency %>
+                                </li>
+                                <li>Form Factor: <%= ramData[0].pin %>
+                                </li>
+                                <li>Voltage & Cas Latency: <%= ramData[0].operatingVoltage %>/<%= ramData[0].latency %>
+                                </li>
+                                <li>
+                                    <h4><a href="#four-div" style="color: rgb(218, 77, 52);">View
+                                            More Info</a></h4>
+                                </li>
+                            </ul>
+                        </div>
                 </div>
             </div>
 
@@ -58,13 +84,11 @@
             </div>
         </div>
 
-
-
         <div class="four-div" id="four-div">
             <div class="specification_"><a href="#specification" class="div1">Specification</a></div>
             <div class="description"><a href="#description" class="div">Description</a></div>
-            <div class="question"><a href="#questions" class="div">Question(0)</a></div>
-            <div class="reviews"><a href="#reviews" class="div">Reviews(0)</a></div>
+            <div class="question"><a href="#questions" class="div">Question(<%= totalQuestions[0].ans %>)</a></div>
+            <div class="reviews"><a href="#reviews" class="div">Reviews(<%= reviewData.length %>)</a></div>
         </div>
         <div class="specification" id="specification">
             <div class="inner-specification">
@@ -77,49 +101,85 @@
                     </div>
                     <div class="type display-flex">
                         <h4 class="grey-color font-set">Type</h4>
-                        <h4 class="normal-color">DDR3</h4>
+                        <h4 class="normal-color">
+                            <%= ramData[0].type %>
+                        </h4>
                     </div>
                     <hr class="hr">
                     <div class="capacity display-flex">
                         <h4 class="grey-color font-set">Capacity</h4>
-                        <h4 class="normal-color">4GB</h4>
+                        <h4 class="normal-color">
+                            <%= ramData[0].capacity %>
+                        </h4>
                     </div>
                     <hr class="hr">
                     <div class="frequency display-flex">
                         <h4 class="grey-color font-set">Frequency</h4>
-                        <h4 class="normal-color">1600MHZ</h4>
+                        <h4 class="normal-color">
+                            <%= ramData[0].frequency %>
+                        </h4>
                     </div>
                     <hr class="hr">
                     <div class="operating-voltage display-flex">
-                        <h4 class="grey-color font-set">Operating voltage</h4>
-                        <h4 class="normal-color">1.5V</h4>
+                        <h4 class="grey-color font-set">Operating
+                            voltage</h4>
+                        <h4 class="normal-color">
+                            <%= ramData[0].operatingVoltage %>
+                        </h4>
                     </div>
                     <hr class="hr">
                     <div class="latency display-flex">
                         <h4 class="grey-color font-set">Latency</h4>
-                        <h4 class="normal-color">11-11-11-28</h4>
+                        <h4 class="normal-color">
+                            <%= ramData[0].latency %>
+                        </h4>
                     </div>
                     <hr class="hr">
                 </div>
-                <div class="physical-dimension">
-                    <div class="physical-dimension-head features-head">
-                        <h3>Physical dimension </h3>
+
+                <% if(ramData[0].pin !=='N/A' || ramData[0].dimension !=='N/A' ){ %>
+
+                    <div class="physical-dimension">
+                        <div class="physical-dimension-head features-head">
+                            <h3>Physical dimension </h3>
+                        </div>
+
+                        <% if(ramData.length> 0 && ramData[0].dimension !==
+                            'N/A'){%>
+                            <div class="dimension display-flex">
+                                <h4 class="grey-color font-set">Dimension</h4>
+                                <h4 class="normal-color">
+                                    <%= ramData[0].dimension %>
+                                </h4>
+                            </div>
+                            <hr class="hr">
+                            <%}%>
+
+                                <% if(ramData.length> 0 && ramData[0].pin !== 'N/A'){%>
+                                    <div class="pin display-flex">
+                                        <h4 class="grey-color font-set">Pin</h4>
+                                        <h4 class="normal-color">
+                                            <%= ramData[0].pin %>
+                                        </h4>
+                                    </div>
+                                    <hr class="hr">
+                                    <% }%>
+
                     </div>
-                    <div class="pin display-flex">
-                        <h4 class="grey-color font-set">Pin</h4>
-                        <h4 class="normal-color">240-Pins</h4>
-                    </div>
-                    <hr class="hr">
-                </div>
-                <div class="warranty-information">
-                    <div class="warranty-information-head features-head">
-                        <h3>Warranty Information</h3>
-                    </div>
-                    <div class="warranty display-flex">
-                        <h4 class="grey-color font-set">Warranty</h4>
-                        <h4 class="normal-color">Lifetime Warranty</h4>
-                    </div>
-                </div>
+
+                    <%}%>
+
+                        <div class="warranty-information">
+                            <div class="warranty-information-head features-head">
+                                <h3>Warranty Information</h3>
+                            </div>
+                            <div class="warranty display-flex">
+                                <h4 class="grey-color font-set">Warranty</h4>
+                                <h4 class="normal-color">
+                                    <%= ramData[0].warranty %>
+                                </h4>
+                            </div>
+                        </div>
             </div>
         </div>
         <div class="description" id="description">
@@ -127,128 +187,177 @@
                 <h2>Description</h2>
             </div>
             <div class="product-model-name">
-                <h2>Netac Basic DDR3 4GB 1600MHZ Desktop RAM</h2>
+                <h2>
+                    <%= ramData[0].model %>
+                        <%= ramData[0].type %>
+                            <%= ramData[0].capacity %>
+                                <%= ramData[0].frequency %> Desktop RAM
+                </h2>
             </div>
             <div class="main-description">
-                <h4>The Netac Basic DDR3 4GB 1600MHZ Desktop RAM is a high-speed memory module that utilizes DDR3 SDRAM
-                    devices for low-power consumption. This Unbuffered DDR3 SDRAM DIMM has a 240-pin design with gold
-                    contact fingers, and its SPD is programmed to JEDEC standard latency DDR3-1600 timing of 11-11-11 at
-                    1.5V. The RAM is equipped with 8 independent internal banks and an 8-bit pre-fetch for fast and
-                    efficient data transfer. It also features programmable CAS Latency and Additive Latency, which can
-                    be set to values ranging from 6 to 11. The Burst Length can be set to 8 or 4, and it has a
-                    bi-directional differential data strobe. This Unbuffered DIMM is intended for use as the main memory
-                    in systems such as PCs. It has a PCB height of 1.18" (30mm) and is RoHS-compliant and halogen-free.
-                    The RAM also features on-die termination using an ODT pin, internal self-calibration through a ZQ
-                    pin, and adjustable data-output drive strength. The average refresh period of the Netac Basic DDR3
-                    4GB 1600MHZ Desktop RAM is 7.8us at lower than TCASE 85°C and 3.9us at 85°C < TCASE < 95°C, with
-                        asynchronous reset and fly-by topology. It has a power supply of VDD=1.5V (1.425V to 1.575V) and
-                        VDDQ=1.5V (1.425V to 1.575V) and supports 800MHz fCK for 1600Mb/sec/pin.</h4>
+                <h4>
+                    <%= ramData[0].description %>
+                </h4>
             </div>
         </div>
+
+        <!--------------------------------- Questions -------------------------------- -->
         <div class="questions" id="questions">
             <div class="inner-number-text-button">
                 <div class="number-text-button">
                     <div class="number-and-text">
                         <div class="number-of-questions" style="border-bottom: 10px; margin-bottom: 10px;">
-                            <h3>Questions (0)</h3>
+                            <h3>Questions (<%= totalQuestions[0].ans %>)</h3>
                         </div>
                         <div class="question-tests">
-                            <h5 class="normal-color">Have question about this product? Get specific details about this
+                            <h5 class="normal-color">Have question about
+                                this product? Get specific details about
+                                this
                                 product from expert.
                             </h5>
                         </div>
                     </div>
                     <div class="ask-button ">
                         <form action="/Ask-Question/Ram">
-                            <input type="text" name="ram_id" id="ram_id" value="3" hidden>
-                            <button type="submit" class="ask-and-review-button">Ask Question</button>
+                            <input type="text" name="ram_id" id="ram_id" value="<%= ramData[0].ram_id %>" hidden>
+                            <input type="text" name="category" id="category" value="Ram" hidden>
+                            <button type="submit" class="ask-and-review-button">Ask
+                                Question</button>
                         </form>
                     </div>
                 </div>
                 <hr class="hr">
-                <div class="empty-div">
-                    <div class="message-logo" style="margin: 20px 0px 20px 0px;"><span class="message-logo" style="font-size: 35px; color:aqua">&#128172;</span>
+
+                <% if(questionData.length==0) { %>
+                    <div class="empty-div">
+                        <div class="message-logo" style="margin: 20px 0px 20px 0px;"><span class="message-logo"
+                                style="font-size: 35px; color:aqua">&#128172;</span>
+                        </div>
+                        <div class="message-text">
+                            <h5 class="normal-color">There are no questions
+                                asked yet. Be the first one to ask a question.
+                            </h5>
+                        </div>
                     </div>
-                    <div class="message-text">
-                        <h5 class="normal-color">There are no questions asked yet. Be the first one to ask a question.
-                        </h5>
-                    </div>
-                </div>
-                <div class="questions-div" style="display:none;">
-                    <ul>
-                        <li style="margin: 5px 0px 5px 0px;">
-                            <div class="name-date">
-                                <p class="name-date"><span style="font-size: smaller; font-weight:500"><span
-                                            class="name" style="color: rgb(131, 131, 243);">Farabi </span> <span
-                                            class="date" style="color: rgb(149, 158, 165);"> on March
-                                            2024</span></span></p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="q"><span
-                                    style="font-family: 'Times New Roman', Times, serif; font-weight:bold">Q: What is
-                                    the storage Capacity?</span></div>
-                        </li>
-                        <li>
-                            <div class="a"><span style="font-family: 'Times New Roman', Times, serif;">A: Dear Sir,
-                                    amm</span></div>
-                        </li>
-                        <hr class="li-hr" style="margin-top:10px">
-                    </ul>
-                </div>
+
+                    <% } else { %>
+
+                        <div class="questions-div">
+
+                            <% questionData.forEach( question=>{ %>
+
+                                <% if(question.answer && question.answer.length !== 0){ %>
+
+                                    <ul>
+                                        <li style="margin: 5px 0px 5px 0px;">
+                                            <div class="name-date">
+                                                <p class="name-date"><span
+                                                        style="font-size: smaller; font-weight:500"><span class="name"
+                                                            style="color: rgb(131, 131, 243);">
+                                                            <%= question.f_name %>
+                                                        </span> <span class="date" style="color: rgb(149, 158, 165);">
+                                                            on <%= question.question_date %>
+                                                        </span></span></p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="q"><span
+                                                    style="font-family: 'Times New Roman', Times, serif; font-weight:bold">Q:
+                                                    <%= question.question %>
+                                                </span></div>
+                                        </li>
+                                        <li>
+                                            <div class="a"><span
+                                                    style="font-family: 'Times New Roman', Times, serif;">A:
+                                                    <%= question.answer %>
+                                                </span></div>
+                                        </li>
+                                        <hr class="li-hr" style="margin-top:10px">
+                                    </ul>
+
+                                    <% } %>
+
+                                        <% } )%>
+                        </div>
+
+                        <%}%>
             </div>
         </div>
 
-
-
-
-
-        <div class="reviews">
+        <!--------------------------------- Reviews -------------------------->
+        <div class="reviews" id="reviews">
             <div class="number-text-button">
                 <div class="number-and-text">
                     <div class="number-of-questions" style="border-bottom: 10px; margin-bottom: 10px;">
-                        <h3>Reviews (0)</h3>
+                        <h3>Reviews (<%= reviewData.length %>)</h3>
                     </div>
                     <div class="question-tests">
-                        <h5 class="normal-color">Get specific details about this product from customers who own it.</h5>
+                        <h5 class="normal-color">Get specific details about
+                            this product from customers who own it.</h5>
                     </div>
                 </div>
                 <div class="review-button ">
-                    <form action="/Review/ram">
-                        <input type="text" name="ram_id" id="ram_id" value="3" hidden>
-                        <button type="submit" class="ask-and-review-button">Write a Review</button>
+                    <form action="/Review/Ram">
+                        <input type="text" name="ram_id" id="ram_id" value="<%= ramData[0].ram_id %>" hidden>
+                        <input type="text" name="category" id="category" value="Ram" hidden>
+                        <button type="submit" class="ask-and-review-button">Write a
+                            Review</button>
                     </form>
                 </div>
             </div>
-            <div class="reviev-rating" style="text-align: center; margin:10px 0px 10px 0px"><span
-                    style="font-family: 'Times New Roman', Times, serif; font-size:25px; color:rgb(77, 65, 65)">4.5 out
+            <div class="reviev-rating" style="text-align: center; margin:10px 0px 10px 0px; display:none"><span
+                    style="font-family: 'Times New Roman', Times, serif; font-size:25px; color:rgb(77, 65, 65)">4.5
+                    out
                     of 5</span></div>
             <hr class="hr">
-            <div class="empty-div">
-                <div class="message-logo" style="margin:20px 0px 20px 0px"><span class="document-logo" style="font-size: 35px; color:aqua;">&#128196;</span>
-                </div>
-                <div class="message-text">
-                    <h5 class="normal-color">This product has no reviews yet. Be the first one to write a review.
-                    </h5>
-                </div>
-            </div>
 
+            <% if(reviewData.length==0){ %>
 
-            <div class="user-reviews" style="display: none;">
-                <ul>
-                    <li>
-                        <div class="starts" style="font-size: larger; color:rgb(107, 105, 105); margin-bottom:10px">
-                            11111</div>
-                    </li>
-                    <li>
-                        <div class="review" style="font-size: 15px;">biwbfuweufweb</div>
-                    </li>
-                    <li>
-                        <div class="from" style="margin-top: 10px; font-size:12px; color:rgb(136, 140, 143)"><span>By
-                                <span style="color: rgb(67, 67, 202);">Raimul </span> on 27 Mar 2024</span></div>
-                    </li>
-                </ul>
-            </div>
+                <div class="empty-div">
+                    <div class="message-logo" style="margin:20px 0px 20px 0px"><span class="document-logo"
+                            style="font-size: 35px; color:aqua;">&#128196;</span>
+                    </div>
+                    <div class="message-text">
+                        <h5 class="normal-color">This product has no reviews
+                            yet. Be the first one to write a review.
+                        </h5>
+                    </div>
+                </div>
+
+                <%} else{ %>
+
+                    <% reviewData.forEach( review=>{ %>
+
+                        <div class="user-reviews">
+                            <ul>
+                                <li>
+                                    <div class="starts"
+                                        style="font-size: larger; color:rgb(107, 105, 105); margin-bottom:10px">
+                                        <% for(let i=0; i< review.star; i++){ %>
+                                            <span>&#x2B50;</span>
+                                            <% } %>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="review" style="font-size: 15px;">
+                                        <%= review.review %>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="from"
+                                        style="margin-top: 10px; font-size:12px; color:rgb(136, 140, 143)"><span>By
+                                            <span style="color: rgb(67, 67, 202);">
+                                                <%= review.f_name %>
+                                                    <%= review.l_name %>
+                                            </span> on <%= review.date %></span></div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <% }) %>
+
+                            <% } %>
+
         </div>
     </div>
 </body>

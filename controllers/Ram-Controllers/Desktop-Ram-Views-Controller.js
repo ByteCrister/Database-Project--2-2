@@ -30,7 +30,7 @@ exports.getDesktopRamViews = (request, response) => {
             }
         );
     } else {
-        response.status(403).send('Unauthorized');
+        response.redirect('/signIn');
     }
 
 };

@@ -98,6 +98,7 @@ body {
     background-color: rgb(255, 255, 255);
     padding: 10px;
     border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
 .image-name-dives-features-view-mores{
@@ -113,6 +114,7 @@ body {
 }
 
 .ram-image{
+   height: auto;
    width: 100%;
    /* background-color: #5c5ccc; */
    display:flex;
@@ -141,6 +143,7 @@ body {
 
 .name-dives-features-view-mores{
     /* background-color: rgb(107, 189, 52); */
+    width: 100%;
     padding: 5px;
 }
 
@@ -193,7 +196,7 @@ body {
 
 
 .product-image {
-    height: 280px;
+    height: 330px;
     width: 100%;
     background-size:contain;
     background-repeat: no-repeat;
@@ -251,6 +254,7 @@ body {
     border-radius: 10px;
     font-weight: 700;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 .specification_{
     background-color: rgb(255, 120, 79);
@@ -266,6 +270,7 @@ body {
     background-color: rgb(255, 255, 255);
     padding: 15px;
     border-radius: 15px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
 .features-head{
@@ -284,6 +289,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: left;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 
 }
 
@@ -310,6 +316,7 @@ body {
 }
 
 .inner-number-text-button{
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     background-color: rgb(255, 255, 255);
     display: flex;
     flex-direction: column;
@@ -323,6 +330,7 @@ body {
     justify-content:space-between;
     align-items: center;
     padding: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
 .number-text-button > div{
@@ -348,4 +356,9 @@ body {
         display: flex;
         flex-direction: column;
     }
+
+    /* .product-image {
+        height: 280px;
+    
+    } */
 }

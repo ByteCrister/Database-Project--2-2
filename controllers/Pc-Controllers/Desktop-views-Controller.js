@@ -28,13 +28,13 @@ exports.getDesktopViews = (request, response) => {
                     response.status(500).send('Internal Server Error');
                 } else {
                     console.log(pcType);
-                    response.render(path.join(__dirname, '../public/Desktop-views'), { pcList: data });
+                    response.render(path.join(__dirname, '../../public/Desktop-views'), { pcList: data });
                 }
 
             }
         );
     } else {
-        response.status(403).send('Unauthorized');
+        response.redirect('/signIn');;
     }
 
 }

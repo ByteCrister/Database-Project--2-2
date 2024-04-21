@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pc Gallery || Give Review</title>
+    <link rel="stylesheet" href="/Desktop-Question-View.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Give Review</h2>
+        <form action="/Submit-Review" method="POST">
+            <input type="text" name="productID" id="productID" value="<%= ramId%>" hidden>
+            <input type="text" name="category" id="category" value="<%= category%>" hidden>
+            <div class="form-group">
+                <label for="product">Product:</label>
+                <input type="text" id="product" name="product" value="<%= data[0].brand %> <%= data[0].model %> <%= data[0].type %> <%= data[0].capacity %>" disabled required>
+            </div>
+            <label for="rating">Rating<sup style="color: red; font-size:larger">*</sup>:</label>
+            <div class="form-group" style="display: flex;">
+                <span style="font-family: 'Times New Roman', Times, serif;">Bad</span>
+                <input type="radio" id="rating1" name="rating" value="1" required>
+                <input type="radio" id="rating2" name="rating" value="2">
+                <input type="radio" id="rating3" name="rating" value="3">
+                <input type="radio" id="rating4" name="rating" value="4">
+                <input type="radio" id="rating5" name="rating" value="5">
+                <span style="font-family: 'Times New Roman', Times, serif;">Good</span>
+            </div>
+            <div class="form-group">
+                <label for="description">Your Review<sup>*</sup>:</label>
+                <textarea id="description" name="description" placeholder="Your Review" required></textarea>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
