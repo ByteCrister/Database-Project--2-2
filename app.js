@@ -53,6 +53,12 @@ const DesktopRamViews = require('./routes/Ram-Routes/Desktop-Ram-Views-Routes');
 
 
 
+/****************** Desktop View REquiring  *******************/
+const DesktopViewRoutes = require('./routes/Desktop-View-Routes/Desktop-View-Router');
+
+
+
+
 
 
 /************** required environment setup *****************/
@@ -110,6 +116,9 @@ app.use(DesktopRamViews);
 
 
 
+
+/******************* Desktop Routes ************/
+app.use(DesktopViewRoutes);
 
 
 
