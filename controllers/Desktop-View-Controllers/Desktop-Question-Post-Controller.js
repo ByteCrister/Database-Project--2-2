@@ -5,6 +5,8 @@ exports.DesktopQuestionPostController = (request, response) => {
     const productID = request.body.productID;
     const description = request.body.description;
 
+    console.log(description);
+
     const sql = `
         insert into user_questions (user_id, product_category, product_id, user_question, question_time, question_date)
         values(?, ?, ?, ?, CURRENT_TIME(), CURRENT_DATE());

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Answer User Questions</title>
+    <link rel="stylesheet" href="./Admin-Ejs-Question.css">
+</head>
+
+<body>
+    <div class="main">
+        <% if(userQuestions && userQuestions.length> 0){ %>
+             <% userQuestions.forEach(function(Question) { %>
+
+                <div class="answer-questions">
+                    <div class="question-data">
+                        <ul>
+                            <li>Name : <%= Question.f_name %> <%= Question.l_name %></li>
+                            <li>Email : <%= Question.email %></li>
+                            <li>Q : <%= Question.question %></li>
+                            <li><a href="/Desktop/<%=Question.category%>_id-<%= Question.pId%>">View Product</a></li>
+                        </ul>
+                    </div>
+                    <div class="form">
+                        <form action="/Answer-Questions" method="post">
+                            <input type="text" name="question_no" id="question_no" value="<%= Question.question_no %>" hidden>
+                            <input type="text" name="answer" id="answer" placeholder="A : Give The Correct Answer" />
+                            <button type="submit">Send Answer</button>
+                        </form>
+                    </div>
+                </div>
+
+                <% }); %>
+                    <% } else{ %>
+
+                        <h1 style="text-align:center">No Question In Queue</h1>
+                    <% } %>
+    </div>
+</body>
+
+</html>

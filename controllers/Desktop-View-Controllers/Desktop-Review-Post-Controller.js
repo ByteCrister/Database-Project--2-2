@@ -1,6 +1,6 @@
 const dataBase = require('../../models/DB');
 
-exports.postRamReview = (request, response) => {
+exports.postReview = (request, response) => {
 
     const productID = request.body.productID;
     const category = request.body.category;
@@ -16,6 +16,7 @@ exports.postRamReview = (request, response) => {
         if (err) {
             response.status(500).send('Error data ' + err);
         } else {
+            console.log(productID+" "+category+" "+review+" "+stars);
             response.redirect(`/Desktop/${category}_id-${productID}`);
         }
     });

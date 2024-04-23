@@ -173,6 +173,7 @@ body {
 }
 .minus-button, .plus-button{
     width: 50px;
+    cursor: pointer;
 }
 
 .Buy-now-Button{

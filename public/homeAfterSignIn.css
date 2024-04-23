@@ -1,40 +1,123 @@
-/* public/styles/navbar.css */
-
-nav {
-    background-color: #333;
-    color: white;
-    padding: 10px;
-}
-
-nav ul {
-    list-style-type: none;
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+/* Basic styles for the navbar */
+.navbar {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #49585a;
+    color: #fff;
+    padding: 10px 20px;
+    margin-top: 15px;
+    box-shadow: 1px 1px 3px rgb(0, 0, 0);
+}
+.logo{
+    margin-right: 20px;
 }
 
-nav li {
-    display: inline;
-    margin-right: 10px;
+.menu{
+    margin-left: 20px;
 }
 
-nav a {
+.logo a {
+    color: #fff;
     text-decoration: none;
-    color: white;
+    font-size: 2.5rem;
 }
 
-.nav-right {
-    margin-right: 0;
+.menu ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    /* background-color: antiquewhite; */
+}
+
+.menu ul li {
+    margin-right: 15px; /* Add right margin to create spacing between items */
+    position: relative;
+}
+
+.menu ul li:last-child {
+    margin-right: 0; /* Remove right margin from the last item */
+}
+
+.menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.5rem;
+    padding: 10px; /* Add padding to improve touchability on mobile */
+    display: block;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%; /* Position dropdown below the parent */
+    left: 0;
+    background-color: #49585a;
+    min-width: 160px;
+    z-index: 1;
+    border-radius: 2px;
+    border: #61b1b9;
+    box-shadow: 1px 1px 5px rgb(0, 0, 0);
 
 }
 
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+.dropdown-content a {
+    color: #fff;
+    padding: 12px 16px;
+    display: block;
+    text-decoration: none;
 }
 
-#logOut{
-    cursor: pointer;
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+    }
+
+    .logo {
+        margin-bottom: 10px;
+    }
+
+    .menu{
+        width: 100%;
+    }
+
+    .menu ul {
+        flex-direction: column;
+        
+    }
+
+    .menu ul li {
+        margin-right: 0; /* Remove right margin on small screens */
+        margin-bottom: 10px; /* Add bottom margin to create spacing between items */
+    }
+
+    .dropdown-content {
+        position: static;
+        display: none;
+        background-color: transparent;
+        width: 30%; /* Full width dropdown on small screens */
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown-content a {
+        padding: 10px;
+    }
 }

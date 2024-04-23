@@ -10,11 +10,11 @@
     <div class="container">
         <h2>Give Review</h2>
         <form action="/Submit-Review" method="POST">
-            <input type="text" name="productID" id="productID" value="<%= ramId%>" hidden>
-            <input type="text" name="category" id="category" value="<%= category%>" hidden>
+            <input type="text" name="productID" id="productID" value="<%= productId %>" hidden>
+            <input type="text" name="category" id="category" value="<%= category %>" hidden>
             <div class="form-group">
                 <label for="product">Product:</label>
-                <input type="text" id="product" name="product" value="<%= data[0].brand %> <%= data[0].model %> <%= data[0].type %> <%= data[0].capacity %>" disabled required>
+                <input type="text" id="productName" name="productName" value="<%= productName %>" disabled required>
             </div>
             <label for="rating">Rating<sup style="color: red; font-size:larger">*</sup>:</label>
             <div class="form-group" style="display: flex;">

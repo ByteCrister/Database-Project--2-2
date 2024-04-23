@@ -18,7 +18,6 @@ exports.postAdmin = (request, response) => {
             if (adminName == data[0].admin_name && adminPassword == data[0].admin_password) {
                 request.session.isAdminLoggedIn = true;
                 request.session.isLoggedIn = false;
-                request.session.isLoggedIn = false;
                 request.session.userId = adminName;
                 console.log('Admin logged In - User iD : ' + request.session.userId);
                 response.json({ success: true });

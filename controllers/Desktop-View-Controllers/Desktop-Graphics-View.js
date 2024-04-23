@@ -1,11 +1,11 @@
 const path = require("path");
 const dataBase = require("../../models/DB");
 
-exports.getRamView = (request, response) => {
+exports.getGraphicsCardView = (request, response) => {
     if (request.session.isLoggedIn || request.session.isAdminLoggedIn) {
         const product_id = request.params.product_id;
 
-        const sql1 = `SELECT * FROM ram_informations WHERE ram_id = ${product_id};`;
+        const sql1 = `SELECT * FROM graphics_card WHERE gp_card_No  = ${product_id};`;
 
         const sql2 = `select 
         user_questions.question_date as question_date, 
@@ -17,7 +17,7 @@ exports.getRamView = (request, response) => {
         from user_questions join users 
         
         on user_questions.user_id =  users.user_id
-        where user_questions.product_category = "Ram" and user_questions.product_id = ${product_id};`;
+        where user_questions.product_category = "Graphics-Card" and user_questions.product_id = ${product_id};`;
 
         const sql3 = `
         select 
@@ -30,7 +30,7 @@ exports.getRamView = (request, response) => {
         from user_reviews join users
         on user_reviews.user_id = users.user_id 
         
-        where user_reviews.product_category = "Ram" and user_reviews.product_id = ${product_id};`;
+        where user_reviews.product_category = "Graphics-Card" and user_reviews.product_id = ${product_id};`;
 
         dataBase.query(sql1, (err1, data1) => {
             if (err1) {
@@ -51,14 +51,14 @@ exports.getRamView = (request, response) => {
                     }
 
                     dataBase.query(
-                        `select count(answers) as ans from user_questions where answers is not null and product_category ="Ram" and product_id = ${product_id};`,
+                        `select count(answers) as ans from user_questions where answers is not null and product_category ="Graphics-Card" and product_id = ${product_id};`,
                         (err4, data4) => {
                             console.log("Data sended Successfully ");
 
                             response.render(
-                                path.join(__dirname, "/../../public/Desktop-Ejs-Ram-View.ejs"),
+                                path.join(__dirname, "/../../public/Desktop-Ejs-Graphics-Card-View.ejs"),
                                 {
-                                    ramData: data1,
+                                    graphicsCardData: data1,
                                     questionData: data2,
                                     reviewData: data3,
                                     totalQuestions: data4,

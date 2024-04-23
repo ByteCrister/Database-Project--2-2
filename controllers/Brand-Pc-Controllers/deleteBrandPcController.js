@@ -2,9 +2,34 @@ const database = require('../../models/DB');
 const fs = require('fs');
 const path = require('path');
 
+
 exports.deleteBrandPcController = (request, response) => {
     if (request.session.isAdminLoggedIn) {
         const pcID = request.params.brand_pc_No;
+
+
+        const QuestionQuery = `DELETE FROM user_questions WHERE product_category = ? AND product_id = ?`;
+        const ReviewQuery = `DELETE FROM user_reviews WHERE product_category = ? AND product_id = ?`;
+
+        database.query(QuestionQuery, ["Brand-Pc", pcID], (err, result1) => {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log('Questions are removed for Brand PC no ' + pcID);
+            }
+        });
+
+        database.query(ReviewQuery, ["Brand-Pc", pcID], (err, result2) => {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log('Reviews are removed for Brand PC no ' + pcID);
+            }
+        });
+
+
+
+
 
         const getDeleteImagePathQuery = `SELECT product_image_path FROM brand_pc WHERE brand_pc_No = ?`;
         database.query(

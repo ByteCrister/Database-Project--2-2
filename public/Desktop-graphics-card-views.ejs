@@ -14,7 +14,7 @@
     <div class="pcs-main-container">
         <!-- Loop through each PC in the pcList -->
         <% graphicsCardList.forEach(card => { %>
-        <div class="pc-id-<%= card.brand_pc_No %> pc-style">
+        <div class="pc-id-<%= card.gp_card_No  %> pc-style">
             <!-- Display PC ID -->
             <span class="pc-id" style="display: none;"> <%= card.gp_card_No %> </span>
 
@@ -38,7 +38,7 @@
             <div class="lower-div">
                 <!-- Display PC name -->
                 <div class="pc-name">
-                    <a href="#"> <%= card.model %> </a>
+                    <a href="/Desktop/Graphics-Card_id-<%= card.gp_card_No  %>"> <%= card.model %> </a>
                     <!-- Add list of items -->
                     <div class="list">
                         <ul>

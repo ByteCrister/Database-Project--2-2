@@ -2,23 +2,55 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./adminHome.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./adminHome.css" />
     <title>Admin Home</title>
 </head>
+
 <body>
 
-<nav>
-    <ul>
-        <li><a href="/">Home</a></li>
-        <li class="nav-right" id="adminPanel"><a href="/adminPanel">Admin Panel</a></li>
-        <li class="nav-right" id="logOut" onclick="logOut()">Log Out</a></li>
-    </ul>
-</nav>
+    <div class="full-outer-div">
+
+        <div class="admin-dash-name">
+            <h1 style="color: rgb(74, 84, 92);">Admin Dashboard</h1>
+        </div>
+
+        <div class="views">
+            <div class="view">
+                <a href="/Pc-Carts" target="iframe">View Pc</a>
+            </div>
+            <div class="view">
+                <a href="/Graphics-Card-Carts" target="iframe">View Graphics Card</a>
+            </div>
+            <div class="view">
+                <a href="/Ram-Carts" target="iframe">View Ram</a>
+            </div>
+            <div class="view">
+                <a href="/Brand-PC-Carts" target="iframe">Brand Pc</a>
+            </div>
+        </div>
+
+        <div class="add-product">
+            <div class="add"><a href="/add-pc" target="iframe">+Add PC</a></div>
+            <div class="add"><a href="/add-graphics-card" target="iframe">+Add Graphics Card</a></div>
+            <div class="add"><a href="/add-ram" target="iframe">+Add Desktop Ram</a></div>
+            <div class="add"><a href="/add-brand-pc" target="iframe">+Add Brand PC</a></div>
+        </div>
+
+        <div class="answer-log-out">
+            <div class="answer-questions"><a href="/Answer-Questions" target="iframe">Answer User Questions</a></div>
+
+            <div class="logOut" onclick="logOut()" style="color: rgb(86, 101, 114); font-size:20px">Log Out</div>
+        </div>
+    </div>
 
 
-<script src="./adminHome.js"></script>
+    <iframe name="iframe" width="100%" height="600px" frameborder="0"></iframe>
+
+    <script src="./adminHome.js"></script>
 </body>
+
 </html>

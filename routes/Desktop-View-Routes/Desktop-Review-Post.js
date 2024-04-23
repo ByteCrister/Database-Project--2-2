@@ -1,7 +1,7 @@
-const { postRamReview } = require('../../controllers/Desktop-View-Controllers/Desktop-Review-Ram');
+const { postReview } = require('../../controllers/Desktop-View-Controllers/Desktop-Review-Post-Controller');
 const DesktopReviewPost = require('express').Router();
 
-DesktopReviewPost.post('/Submit-Review', postRamReview);
+DesktopReviewPost.post('/Submit-Review', postReview);
 
 
 module.exports = DesktopReviewPost;

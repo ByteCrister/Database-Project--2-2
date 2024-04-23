@@ -6,6 +6,27 @@ exports.deleteRamController = (request, response) => {
     if (request.session.isAdminLoggedIn) {
         const pcID = request.params.ram_id;
 
+
+        const QuestionQuery = `DELETE FROM user_questions WHERE product_category = ? AND product_id = ?`;
+        const ReviewQuery = `DELETE FROM user_reviews WHERE product_category = ? AND product_id = ?`;
+
+        database.query(QuestionQuery, ["Ram", pcID], (err, result1) => {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log('Questions are removed for Ram no ' + pcID);
+            }
+        });
+
+        database.query(ReviewQuery, ["Ram", pcID], (err, result2) => {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log('Reviews are removed for Ram no ' + pcID);
+            }
+        });
+
+
         const getDeleteImagePathQuery = `SELECT product_image_path FROM ram_informations WHERE ram_id = ?`;
         database.query(
             getDeleteImagePathQuery,

@@ -53,11 +53,16 @@ const DesktopRamViews = require('./routes/Ram-Routes/Desktop-Ram-Views-Routes');
 
 
 
-/****************** Desktop View REquiring  *******************/
+/****************** Desktop View Requiring  *******************/
 const DesktopViewRoutes = require('./routes/Desktop-View-Routes/Desktop-View-Router');
+
+
 const DesktopViewQuestionRoutes = require('./routes/Desktop-View-Routes/Desktop-View-Question-Routes');
 const DesktopQuestionPostRoutes = require('./routes/Desktop-View-Routes/Desktop-Question-Post');
 const DesktopReviewPostRouter = require('./routes/Desktop-View-Routes/Desktop-Review-Post');
+
+
+const AdminQuestionRoutes = require('./routes/Desktop-View-Routes/Admin-Question-Replay');
 
 
 
@@ -123,6 +128,9 @@ app.use(DesktopViewRoutes);
 app.use(DesktopViewQuestionRoutes);
 app.use(DesktopQuestionPostRoutes);
 app.use(DesktopReviewPostRouter);
+
+
+app.use(AdminQuestionRoutes);
 
 
 

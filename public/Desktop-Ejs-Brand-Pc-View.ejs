@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pc Gallery || Ram Specifications</title>
+    <title>Pc Gallery || Brand Pc Specifications</title>
     <link rel="stylesheet" href="/Desktop-View.css">
 </head>
 
@@ -15,26 +15,26 @@
             <div class="image-name-dives-features-view-mores">
                 <div class="ram-image">
                     <div class="product-image"
-                        style="background-image: url('/Images/Ram/<%= ramData[0].product_image_path %>')"></div>
+                        style="background-image: url('/Images/BrandPC/<%= brandPcData[0].product_image_path %>')"></div>
                 </div>
 
                 <div class="name-dives-features-view-mores">
                     <div class="name">
                         <h2>
-                            <%= ramData[0].brand %>
-                                <%= ramData[0].type %>
-                                    <%= ramData[0].capacity %>
-                                        <%= ramData[0].frequency %> Desktop RAM</h3>
+                            <%= brandPcData[0].brand %>
+                                <%= brandPcData[0].model %>
+                                    <%= brandPcData[0].category %>
+                                        <%= brandPcData[0].processor %> Brand Pc</h3>
                     </div>
 
-                    <% const formattedPrice=parseFloat(ramData[0].price.replace(/[^0-9.-]+/g,"")); %>
+                    <% const formattedPrice=parseFloat(brandPcData[0].final_price.replace(/[^0-9.-]+/g,"")); %>
                         <div class="prices-and-brand">
                             <div class="price"><span></span>Price: <span class="bold">
                                     <%= formattedPrice.toLocaleString('en-US', { style: 'currency' , currency: 'BTD' ,
                                         minimumFractionDigits: 0, maximumFractionDigits: 0 }) %>৳
                                 </span></div>
 
-                            <% const formattedCutPrice=parseFloat(ramData[0].cut_price.replace(/[^0-9.-]+/g,"")); %>
+                            <% const formattedCutPrice=parseFloat(brandPcData[0].cut_price.replace(/[^0-9.-]+/g,"")); %>
                                 <div class="regular-price"><span>Regular Price:
                                         <span class="bold">
                                             <%= formattedCutPrice.toLocaleString('en-US', { style: 'currency' ,
@@ -42,7 +42,7 @@
                                                 %>৳
                                         </span></span></div>
                                 <div class="brand"><span>Brand: <span class="bold">
-                                            <%= ramData[0].brand %>
+                                            <%= brandPcData[0].brand %>
                                         </span></span></div>
                         </div>
                         <div class="key-features">
@@ -52,16 +52,18 @@
                                     <h3 style="font-family: 'Times New Roman', Times, serif;">Key
                                         Features</h3>
                                 </li>
-                                <li>Model: <%= ramData[0].model %>
+                                <li>Model: <%= brandPcData[0].model %>
                                 </li>
-                                <li>Capacity: <%= ramData[0].capacity %>
+                                <li>Processor: <%= brandPcData[0].processor %>
                                 </li>
-                                <li>Frequency: <%= ramData[0].type %>
-                                        <%= ramData[0].frequency %>
+                                <li>
+                                    <%= brandPcData[0].category %>
+                                        <%= brandPcData[0].processor %>
                                 </li>
-                                <li>Form Factor: <%= ramData[0].pin %>
+                                <li>
+                                    <%= brandPcData[0].motherboard %>
                                 </li>
-                                <li>Voltage & Cas Latency: <%= ramData[0].operatingVoltage %>/<%= ramData[0].latency %>
+                                <li>RAM: <%= brandPcData[0].ram %>
                                 </li>
                                 <li>
                                     <h4><a href="#four-div" style="color: rgb(218, 77, 52);">View
@@ -74,12 +76,13 @@
 
             <div class="buy-now-option">
                 <div class="quantity">
-                    <div class="minus-button">-</div>
+                    <div class="minus-button" onclick="minus()">-</div>
                     <div class="amount">1</div>
-                    <div class="plus-button">+</div>
+                    <div class="plus-button" onclick="plus()">+</div>
                 </div>
                 <div class="Buy-now-Button">
-                    <a href="#">Buy Now</a>
+                    <a href="/Desktop/Buy-Now?category=Brand-Pc&productID=<%= brandPcData[0].brand_pc_No  %>">Buy
+                        Now</a>
                 </div>
             </div>
         </div>
@@ -97,89 +100,184 @@
                 </div>
                 <div class="key-features">
                     <div class="key-features-head features-head">
-                        <h4>Key Features</h4>
+                        <h4>Basic Information</h4>
                     </div>
                     <div class="type display-flex">
-                        <h4 class="grey-color font-set">Type</h4>
+                        <h4 class="grey-color font-set">Processor</h4>
                         <h4 class="normal-color">
-                            <%= ramData[0].type %>
+                            <%= brandPcData[0].processor %>
+                                <br>
                         </h4>
                     </div>
                     <hr class="hr">
                     <div class="capacity display-flex">
-                        <h4 class="grey-color font-set">Capacity</h4>
+                        <h4 class="grey-color font-set">Motherboard</h4>
                         <h4 class="normal-color">
-                            <%= ramData[0].capacity %>
+                            <%= brandPcData[0].motherboard %>
+                                <br>
                         </h4>
                     </div>
                     <hr class="hr">
                     <div class="frequency display-flex">
-                        <h4 class="grey-color font-set">Frequency</h4>
+                        <h4 class="grey-color font-set">RAM</h4>
                         <h4 class="normal-color">
-                            <%= ramData[0].frequency %>
+                            <%= brandPcData[0].ram %>
+                                <br>
+                        </h4>
+                    </div>
+                    <hr class="hr">
+                    <div class="frequency display-flex">
+                        <h4 class="grey-color font-set">Graphics Card</h4>
+                        <h4 class="normal-color">
+                            <%= brandPcData[0].graphics_card %>
+                                <br>
                         </h4>
                     </div>
                     <hr class="hr">
                     <div class="operating-voltage display-flex">
-                        <h4 class="grey-color font-set">Operating
-                            voltage</h4>
+                        <h4 class="grey-color font-set">Storage</h4>
                         <h4 class="normal-color">
-                            <%= ramData[0].operatingVoltage %>
+                            <%= brandPcData[0]._storage_ %>
+                                <br>
                         </h4>
                     </div>
                     <hr class="hr">
+
                     <div class="latency display-flex">
-                        <h4 class="grey-color font-set">Latency</h4>
+                        <h4 class="grey-color font-set">Power Supply</h4>
                         <h4 class="normal-color">
-                            <%= ramData[0].latency %>
+                            <%= brandPcData[0].power_supply %>
+                                <br>
                         </h4>
                     </div>
                     <hr class="hr">
+
+                    <div class="latency display-flex">
+                        <h4 class="grey-color font-set">Network & Wireless Connectivity</h4>
+                        <h4 class="normal-color">
+                            <%= brandPcData[0].network_and_wareless_connectivity %>
+                                <br>
+                        </h4>
+                    </div>
+                    <hr class="hr">
+
+                    <div class="latency display-flex">
+                        <h4 class="grey-color font-set">Operating System</h4>
+                        <h4 class="normal-color">
+                            <%= brandPcData[0].operating_system %>
+                                <br>
+                        </h4>
+                    </div>
+                    <hr class="hr">
+
+                    <% if(brandPcData[0].security_management && brandPcData[0].security_management !=='N/A' ) { %>
+                        <div class="latency display-flex">
+                            <h4 class="grey-color font-set">Operating System</h4>
+                            <h4 class="normal-color">
+                                <%= brandPcData[0].operating_system %>
+                                    <br>
+                            </h4>
+                        </div>
+                        <hr class="hr">
+                        <%}%>
                 </div>
 
-                <% if(ramData[0].pin !=='N/A' || ramData[0].dimension !=='N/A' ){ %>
 
-                    <div class="physical-dimension">
-                        <div class="physical-dimension-head features-head">
-                            <h3>Physical dimension </h3>
-                        </div>
-
-                        <% if(ramData.length> 0 && ramData[0].dimension !==
-                            'N/A'){%>
-                            <div class="dimension display-flex">
-                                <h4 class="grey-color font-set">Dimension</h4>
-                                <h4 class="normal-color">
-                                    <%= ramData[0].dimension %>
-                                </h4>
-                            </div>
-                            <hr class="hr">
-                            <%}%>
-
-                                <% if(ramData.length> 0 && ramData[0].pin !== 'N/A'){%>
-                                    <div class="pin display-flex">
-                                        <h4 class="grey-color font-set">Pin</h4>
-                                        <h4 class="normal-color">
-                                            <%= ramData[0].pin %>
-                                        </h4>
-                                    </div>
-                                    <hr class="hr">
-                                    <% }%>
-
+                <div class="warranty-information">
+                    <div class="warranty-information-head features-head">
+                        <h3>Input Devices</h3>
                     </div>
 
-                    <%}%>
 
-                        <div class="warranty-information">
-                            <div class="warranty-information-head features-head">
-                                <h3>Warranty Information</h3>
-                            </div>
+                    <div class="warranty display-flex">
+                        <h4 class="grey-color font-set">Keyboard</h4>
+                        <h4 class="normal-color">
+                            <%= brandPcData[0].keyboard %>
+                        </h4>
+                    </div>
+                    <hr>
+
+
+                    <% if(brandPcData[0].mouse && brandPcData[0].mouse !=='N/A' ){ %>
+
+                        <div class="warranty display-flex">
+                            <h4 class="grey-color font-set">Mouse</h4>
+                            <h4 class="normal-color">
+                                <%= brandPcData[0].mouse %>
+                            </h4>
+                        </div>
+                        <hr>
+                        <%} %>
+                            <% if(brandPcData[0].optical_drive && brandPcData[0].optical_drive !=='N/A' ){ %>
+
+                                <div class="warranty display-flex">
+                                    <h4 class="grey-color font-set">Optical Drive</h4>
+                                    <h4 class="normal-color">
+                                        <%= brandPcData[0].optical_drive %>
+                                    </h4>
+                                </div>
+                                <hr>
+                                <%} %>
+                                    <% if(brandPcData[0].external_io_port && brandPcData[0].external_io_port !=='N/A' ){
+                                        %>
+
+                                        <div class="warranty display-flex">
+                                            <h4 class="grey-color font-set">External IO Ports</h4>
+                                            <h4 class="normal-color">
+                                                <%= brandPcData[0].external_io_port %>
+                                            </h4>
+                                        </div>
+                                        <hr>
+                                        <%} %>
+
+                </div>
+
+                <div class="warranty-information">
+                    <div class="warranty-information-head features-head">
+                        <h3>Physical Details</h3>
+                    </div>
+
+                    <div class="warranty display-flex">
+                        <h4 class="grey-color font-set">Dimension</h4>
+                        <h4 class="normal-color">
+                            <%= brandPcData[0].dimension %>
+                        </h4>
+                    </div>
+                    <hr>
+
+
+                    <% if(brandPcData[0].weight && brandPcData[0].weight !=='N/A' ){ %>
+
+                        <div class="warranty display-flex">
+                            <h4 class="grey-color font-set">Weight</h4>
+                            <h4 class="normal-color">
+                                <%= brandPcData[0].weight %>
+                            </h4>
+                        </div>
+                        <hr>
+                        <%} %>
+
                             <div class="warranty display-flex">
-                                <h4 class="grey-color font-set">Warranty</h4>
+                                <h4 class="grey-color font-set">Color</h4>
                                 <h4 class="normal-color">
-                                    <%= ramData[0].warranty %>
+                                    <%= brandPcData[0].color %>
                                 </h4>
                             </div>
-                        </div>
+                            <hr>
+
+                </div>
+
+                <div class="warranty-information">
+                    <div class="warranty-information-head features-head">
+                        <h3>Warranty Information</h3>
+                    </div>
+                    <div class="warranty display-flex">
+                        <h4 class="grey-color font-set">Warranty</h4>
+                        <h4 class="normal-color">
+                            <%= brandPcData[0].warranty %>
+                        </h4>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="description" id="description">
@@ -188,15 +286,15 @@
             </div>
             <div class="product-model-name">
                 <h2>
-                    <%= ramData[0].model %>
-                        <%= ramData[0].type %>
-                            <%= ramData[0].capacity %>
-                                <%= ramData[0].frequency %> Desktop RAM
+                    <%= brandPcData[0].brand %>
+                        <%= brandPcData[0].model %>
+                            <%= brandPcData[0].category %>
+                                <%= brandPcData[0].processor %> Pc
                 </h2>
             </div>
             <div class="main-description">
                 <h4>
-                    <%= ramData[0].description %>
+                    <%= brandPcData[0].description %>
                 </h4>
             </div>
         </div>
@@ -218,9 +316,13 @@
                         </div>
                     </div>
                     <div class="ask-button ">
-                        <form action="/Ask-Question/Ram">
-                            <input type="text" name="ram_id" id="ram_id" value="<%= ramData[0].ram_id %>" hidden>
-                            <input type="text" name="category" id="category" value="Ram" hidden>
+                        <form action="/Ask-Question">
+                            <input type="text" name="productName" id="productName"
+                                value="<%= brandPcData[0].brand %> <%= brandPcData[0].model %> <%= brandPcData[0].processor %> <%= brandPcData[0].motherboard %>"
+                                hidden>
+                            <input type="text" name="productId" id="productId"
+                                value="<%= brandPcData[0].brand_pc_No   %>" hidden>
+                            <input type="text" name="category" id="category" value="Brand-Pc" hidden>
                             <button type="submit" class="ask-and-review-button">Ask
                                 Question</button>
                         </form>
@@ -246,7 +348,7 @@
 
                             <% questionData.forEach( question=>{ %>
 
-                                <% if(question.answer && question.answer.length !== 0){ %>
+                                <% if(question.answer && question.answer.length !==0){ %>
 
                                     <ul>
                                         <li style="margin: 5px 0px 5px 0px;">
@@ -297,9 +399,13 @@
                     </div>
                 </div>
                 <div class="review-button ">
-                    <form action="/Review/Ram">
-                        <input type="text" name="ram_id" id="ram_id" value="<%= ramData[0].ram_id %>" hidden>
-                        <input type="text" name="category" id="category" value="Ram" hidden>
+                    <form action="/Review">
+                        <input type="text" name="productName" id="productName"
+                            value="<%= brandPcData[0].brand %> <%= brandPcData[0].model %> <%= brandPcData[0].processor %> <%= brandPcData[0].motherboard %>"
+                            hidden>
+                        <input type="text" name="productId" id="productId" value="<%= brandPcData[0].brand_pc_No %>"
+                            hidden>
+                        <input type="text" name="category" id="category" value="Brand-Pc" hidden>
                         <button type="submit" class="ask-and-review-button">Write a
                             Review</button>
                     </form>
@@ -360,6 +466,23 @@
 
         </div>
     </div>
+
+    <script>
+        function minus() {
+            var amount = document.querySelector('.amount');
+            var value = parseInt(amount.innerText);
+            if (value > 1) {
+                amount.innerText = value - 1;
+            }
+        }
+
+        function plus() {
+            var amount = document.querySelector('.amount');
+            var value = parseInt(amount.innerText);
+            amount.innerText = value + 1;
+        }
+
+    </script>
 </body>
 
 </html>

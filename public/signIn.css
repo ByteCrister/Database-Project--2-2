@@ -12,19 +12,23 @@ body {
 }
 
 .signin-container {
-    /* background-color: white; */
+    width: 80%;
+    max-width: 350px;
+    /* background-color: rgb(218, 40, 40); */
     padding: 20px;
     border-radius: 8px;
     /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
     display: flex;
     flex-direction: column;
-    justify-content:center;
+    justify-content: center;
 }
-.register-account{
+
+.register-account {
     color: #333;
     font-size: large;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
 form {
     display: flex;
     flex-direction: column;
@@ -54,44 +58,63 @@ button:hover {
     background-color: #555;
 }
 
-#link-to-log-in, a{
+#link-to-log-in,
+a {
     text-decoration: none;
     color: #333;
     font-size: large;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.email-exists-text{
+.email-exists-text {
     /* background-color: #333; */
     height: 25px;
     width: 50%;
 }
-.first-last-name{
+
+.first-last-name {
     display: flex;
-    justify-content:space-around;
+    justify-content:space-between;
+    /* background-color: #333; */
+}
+.first-last-name> div{
+    width: 45%;
 }
 
-.fist-name{
-    margin-right: 10px;
+
+.fist-name {
+    /* margin-right: 10px; */
 }
 
-.box-style{
+.box-style {
     display: flex;
     flex-direction: column;
     margin-bottom: 5px;
 }
 
-.label-style{
+.label-style {
     margin-bottom: 10px;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.red-sup{
+.red-sup {
     color: red;
 }
 
-input{
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+input {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     padding: 10px;
 
+}
+
+
+@media screen and (max-width: 768px) {
+    .first-last-name {
+        flex-wrap: wrap;
+
+    }
+
+    .first-last-name>div {
+        width: 100%;
+    }
 }
