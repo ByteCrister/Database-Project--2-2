@@ -25,7 +25,7 @@
                 <% const price = parseFloat(card.final_price.replace(',', '' )); %> 
                 <% const saveAmount = cutPrice - price; %>
                 <div class="save-text">
-                    <span>Save: <%= saveAmount.toLocaleString('en-US', { style: 'currency' , currency: 'USD' , minimumFractionDigits: 0, maximumFractionDigits: 0 }) %></span>
+                    <span>Save: <%= saveAmount.toLocaleString('en-US', { style: 'currency' , currency: 'BDT' , minimumFractionDigits: 0, maximumFractionDigits: 0 }) %></span>
                 </div>
                 <% } %>
 
@@ -56,14 +56,14 @@
                     <div class="pc-price">
                         <div class="final-price">
                             <% const formattedPrice = parseFloat(card.final_price.replace(/[^0-9.-]+/g,"")); %>
-                            <%= formattedPrice.toLocaleString('en-US', { style: 'currency' , currency: 'USD' , minimumFractionDigits: 0, maximumFractionDigits: 0 }) %>
+                            <%= formattedPrice.toLocaleString('en-US', { style: 'currency' , currency: 'BDT' , minimumFractionDigits: 0, maximumFractionDigits: 0 }) %>
                         </div>
 
                         <!-- Display cut price if applicable -->
                         <% if(card.cut_price && card.cut_price.length > 0) { %> 
                         <% const formattedCutPrice = parseFloat(card.cut_price.replace(/[^0-9.-]+/g,"")); %>
                         <div class="cut-price">
-                            <%= formattedCutPrice.toLocaleString('en-US', { style: 'currency' , currency: 'USD' , minimumFractionDigits: 0, maximumFractionDigits: 0 }) %>
+                            <%= formattedCutPrice.toLocaleString('en-US', { style: 'currency' , currency: 'BDT' , minimumFractionDigits: 0, maximumFractionDigits: 0 }) %>
                         </div>
                         <% } %>
                     </div>

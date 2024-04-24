@@ -14,7 +14,7 @@
     </div>
 
     <div class="pcs-main-container">
-        <% RamList.forEach(ram => { %>
+        <% RamList.forEach(ram=> { %>
             <div class="pc-id-<%= ram.ram_id %>  pc-style">
                 <span class="pc-id" style="display: none;">
                     <%= ram.ram_id %>
@@ -26,7 +26,7 @@
                                 <% const saveAmount=cutPrice - price; %>
                                     <div class="save-text">
                                         <span>Save: <%= saveAmount.toLocaleString('en-US', { style: 'currency' ,
-                                                currency: 'USD' , minimumFractionDigits: 0, maximumFractionDigits: 0 })
+                                                currency: 'BDT' , minimumFractionDigits: 0, maximumFractionDigits: 0 })
                                                 %></span>
                                     </div>
                                     <% } %>
@@ -63,7 +63,7 @@
                         <div class="pc-price">
                             <div class="final-price">
                                 <% const formattedPrice=parseFloat(ram.price.replace(/[^0-9.-]+/g,"")); %>
-                                    <%= formattedPrice.toLocaleString('en-US', { style: 'currency' , currency: 'USD' ,
+                                    <%= formattedPrice.toLocaleString('en-US', { style: 'currency' , currency: 'BDT' ,
                                         minimumFractionDigits: 0, maximumFractionDigits: 0 }) %>
                             </div>
 
@@ -71,7 +71,7 @@
                                 <% const formattedCutPrice=parseFloat(ram.cut_price.replace(/[^0-9.-]+/g,"")); %>
                                     <div class="cut-price">
                                         <%= formattedCutPrice.toLocaleString('en-US', { style: 'currency' ,
-                                            currency: 'USD' , minimumFractionDigits: 0, maximumFractionDigits: 0 }) %>
+                                            currency: 'BDT' , minimumFractionDigits: 0, maximumFractionDigits: 0 }) %>
                                     </div>
                                     <% } %>
                         </div>
@@ -85,7 +85,7 @@
                     </div>
                 </div>
             </div>
-        <% }); %>
+            <% }); %>
     </div>
 
 </body>
