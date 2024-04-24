@@ -4,7 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pc Gallery || Ram Specifications</title>
+    <title>Pc Gallery || <%= ramData[0].brand %>
+            <%= ramData[0].type %>
+                <%= ramData[0].capacity %>
+                    <%= ramData[0].frequency %> Desktop RAM</title>
     <link rel="stylesheet" href="/Desktop-View.css">
 </head>
 
@@ -219,7 +222,9 @@
                     </div>
                     <div class="ask-button ">
                         <form action="/Ask-Question">
-                            <input type="text" name="productName" id="productName" value="<%= ramData[0].brand %> <%= ramData[0].model %> <%= ramData[0].type %> <%= ramData[0].capacity %>" hidden>
+                            <input type="text" name="productName" id="productName"
+                                value="<%= ramData[0].brand %> <%= ramData[0].model %> <%= ramData[0].type %> <%= ramData[0].capacity %>"
+                                hidden>
                             <input type="text" name="productId" id="productId" value="<%= ramData[0].ram_id %>" hidden>
                             <input type="text" name="category" id="category" value="Ram" hidden>
                             <button type="submit" class="ask-and-review-button">Ask
@@ -247,7 +252,7 @@
 
                             <% questionData.forEach( question=>{ %>
 
-                                <% if(question.answer && question.answer.length !== 0){ %>
+                                <% if(question.answer && question.answer.length !==0){ %>
 
                                     <ul>
                                         <li style="margin: 5px 0px 5px 0px;">
@@ -299,7 +304,9 @@
                 </div>
                 <div class="review-button ">
                     <form action="/Review">
-                        <input type="text" name="productName" id="productName" value="<%= ramData[0].brand %> <%= ramData[0].model %> <%= ramData[0].type %> <%= ramData[0].capacity %>" hidden>
+                        <input type="text" name="productName" id="productName"
+                            value="<%= ramData[0].brand %> <%= ramData[0].model %> <%= ramData[0].type %> <%= ramData[0].capacity %>"
+                            hidden>
                         <input type="text" name="productId" id="productId" value="<%= ramData[0].ram_id %>" hidden>
                         <input type="text" name="category" id="category" value="Ram" hidden>
                         <button type="submit" class="ask-and-review-button">Write a
@@ -371,13 +378,13 @@
                 amount.innerText = value - 1;
             }
         }
-        
+
         function plus() {
             var amount = document.querySelector('.amount');
             var value = parseInt(amount.innerText);
             amount.innerText = value + 1;
         }
-        
+
     </script>
 </body>
 
