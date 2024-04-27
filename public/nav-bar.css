@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 /* Basic styles for the navbar */
@@ -13,8 +14,14 @@
     color: #fff;
     padding: 10px 20px;
     margin-top: 15px;
-    box-shadow: 1px 1px 3px rgb(0, 0, 0);
+    border-radius: 25px;
+    /* box-shadow: 0.1px 0.1px 5px 0.1px rgb(0, 0, 0); */
 }
+
+a:hover{
+    color: #000000;
+}
+
 .logo{
     margin-right: 20px;
 }
@@ -66,7 +73,7 @@
     min-width: 160px;
     z-index: 1;
     border-radius: 2px;
-    border: #61b1b9;
+    border: #000000;
     box-shadow: 1px 1px 5px rgb(0, 0, 0);
 
 }

@@ -5,394 +5,374 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pc Gallery || <%= pcData[0].brand %>
-        <%= pcData[0].model %>
-            <%= pcData[0].category %>
-                <%= pcData[0].processor %> Desktop RAM</title>
+            <%= pcData[0].model %>
+                <%= pcData[0].category %>
+                    <%= pcData[0].processor %> Desktop RAM</title>
     <link rel="stylesheet" href="/Desktop-View.css">
+    <link rel="stylesheet" href="/nav-bar.css">
+    
+    
+    <link rel="stylesheet" href="/tailwind.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
 </head>
 
 <body>
-    <div class="main-view">
-        <div class="upper-content">
 
-            <div class="image-name-dives-features-view-mores">
-                <div class="ram-image">
-                    <div class="product-image"
-                        style="background-image: url('/Images/PC/<%= pcData[0].product_image_path %>')"></div>
-                </div>
+    <%- include ("nav-bar.ejs") %>
 
-                <div class="name-dives-features-view-mores">
-                    <div class="name">
-                        <h2>
-                            <%= pcData[0].brand %>
-                                <%= pcData[0].model %>
-                                    <%= pcData[0].category %>
-                                        <%= pcData[0].processor %> Desktop RAM</h3>
+        <div class="main-view">
+            <div class="upper-content">
+
+                <div class="image-name-dives-features-view-mores">
+                    <div class="ram-image">
+                        <div class="product-image"
+                            style="background-image: url('/Images/PC/<%= pcData[0].product_image_path %>')"></div>
                     </div>
 
-                    <% const formattedPrice=parseFloat(pcData[0].price.replace(/[^0-9.-]+/g,"")); %>
-                        <div class="prices-and-brand">
-                            <div class="price"><span></span>Price: <span class="bold">
-                                    <%= formattedPrice.toLocaleString('en-US', { style: 'currency' , currency: 'BTD' ,
-                                        minimumFractionDigits: 0, maximumFractionDigits: 0 }) %>৳
-                                </span></div>
-
-                            <% const formattedCutPrice=parseFloat(pcData[0].cut_price.replace(/[^0-9.-]+/g,"")); %>
-                                <div class="regular-price"><span>Regular Price:
-                                        <span class="bold">
-                                            <%= formattedCutPrice.toLocaleString('en-US', { style: 'currency' ,
-                                                currency: 'BDT' , minimumFractionDigits: 0, maximumFractionDigits: 0 })
-                                                %>৳
-                                        </span></span></div>
-                                <div class="brand"><span>Brand: <span class="bold">
-                                            <%= pcData[0].brand %>
-                                        </span></span></div>
+                    <div class="name-dives-features-view-mores">
+                        <div class="name">
+                            <h2>
+                                <%= pcData[0].brand %>
+                                    <%= pcData[0].model %>
+                                        <%= pcData[0].category %>
+                                            <%= pcData[0].processor %> Desktop RAM</h3>
                         </div>
-                        <div class="key-features">
 
-                            <ul style="font-family:'Times New Roman', Times, serif;">
-                                <li>
-                                    <h3 style="font-family: 'Times New Roman', Times, serif;">Key
-                                        Features</h3>
-                                </li>
-                                <li>Model: <%= pcData[0].model %>
-                                </li>
-                                <li> <%= pcData[0].processor %>
-                                </li>
-                                <li><%= pcData[0].category %>
+                        <% const formattedPrice=parseFloat(pcData[0].price.replace(/[^0-9.-]+/g,"")); %>
+                            <div class="prices-and-brand">
+                                <div class="price"><span></span>Price: <span class="bold">
+                                        <%= formattedPrice.toLocaleString('en-US', { style: 'currency' , currency: 'BTD'
+                                            , minimumFractionDigits: 0, maximumFractionDigits: 0 }) %>৳
+                                    </span></div>
+
+                                <% const formattedCutPrice=parseFloat(pcData[0].cut_price.replace(/[^0-9.-]+/g,"")); %>
+                                    <div class="regular-price"><span>Regular Price:
+                                            <span class="bold">
+                                                <%= formattedCutPrice.toLocaleString('en-US', { style: 'currency' ,
+                                                    currency: 'BDT' , minimumFractionDigits: 0, maximumFractionDigits: 0
+                                                    }) %>৳
+                                            </span></span></div>
+                                    <div class="brand"><span>Brand: <span class="bold">
+                                                <%= pcData[0].brand %>
+                                            </span></span></div>
+                            </div>
+                            <div class="key-features">
+
+                                <ul style="font-family:'Times New Roman', Times, serif;">
+                                    <li>
+                                        <h3 style="font-family: 'Times New Roman', Times, serif;">Key
+                                            Features</h3>
+                                    </li>
+                                    <li>Model: <%= pcData[0].model %>
+                                    </li>
+                                    <li>
                                         <%= pcData[0].processor %>
-                                </li>
-                                <li><%= pcData[0].motherboard %>
-                                </li>
-                                <li><%= pcData[0].ram %>
-                                </li>
-                                <li>
-                                    <h4><a href="#four-div" style="color: rgb(218, 77, 52);">View
-                                            More Info</a></h4>
-                                </li>
-                            </ul>
-                        </div>
-                </div>
-            </div>
-
-            <div class="buy-now-option">
-                <div class="quantity">
-                    <div class="minus-button" onclick="minus()">-</div>
-                    <div class="amount">1</div>
-                    <div class="plus-button" onclick="plus()">+</div>
-                </div>
-                <div class="Buy-now-Button">
-                    <a href="/Desktop/Buy-Now?category=Pc&productID=<%= pcData[0].pc_information_No %>">Buy Now</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="four-div" id="four-div">
-            <div class="specification_"><a href="#specification" class="div1">Specification</a></div>
-            <div class="description"><a href="#description" class="div">Description</a></div>
-            <div class="question"><a href="#questions" class="div">Question(<%= totalQuestions[0].ans %>)</a></div>
-            <div class="reviews"><a href="#reviews" class="div">Reviews(<%= reviewData.length %>)</a></div>
-        </div>
-        <div class="specification" id="specification">
-            <div class="inner-specification">
-                <div class="specification-head">
-                    <h2>Specification</h2>
-                </div>
-                <div class="key-features">
-                    <div class="key-features-head features-head">
-                        <h4>Basic Information</h4>
-                    </div>
-                    <div class="type display-flex">
-                        <h4 class="grey-color font-set">Processor</h4>
-                        <h4 class="normal-color">
-                            <%= pcData[0].processor %>
-                            <br><br>
-                            <%= pcData[0].processor_warranty %>
-
-                        </h4>
-                    </div>
-                    <hr class="hr">
-                    <div class="capacity display-flex">
-                        <h4 class="grey-color font-set">Motherboard</h4>
-                        <h4 class="normal-color">
-                            <%= pcData[0].motherboard %>
-                            <br><br>
-                            <%= pcData[0].motherboard_warranty %>
-
-                        </h4>
-                    </div>
-                    <hr class="hr">
-                    <div class="frequency display-flex">
-                        <h4 class="grey-color font-set">RAM</h4>
-                        <h4 class="normal-color">
-                            <%= pcData[0].ram %>
-                            <br><br>
-                            <%= pcData[0].ram_warranty %>
-                        </h4>
-                    </div>
-                    <hr class="hr">
-                    <div class="operating-voltage display-flex">
-                        <h4 class="grey-color font-set">Storage</h4>
-                        <h4 class="normal-color">
-                            <%= pcData[0].storage %>
-                            <br><br>
-                            <%= pcData[0].storage_warranty %>
-                        </h4>
-                    </div>
-                    <hr class="hr">
-                    <div class="latency display-flex">
-                        <h4 class="grey-color font-set">Casing</h4>
-                        <h4 class="normal-color">
-                            <%= pcData[0].casing %>
-                            <br><br>
-                            <%= pcData[0].casing_warranty %>
-                        </h4>
-                    </div>
-                    <hr class="hr">
-                </div>
-
-                <!-- <% if(pcData[0].pin !=='N/A' || pcData[0].dimension !=='N/A' ){ %>
-
-                    <div class="physical-dimension">
-                        <div class="physical-dimension-head features-head">
-                            <h3>Physical dimension </h3>
-                        </div>
-
-                        <% if(pcData.length> 0 && pcData[0].dimension !==
-                            'N/A'){%>
-                            <div class="dimension display-flex">
-                                <h4 class="grey-color font-set">Dimension</h4>
-                                <h4 class="normal-color">
-                                    <%= pcData[0].dimension %>
-                                </h4>
+                                    </li>
+                                    <li>
+                                        <%= pcData[0].category %>
+                                            <%= pcData[0].processor %>
+                                    </li>
+                                    <li>
+                                        <%= pcData[0].motherboard %>
+                                    </li>
+                                    <li>
+                                        <%= pcData[0].ram %>
+                                    </li>
+                                    <li>
+                                        <h4><a href="#four-div" style="color: rgb(218, 77, 52);">View
+                                                More Info</a></h4>
+                                    </li>
+                                </ul>
                             </div>
-                            <hr class="hr">
+                    </div>
+                </div>
+
+                <div class="buy-now-option">
+                    <div class="quantity">
+                        <div class="minus-button" onclick="minus()">-</div>
+                        <div class="amount">1</div>
+                        <div class="plus-button" onclick="plus()">+</div>
+                    </div>
+                    <div class="Buy-now-Button">
+                        <a href="/Desktop/Buy-Now?category=Pc&productID=<%= pcData[0].pc_information_No %>">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="four-div" id="four-div">
+                <div class="specification_"><a href="#specification" class="div1">Specification</a></div>
+                <div class="description"><a href="#description" class="div">Description</a></div>
+                <div class="question"><a href="#questions" class="div">Question(<%= totalQuestions[0].ans %>)</a></div>
+                <div class="reviews"><a href="#reviews" class="div">Reviews(<%= reviewData.length %>)</a></div>
+            </div>
+            <div class="specification" id="specification">
+                <div class="inner-specification">
+                    <div class="specification-head">
+                        <h2>Specification</h2>
+                    </div>
+                    <div class="key-features">
+                        <div class="key-features-head features-head">
+                            <h4>Basic Information</h4>
+                        </div>
+                        <div class="type display-flex">
+                            <h4 class="grey-color font-set">Processor</h4>
+                            <h4 class="normal-color">
+                                <%= pcData[0].processor %>
+                                    <br><br>
+                                    <%= pcData[0].processor_warranty %>
+
+                            </h4>
+                        </div>
+                        <hr class="hr">
+                        <div class="capacity display-flex">
+                            <h4 class="grey-color font-set">Motherboard</h4>
+                            <h4 class="normal-color">
+                                <%= pcData[0].motherboard %>
+                                    <br><br>
+                                    <%= pcData[0].motherboard_warranty %>
+
+                            </h4>
+                        </div>
+                        <hr class="hr">
+                        <div class="frequency display-flex">
+                            <h4 class="grey-color font-set">RAM</h4>
+                            <h4 class="normal-color">
+                                <%= pcData[0].ram %>
+                                    <br><br>
+                                    <%= pcData[0].ram_warranty %>
+                            </h4>
+                        </div>
+                        <hr class="hr">
+                        <div class="operating-voltage display-flex">
+                            <h4 class="grey-color font-set">Storage</h4>
+                            <h4 class="normal-color">
+                                <%= pcData[0].storage %>
+                                    <br><br>
+                                    <%= pcData[0].storage_warranty %>
+                            </h4>
+                        </div>
+                        <hr class="hr">
+                        <div class="latency display-flex">
+                            <h4 class="grey-color font-set">Casing</h4>
+                            <h4 class="normal-color">
+                                <%= pcData[0].casing %>
+                                    <br><br>
+                                    <%= pcData[0].casing_warranty %>
+                            </h4>
+                        </div>
+                        <hr class="hr">
+                    </div>
+                </div>
+            </div>
+            <div class="description" id="description">
+                <div class="description-head">
+                    <h2>Description</h2>
+                </div>
+                <div class="product-model-name">
+                    <h2>
+                        <%= pcData[0].brand %>
+                            <%= pcData[0].model %>
+                                <%= pcData[0].category %>
+                                    <%= pcData[0].processor %> Pc
+                    </h2>
+                </div>
+                <div class="main-description">
+                    <h4>
+                        <%= pcData[0].description %>
+                    </h4>
+                </div>
+            </div>
+
+            <!--------------------------------- Questions -------------------------------- -->
+            <div class="questions" id="questions">
+                <div class="inner-number-text-button">
+                    <div class="number-text-button">
+                        <div class="number-and-text">
+                            <div class="number-of-questions" style="border-bottom: 10px; margin-bottom: 10px;">
+                                <h3>Questions (<%= totalQuestions[0].ans %>)</h3>
+                            </div>
+                            <div class="question-tests">
+                                <h5 class="normal-color">Have question about
+                                    this product? Get specific details about
+                                    this
+                                    product from expert.
+                                </h5>
+                            </div>
+                        </div>
+                        <div class="ask-button ">
+                            <form action="/Ask-Question">
+                                <input type="text" name="productName" id="productName"
+                                    value="<%= pcData[0].brand %> <%= pcData[0].model %> <%= pcData[0].type %> <%= pcData[0].capacity %>"
+                                    hidden>
+                                <input type="text" name="productId" id="productId"
+                                    value="<%= pcData[0].pc_information_No  %>" hidden>
+                                <input type="text" name="category" id="category" value="Pc" hidden>
+                                <button type="submit" class="ask-and-review-button">Ask
+                                    Question</button>
+                            </form>
+                        </div>
+                    </div>
+                    <hr class="hr">
+
+                    <% if(questionData.length==0) { %>
+                        <div class="empty-div">
+                            <div class="message-logo" style="margin: 20px 0px 20px 0px;"><span class="message-logo"
+                                    style="font-size: 35px; color:aqua">&#128172;</span>
+                            </div>
+                            <div class="message-text">
+                                <h5 class="normal-color">There are no questions
+                                    asked yet. Be the first one to ask a question.
+                                </h5>
+                            </div>
+                        </div>
+
+                        <% } else { %>
+
+                            <div class="questions-div">
+
+                                <% questionData.forEach( question=>{ %>
+
+                                    <% if(question.answer && question.answer.length !==0){ %>
+
+                                        <ul>
+                                            <li style="margin: 5px 0px 5px 0px;">
+                                                <div class="name-date">
+                                                    <p class="name-date"><span
+                                                            style="font-size: smaller; font-weight:500"><span
+                                                                class="name" style="color: rgb(131, 131, 243);">
+                                                                <%= question.f_name %>
+                                                            </span> <span class="date"
+                                                                style="color: rgb(149, 158, 165);">
+                                                                on <%= question.question_date %>
+                                                            </span></span></p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="q"><span
+                                                        style="font-family: 'Times New Roman', Times, serif; font-weight:bold">Q:
+                                                        <%= question.question %>
+                                                    </span></div>
+                                            </li>
+                                            <li>
+                                                <div class="a"><span
+                                                        style="font-family: 'Times New Roman', Times, serif;">A:
+                                                        <%= question.answer %>
+                                                    </span></div>
+                                            </li>
+                                            <hr class="li-hr" style="margin-top:10px">
+                                        </ul>
+
+                                        <% } %>
+
+                                            <% } )%>
+                            </div>
+
                             <%}%>
-
-                                <% if(pcData.length> 0 && pcData[0].pin !== 'N/A'){%>
-                                    <div class="pin display-flex">
-                                        <h4 class="grey-color font-set">Pin</h4>
-                                        <h4 class="normal-color">
-                                            <%= pcData[0].pin %>
-                                        </h4>
-                                    </div>
-                                    <hr class="hr">
-                                    <% }%>
-
-                    </div>
-
-                    <%}%> -->
-
-                        <!-- <div class="warranty-information">
-                            <div class="warranty-information-head features-head">
-                                <h3>Warranty Information</h3>
-                            </div>
-                            <div class="warranty display-flex">
-                                <h4 class="grey-color font-set">Warranty</h4>
-                                <h4 class="normal-color">
-                                    <%= pcData[0].warranty %>
-                                </h4>
-                            </div>
-                        </div> -->
+                </div>
             </div>
-        </div>
-        <div class="description" id="description">
-            <div class="description-head">
-                <h2>Description</h2>
-            </div>
-            <div class="product-model-name">
-                <h2>
-                    <%= pcData[0].brand %>
-                        <%= pcData[0].model %>
-                            <%= pcData[0].category %>
-                                <%= pcData[0].processor %> Pc
-                </h2>
-            </div>
-            <div class="main-description">
-                <h4>
-                    <%= pcData[0].description %>
-                </h4>
-            </div>
-        </div>
 
-        <!--------------------------------- Questions -------------------------------- -->
-        <div class="questions" id="questions">
-            <div class="inner-number-text-button">
+            <!--------------------------------- Reviews -------------------------->
+            <div class="reviews" id="reviews">
                 <div class="number-text-button">
                     <div class="number-and-text">
                         <div class="number-of-questions" style="border-bottom: 10px; margin-bottom: 10px;">
-                            <h3>Questions (<%= totalQuestions[0].ans %>)</h3>
+                            <h3>Reviews (<%= reviewData.length %>)</h3>
                         </div>
                         <div class="question-tests">
-                            <h5 class="normal-color">Have question about
-                                this product? Get specific details about
-                                this
-                                product from expert.
-                            </h5>
+                            <h5 class="normal-color">Get specific details about
+                                this product from customers who own it.</h5>
                         </div>
                     </div>
-                    <div class="ask-button ">
-                        <form action="/Ask-Question">
-                            <input type="text" name="productName" id="productName" value="<%= pcData[0].brand %> <%= pcData[0].model %> <%= pcData[0].type %> <%= pcData[0].capacity %>" hidden>
-                            <input type="text" name="productId" id="productId" value="<%= pcData[0].pc_information_No  %>" hidden>
+                    <div class="review-button ">
+                        <form action="/Review">
+                            <input type="text" name="productName" id="productName"
+                                value="<%= pcData[0].brand %> <%= pcData[0].model %> <%= pcData[0].type %> <%= pcData[0].capacity %>"
+                                hidden>
+                            <input type="text" name="productId" id="productId"
+                                value="<%= pcData[0].pc_information_No  %>" hidden>
                             <input type="text" name="category" id="category" value="Pc" hidden>
-                            <button type="submit" class="ask-and-review-button">Ask
-                                Question</button>
+                            <button type="submit" class="ask-and-review-button">Write a
+                                Review</button>
                         </form>
                     </div>
                 </div>
+                <div class="reviev-rating" style="text-align: center; margin:10px 0px 10px 0px; display:none"><span
+                        style="font-family: 'Times New Roman', Times, serif; font-size:25px; color:rgb(77, 65, 65)">4.5
+                        out
+                        of 5</span></div>
                 <hr class="hr">
 
-                <% if(questionData.length==0) { %>
+                <% if(reviewData.length==0){ %>
+
                     <div class="empty-div">
-                        <div class="message-logo" style="margin: 20px 0px 20px 0px;"><span class="message-logo"
-                                style="font-size: 35px; color:aqua">&#128172;</span>
+                        <div class="message-logo" style="margin:20px 0px 20px 0px"><span class="document-logo"
+                                style="font-size: 35px; color:aqua;">&#128196;</span>
                         </div>
                         <div class="message-text">
-                            <h5 class="normal-color">There are no questions
-                                asked yet. Be the first one to ask a question.
+                            <h5 class="normal-color">This product has no reviews
+                                yet. Be the first one to write a review.
                             </h5>
                         </div>
                     </div>
 
-                    <% } else { %>
+                    <%} else{ %>
 
-                        <div class="questions-div">
+                        <% reviewData.forEach( review=>{ %>
 
-                            <% questionData.forEach( question=>{ %>
+                            <div class="user-reviews">
+                                <ul>
+                                    <li>
+                                        <div class="starts"
+                                            style="font-size: larger; color:rgb(107, 105, 105); margin-bottom:10px">
+                                            <% for(let i=0; i< review.star; i++){ %>
+                                                <span>&#x2B50;</span>
+                                                <% } %>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="review" style="font-size: 15px;">
+                                            <%= review.review %>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="from"
+                                            style="margin-top: 10px; font-size:12px; color:rgb(136, 140, 143)"><span>By
+                                                <span style="color: rgb(67, 67, 202);">
+                                                    <%= review.f_name %>
+                                                        <%= review.l_name %>
+                                                </span> on <%= review.date %></span></div>
+                                    </li>
+                                </ul>
+                            </div>
 
-                                <% if(question.answer && question.answer.length !== 0){ %>
+                            <% }) %>
 
-                                    <ul>
-                                        <li style="margin: 5px 0px 5px 0px;">
-                                            <div class="name-date">
-                                                <p class="name-date"><span
-                                                        style="font-size: smaller; font-weight:500"><span class="name"
-                                                            style="color: rgb(131, 131, 243);">
-                                                            <%= question.f_name %>
-                                                        </span> <span class="date" style="color: rgb(149, 158, 165);">
-                                                            on <%= question.question_date %>
-                                                        </span></span></p>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="q"><span
-                                                    style="font-family: 'Times New Roman', Times, serif; font-weight:bold">Q:
-                                                    <%= question.question %>
-                                                </span></div>
-                                        </li>
-                                        <li>
-                                            <div class="a"><span
-                                                    style="font-family: 'Times New Roman', Times, serif;">A:
-                                                    <%= question.answer %>
-                                                </span></div>
-                                        </li>
-                                        <hr class="li-hr" style="margin-top:10px">
-                                    </ul>
+                                <% } %>
 
-                                    <% } %>
-
-                                        <% } )%>
-                        </div>
-
-                        <%}%>
             </div>
+
+
+            <%- include ("footer.ejs") %>
         </div>
 
-        <!--------------------------------- Reviews -------------------------->
-        <div class="reviews" id="reviews">
-            <div class="number-text-button">
-                <div class="number-and-text">
-                    <div class="number-of-questions" style="border-bottom: 10px; margin-bottom: 10px;">
-                        <h3>Reviews (<%= reviewData.length %>)</h3>
-                    </div>
-                    <div class="question-tests">
-                        <h5 class="normal-color">Get specific details about
-                            this product from customers who own it.</h5>
-                    </div>
-                </div>
-                <div class="review-button ">
-                    <form action="/Review">
-                        <input type="text" name="productName" id="productName" value="<%= pcData[0].brand %> <%= pcData[0].model %> <%= pcData[0].type %> <%= pcData[0].capacity %>" hidden>
-                        <input type="text" name="productId" id="productId" value="<%= pcData[0].pc_information_No  %>" hidden>
-                        <input type="text" name="category" id="category" value="Pc" hidden>
-                        <button type="submit" class="ask-and-review-button">Write a
-                            Review</button>
-                    </form>
-                </div>
-            </div>
-            <div class="reviev-rating" style="text-align: center; margin:10px 0px 10px 0px; display:none"><span
-                    style="font-family: 'Times New Roman', Times, serif; font-size:25px; color:rgb(77, 65, 65)">4.5
-                    out
-                    of 5</span></div>
-            <hr class="hr">
 
-            <% if(reviewData.length==0){ %>
-
-                <div class="empty-div">
-                    <div class="message-logo" style="margin:20px 0px 20px 0px"><span class="document-logo"
-                            style="font-size: 35px; color:aqua;">&#128196;</span>
-                    </div>
-                    <div class="message-text">
-                        <h5 class="normal-color">This product has no reviews
-                            yet. Be the first one to write a review.
-                        </h5>
-                    </div>
-                </div>
-
-                <%} else{ %>
-
-                    <% reviewData.forEach( review=>{ %>
-
-                        <div class="user-reviews">
-                            <ul>
-                                <li>
-                                    <div class="starts"
-                                        style="font-size: larger; color:rgb(107, 105, 105); margin-bottom:10px">
-                                        <% for(let i=0; i< review.star; i++){ %>
-                                            <span>&#x2B50;</span>
-                                            <% } %>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="review" style="font-size: 15px;">
-                                        <%= review.review %>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="from"
-                                        style="margin-top: 10px; font-size:12px; color:rgb(136, 140, 143)"><span>By
-                                            <span style="color: rgb(67, 67, 202);">
-                                                <%= review.f_name %>
-                                                    <%= review.l_name %>
-                                            </span> on <%= review.date %></span></div>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <% }) %>
-
-                            <% } %>
-
-        </div>
-    </div>
-
-    <script>
-        function minus() {
-            var amount = document.querySelector('.amount');
-            var value = parseInt(amount.innerText);
-            if (value > 1) {
-                amount.innerText = value - 1;
+        <script>
+            function minus() {
+                var amount = document.querySelector('.amount');
+                var value = parseInt(amount.innerText);
+                if (value > 1) {
+                    amount.innerText = value - 1;
+                }
             }
-        }
-        
-        function plus() {
-            var amount = document.querySelector('.amount');
-            var value = parseInt(amount.innerText);
-            amount.innerText = value + 1;
-        }
-        
-    </script>
+
+            function plus() {
+                var amount = document.querySelector('.amount');
+                var value = parseInt(amount.innerText);
+                amount.innerText = value + 1;
+            }
+
+        </script>
 </body>
 
 </html>

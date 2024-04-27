@@ -35,13 +35,15 @@ body {
     justify-content: center;
     align-items: center;
     /* background-color: rgb(115, 226, 158); */
+    height: 250px;
 }
 
 .font-set{
     font-family:'Times New Roman', Times, serif;
 }
 .normal-color{
-    color: rgb(70, 69, 69);
+    color: rgb(107, 102, 102);
+    font-size: 17px;
 }
 
 .grey-color{

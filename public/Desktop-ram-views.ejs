@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pc Gallery || Ram Cart View's</title>
     <link rel="stylesheet" href="/ram_view.css">
+    <link rel="stylesheet" href="/nav-bar.css">
 </head>
 
 <body>
-    <div class="brand-pc-area">
-        <h3>Ram Cart View's</h3>
-    </div>
+
+    <%- include ("nav-bar.ejs") %>
 
     <div class="pcs-main-container">
         <% RamList.forEach(ram=> { %>

@@ -9,17 +9,18 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    background-color: #49585a;
+    background-color: #9AC8CD;
     color: #fff;
     padding: 10px 20px;
     margin-top: 15px;
     box-shadow: 1px 1px 3px rgb(0, 0, 0);
 }
-.logo{
+
+.logo {
     margin-right: 20px;
 }
 
-.menu{
+.menu {
     margin-left: 20px;
 }
 
@@ -37,19 +38,22 @@
 }
 
 .menu ul li {
-    margin-right: 15px; /* Add right margin to create spacing between items */
+    margin-right: 15px;
+    /* Add right margin to create spacing between items */
     position: relative;
 }
 
 .menu ul li:last-child {
-    margin-right: 0; /* Remove right margin from the last item */
+    margin-right: 0;
+    /* Remove right margin from the last item */
 }
 
 .menu ul li a {
     color: #fff;
     text-decoration: none;
     font-size: 1.5rem;
-    padding: 10px; /* Add padding to improve touchability on mobile */
+    padding: 10px;
+    /* Add padding to improve touchability on mobile */
     display: block;
 }
 
@@ -60,9 +64,10 @@
 .dropdown-content {
     display: none;
     position: absolute;
-    top: 100%; /* Position dropdown below the parent */
+    top: 100%;
+    /* Position dropdown below the parent */
     left: 0;
-    background-color: #49585a;
+    background-color: #8aa5b6;
     min-width: 160px;
     z-index: 1;
     border-radius: 2px;
@@ -92,25 +97,28 @@
         margin-bottom: 10px;
     }
 
-    .menu{
+    .menu {
         width: 100%;
     }
 
     .menu ul {
         flex-direction: column;
-        
+
     }
 
     .menu ul li {
-        margin-right: 0; /* Remove right margin on small screens */
-        margin-bottom: 10px; /* Add bottom margin to create spacing between items */
+        margin-right: 0;
+        /* Remove right margin on small screens */
+        margin-bottom: 10px;
+        /* Add bottom margin to create spacing between items */
     }
 
     .dropdown-content {
         position: static;
         display: none;
         background-color: transparent;
-        width: 30%; /* Full width dropdown on small screens */
+        width: 30%;
+        /* Full width dropdown on small screens */
     }
 
     .dropdown:hover .dropdown-content {

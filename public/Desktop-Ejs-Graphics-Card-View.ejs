@@ -9,9 +9,16 @@
             <%= graphicsCardData[0].type %>
                 <%= graphicsCardData[0].size %> Desktop Graphics Card</title>
     <link rel="stylesheet" href="/Desktop-View.css">
+    <link rel="stylesheet" href="/nav-bar.css">
+
+    <link rel="stylesheet" href="/tailwind.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
+
+    <%- include ("nav-bar.ejs") %>
+
     <div class="main-view">
         <div class="upper-content">
 
@@ -538,6 +545,7 @@
 
         </div>
     </div>
+    <%- include ("footer.ejs") %>
 
     <script>
         function minus() {

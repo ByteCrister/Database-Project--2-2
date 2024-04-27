@@ -1,4 +1,6 @@
 const path = require('path');
+const bcrypt = require('bcrypt');
+
 const dataBase = require('../../models/DB');
 
 exports.getLogIn = (request, response) => {
@@ -6,18 +8,21 @@ exports.getLogIn = (request, response) => {
 
 };
 
-exports.postLogIn = (request, response) => {
+exports.postLogIn = async (request, response) => {
     try {
         const email = request.body.email;
         const password = request.body.password;
 
-        const findEmailAndPasswordSql = 'SELECT user_id, email, email_password, user_id FROM users WHERE email=? AND email_password=?';
-        dataBase.query(findEmailAndPasswordSql, [email, password], (error, data) => {
+        const findEmailAndPasswordSql = 'SELECT email, email_password, user_id FROM users WHERE email=?';
+        dataBase.query(findEmailAndPasswordSql, [email], async (error, data) => {
             if (error) {
                 console.log(error);
                 response.status(500).json({ success: false, message: 'Internal Server Error' });
             } else {
-                if (data && data.length > 0 && data[0].email === email && data[0].email_password === password) {
+
+                const passwordMatch = await bcrypt.compare(password, data[0].email_password);
+
+                if (passwordMatch) {
 
                     request.session.isLogOut = false;
                     request.session.isAdminLoggedIn = false;

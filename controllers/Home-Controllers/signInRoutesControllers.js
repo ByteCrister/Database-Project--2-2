@@ -1,4 +1,5 @@
 const path = require('path');
+const bcrypt = require('bcrypt');
 const dataBase = require('../../models/DB');
 
 exports.getSignIn = (request, response) => {
@@ -7,12 +8,13 @@ exports.getSignIn = (request, response) => {
 
 
 
-exports.postSignIn = (request, response) => {
+exports.postSignIn = async  (request, response) => {
     try {
         const firstName = request.body.firstName;
         const lastName = request.body.lastName;
         const email = request.body.email;
-        const password = request.body.password;
+
+        const password = await bcrypt.hash(request.body.password, 10);
 
         const signInSql = 'SELECT email FROM users WHERE email=?';
         dataBase.query(signInSql, [email], (error, returnEmail) => {
