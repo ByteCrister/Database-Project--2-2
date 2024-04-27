@@ -19,25 +19,28 @@ exports.postLogIn = async (request, response) => {
                 console.log(error);
                 response.status(500).json({ success: false, message: 'Internal Server Error' });
             } else {
+                // Check if any data is returned
+                if (data.length > 0) {
+                    const passwordMatch = await bcrypt.compare(password, data[0].email_password);
 
-                const passwordMatch = await bcrypt.compare(password, data[0].email_password);
-
-                if (passwordMatch) {
-
-                    request.session.isLogOut = false;
-                    request.session.isAdminLoggedIn = false;
-
-                    request.session.isLoggedIn = true;
-
-                    request.session.userId = data[0].user_id;
-                    console.log('Old user successfully logged in  - User ID : ' + request.session.userId);
-                    response.json({ success: true });
+                    if (passwordMatch) {
+                        request.session.isLogOut = false;
+                        request.session.isAdminLoggedIn = false;
+                        request.session.isLoggedIn = true;
+                        request.session.userId = data[0].user_id;
+                        console.log('Old user successfully logged in  - User ID : ' + request.session.userId);
+                        response.json({ success: true });
+                    } else {
+                        console.log('User entered wrong info : ' + email + ', ' + password);
+                        response.json({ success: false });
+                    }
                 } else {
-                    console.log('User entered wrong info : ' + email + ', ' + password);
-                    response.json({ success: false });
+                    // No user found with the provided email
+                    console.log('No user found with email: ' + email);
+                    response.json({ success: false, message: 'Invalid email or password' });
                 }
             }
-        })
+        });
 
     } catch (error) {
         console.error(error);

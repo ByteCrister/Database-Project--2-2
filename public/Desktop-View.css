@@ -349,7 +349,10 @@ body {
 }
 .questions-div > ul li,  .user-reviews > ul li{
     list-style: none;
-    margin: 5px 0px 5px 0px;
+    margin: 10px 0px 10px 0px;
+}
+.questions-div > ul ,  .user-reviews > ul{
+    margin-top: 30px;
 }
 
 
