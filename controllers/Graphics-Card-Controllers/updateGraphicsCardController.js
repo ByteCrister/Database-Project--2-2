@@ -97,6 +97,25 @@ exports.updateGraphicsCardControllerPost = (request, response) => {
 `;
     
 
+        // Delete the previous image file
+    const Sql = `
+    SELECT product_image_path FROM graphics_card WHERE gp_card_No = ?;
+`;
+dataBase.query(Sql, [pcID], (err, result) => {
+    if (err) {
+        console.error("Error retrieving previous image path:", err);
+        return response.status(500).send("Internal server error");
+
+    } else {
+        const previousImagePath = result[0].product_image_path;
+        fs.unlink(previousImagePath, unlinkErr => unlinkErr && console.error("Error deleting previous image file:", unlinkErr));
+
+    }
+
+});
+
+
+
     // Update the database with the new image path
     dataBase.query(
         sql,

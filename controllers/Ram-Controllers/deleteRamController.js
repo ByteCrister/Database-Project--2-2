@@ -1,4 +1,5 @@
 const database = require('../../models/DB');
+const fs = require('fs');
 
 exports.deleteRamController = (request, response) => {
     if (request.session.isAdminLoggedIn) {
@@ -22,6 +23,24 @@ exports.deleteRamController = (request, response) => {
             } else {
                 console.log('Reviews are removed for Ram no ' + pcID);
             }
+        });
+
+
+        // Delete the previous image file
+        const Sql = `
+    SELECT product_image_path FROM ram_informations WHERE ram_id = ?;
+`;
+        database.query(Sql, [pcID], (err, result) => {
+            if (err) {
+                console.error("Error retrieving previous image path:", err);
+                return response.status(500).send("Internal server error");
+
+            } else {
+                const previousImagePath = result[0].product_image_path;
+                fs.unlink(previousImagePath, unlinkErr => unlinkErr && console.error("Error deleting previous image file:", unlinkErr));
+
+            }
+
         });
 
 
