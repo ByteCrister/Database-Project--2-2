@@ -1,6 +1,6 @@
 const path = require('path');
 const dataBase = require('../../models/DB');
-const multer = require('multer');
+const fs = require('fs');
 
 exports.getAddBrandPC = (request, response) => {
     if (request.session.isAdminLoggedIn) {
@@ -8,19 +8,6 @@ exports.getAddBrandPC = (request, response) => {
     }
 };
 
-// Set up multer storage 
-const brandPCStorage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, 'C:/Users/WD-OLY/OneDrive/Database-Project--2-2/public/Images/BrandPC'); // Set the destination folder 
-    },
-    filename: function (req, file, cb) {
-        cb(null, Date.now() + '-' + file.originalname); // Create a unique filename
-    }
-});
-
-// Set up multer 
-const brandPCUpload = multer({ storage: brandPCStorage });
-exports.uploadBrandPCImage = brandPCUpload.single('productImage');
 
 
 exports.postAddBrandPC = async (request, response) => {
@@ -52,7 +39,10 @@ exports.postAddBrandPC = async (request, response) => {
             } = request.body;
 
             
-            const product_image_path = request.file.filename;
+            const product_image_path = request.file.path;
+
+            // Read image file as base64
+            const imageBuffer = fs.readFileSync(product_image_path, { encoding: 'base64' });
 
             const sql = `
                 INSERT INTO brand_pc
@@ -60,7 +50,7 @@ exports.postAddBrandPC = async (request, response) => {
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
             `;
 
-            dataBase.query(sql, [brand, model, processor, motherboard, ram, graphics_card, _storage_, power_supply, network_and_wareless_connectivity, operating_system, security_management, keyboard, mouse, optical_drive, extarnal_io_port, dimension, weight, color, warranty, cut_price, final_price, description, product_image_path], (err, data) => {
+            dataBase.query(sql, [brand, model, processor, motherboard, ram, graphics_card, _storage_, power_supply, network_and_wareless_connectivity, operating_system, security_management, keyboard, mouse, optical_drive, extarnal_io_port, dimension, weight, color, warranty, cut_price, final_price, description, imageBuffer], (err, data) => {
                 if (err) {
                     console.error('Error inserting brand PC information:', err);
                 } else {

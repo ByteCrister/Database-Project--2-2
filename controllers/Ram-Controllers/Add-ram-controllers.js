@@ -1,28 +1,14 @@
 const path = require('path');
 const dataBase = require('../../models/DB');
-const multer = require('multer');
+const fs = require('fs');
 
 exports.getAddRam = (request, response) => {
     if (request.session.isAdminLoggedIn) {
         response.sendFile(path.join(__dirname, '../../views/Add-ram.html'));
+    }else{
+        response.redirect('/')
     }
 };
-
-// Set up multer
-const ramStorage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, 'C:/Users/WD-OLY/OneDrive/Database-Project--2-2/public/Images/Ram'); // Set the destination folder
-    },
-    filename: function (req, file, cb) {
-        cb(null, Date.now() + '-' + file.originalname); // Create a unique filename
-    }
-});
-
-// Set up multer 
-const RamUpload = multer({ storage: ramStorage });
-exports.uploadAddRamImage = RamUpload.single('productImage');
-
-/* --------------------------------------------------------------------------------------------------- */
 
 
 
@@ -48,7 +34,9 @@ exports.postAddRam = async (request, response) => {
             } = request.body;
 
             
-            const product_image_path = request.file.filename;
+            const product_image_path = request.file.path;
+            // Read image file as base64
+            const imageBuffer = fs.readFileSync(product_image_path, { encoding: 'base64' });
 
             const sql = `
                 INSERT INTO ram_informations
@@ -56,7 +44,7 @@ exports.postAddRam = async (request, response) => {
                 VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
             `;
 
-            dataBase.query(sql, [brand, model, type, capacity, frequency, operatingVoltage, latency, pin, dimension, warranty, cut_price, price, description, product_image_path], (err, data) => {
+            dataBase.query(sql, [brand, model, type, capacity, frequency, operatingVoltage, latency, pin, dimension, warranty, cut_price, price, description, imageBuffer], (err, data) => {
                 if (err) {
                     console.error('Error inserting graphics card information:', err);
                 } else {

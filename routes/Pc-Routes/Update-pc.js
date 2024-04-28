@@ -1,11 +1,15 @@
 const UpdatePcRouter = require('express').Router();
-const{updatePcControllerGet,  updatePcControllerPost, uploadMultipart } = require('../../controllers/Pc-Controllers/updatePcController')
+
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
+
+const{updatePcControllerGet,  updatePcControllerPost } = require('../../controllers/Pc-Controllers/updatePcController')
 
 
 UpdatePcRouter.get('/update-pc/:pc_information_No', updatePcControllerGet);
 
 
-UpdatePcRouter.post('/update-pc',uploadMultipart, updatePcControllerPost );
+UpdatePcRouter.post('/update-pc',upload.single('productImage'), updatePcControllerPost );
 
 
 module.exports = UpdatePcRouter;

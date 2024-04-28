@@ -1,35 +1,22 @@
 const path = require('path');
 const dataBase = require('../../models/DB');
-const multer = require('multer');
+const fs = require('fs');
+
 exports.getAddPc = (request, response) => {
     if (request.session.isAdminLoggedIn) {
         response.sendFile(path.join(__dirname + '/../../views/Add-pc.html'))
 
+    }else{
+        response.redirect('/')
     }
 
 };
 
 
-
-// Set up multer storage
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, 'C:/Users/WD-OLY/OneDrive/Database-Project--2-2/public/Images/PC'); // Set the destination folder 
-    },
-    filename: function (req, file, cb) {
-        cb(null, Date.now() + '-' + file.originalname); // Create a unique filename
-    }
-});
-
-// Set up multer 
-const upload = multer({ storage: storage });
-exports.uploadMultipart = upload.single('productImage');
-
-
 exports.postAddPC = async (request, response) => {
     if (request.session.isAdminLoggedIn) {
         try {
-            
+
             const {
                 brand,
                 category,
@@ -49,8 +36,11 @@ exports.postAddPC = async (request, response) => {
                 description
             } = request.body;
 
-           
-            const product_image_path = request.file.filename;
+
+            const product_image_path = request.file.path;
+            
+            // Read image file as base64
+            const imageBuffer = fs.readFileSync(product_image_path, { encoding: 'base64' });
 
             const sql1 = `
             INSERT INTO pc_information
@@ -59,7 +49,7 @@ exports.postAddPC = async (request, response) => {
         `;
 
 
-            dataBase.query(sql1, [brand, category, model, processor, processorWarranty, motherboard, motherboardWarranty, ram, ramWarranty, storage, storageWarranty, casing, casingWarranty, price, cut_price, description, product_image_path], (err, data) => {
+            dataBase.query(sql1, [brand, category, model, processor, processorWarranty, motherboard, motherboardWarranty, ram, ramWarranty, storage, storageWarranty, casing, casingWarranty, price, cut_price, description, imageBuffer], (err, data) => {
                 if (err) {
                     console.error('Error inserting PC information:', err);
                 } else {

@@ -1,6 +1,4 @@
 const database = require('../../models/DB');
-const fs = require('fs');
-const path = require('path');
 
 exports.deleteRamController = (request, response) => {
     if (request.session.isAdminLoggedIn) {
@@ -27,37 +25,17 @@ exports.deleteRamController = (request, response) => {
         });
 
 
-        const getDeleteImagePathQuery = `SELECT product_image_path FROM ram_informations WHERE ram_id = ?`;
+        const deleteQuery = `DELETE FROM ram_informations WHERE ram_id=?`;
         database.query(
-            getDeleteImagePathQuery,
+            deleteQuery,
             [pcID],
-            (err, result) => {
+            (err, data) => {
                 if (err) {
-                    response.status(500).send("Error retrieving image path for deletion");
+                    response.status(500).send("Internal server error /deletePcRouter get data");
                 } else {
-                    const imagePathToDelete = result[0].product_image_path;
+                    console.log("Ram removed successfully");
 
-                    const deleteQuery = `DELETE FROM ram_informations WHERE ram_id=?`;
-                    database.query(
-                        deleteQuery,
-                        [pcID],
-                        (err, data) => {
-                            if (err) {
-                                response.status(500).send("Internal server error /deletePcRouter get data");
-                            } else {
-                                // Delete the image file from the folder
-                                fs.unlink(path.join('C:/Users/WD-OLY/OneDrive/Database-Project--2-2/public/Images/Ram', imagePathToDelete), (err) => {
-                                    if (err) {
-                                        console.error("Error deleting image file:", err);
-                                    } else {
-                                        console.log("Image file deleted successfully");
-                                    }
-                                });
-
-                                response.redirect('/Ram-Carts');
-                            }
-                        }
-                    );
+                    response.redirect('/Ram-Carts');
                 }
             }
         );

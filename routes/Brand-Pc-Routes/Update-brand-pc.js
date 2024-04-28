@@ -1,9 +1,13 @@
 const UpdateBrandPcRouter = require('express').Router();
-const{updateBrandPcControllerGet,  updateBrandPcControllerPost, uploadBrandPCImage } = require('../../controllers/Brand-Pc-Controllers/updateBrandPcController')
+
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
+
+const{updateBrandPcControllerGet,  updateBrandPcControllerPost } = require('../../controllers/Brand-Pc-Controllers/updateBrandPcController')
 
 
 UpdateBrandPcRouter.get('/update-brand-pc/:brand_pc_No', updateBrandPcControllerGet);
-UpdateBrandPcRouter.post('/update-brand-pc',uploadBrandPCImage, updateBrandPcControllerPost );
+UpdateBrandPcRouter.post('/update-brand-pc',upload.single('productImage'), updateBrandPcControllerPost );
 
 
 module.exports = UpdateBrandPcRouter;

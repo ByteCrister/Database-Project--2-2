@@ -1,7 +1,12 @@
-const { getAddPc, uploadMultipart, postAddPC } = require('../../controllers/Pc-Controllers/Add-pc-controllers');
 const addPCRouter = require('express').Router();
 
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
+
+const { getAddPc, postAddPC } = require('../../controllers/Pc-Controllers/Add-pc-controllers');
+
+
 addPCRouter.get('/add-pc', getAddPc);
-addPCRouter.post('/add-pc', uploadMultipart, postAddPC);
+addPCRouter.post('/add-pc', upload.single('productImage'), postAddPC);
 
 module.exports = addPCRouter;

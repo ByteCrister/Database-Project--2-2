@@ -1,9 +1,13 @@
 const UpdateGraphicsCardRouter = require('express').Router();
-const{updateGraphicsCardControllerGet,  updateGraphicsCardControllerPost, uploadGraphicsCardImage } = require('../../controllers/Graphics-Card-Controllers/updateGraphicsCardController')
+
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
+
+const{updateGraphicsCardControllerGet,  updateGraphicsCardControllerPost } = require('../../controllers/Graphics-Card-Controllers/updateGraphicsCardController')
 
 
 UpdateGraphicsCardRouter.get('/update-graphics-card/:gp_card_No', updateGraphicsCardControllerGet);
-UpdateGraphicsCardRouter.post('/update-graphics-card',uploadGraphicsCardImage, updateGraphicsCardControllerPost );
+UpdateGraphicsCardRouter.post('/update-graphics-card',upload.single('productImage'), updateGraphicsCardControllerPost );
 
 
 module.exports = UpdateGraphicsCardRouter;

@@ -1,28 +1,12 @@
 const path = require('path');
 const dataBase = require('../../models/DB');
-const multer = require('multer');
+const fs = require('fs');
 
 exports.getAddGraphicsCard = (request, response) => {
     if (request.session.isAdminLoggedIn) {
         response.sendFile(path.join(__dirname, '../../views/Add-graphics-card.html'));
     }
 };
-
-// Set up multer storage
-const GraphicsCardStorage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, 'C:/Users/WD-OLY/OneDrive/Database-Project--2-2/public/Images/GraphicsCard'); // Set the destination folder 
-    },
-    filename: function (req, file, cb) {
-        cb(null, Date.now() + '-' + file.originalname); // Create a unique filename
-    }
-});
-
-// Set up multer 
-const GraphicsCardUpload = multer({ storage: GraphicsCardStorage });
-exports.uploadGraphicsCardImage = GraphicsCardUpload.single('productImage');
-
-/* --------------------------------------------------------------------------------------------------- */
 
 
 
@@ -59,7 +43,8 @@ exports.postAddGraphicsCard = async (request, response) => {
             } = request.body;
 
             
-            const product_image_path = request.file.filename;
+            const product_image_path = request.file.path;
+            const imageBuffer = fs.readFileSync(product_image_path, { encoding: 'base64' });
 
             const sql = `
                 INSERT INTO graphics_card
@@ -67,7 +52,7 @@ exports.postAddGraphicsCard = async (request, response) => {
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
             `;
 
-            dataBase.query(sql, [brand, model, type, size, resolution, boost_clock, game_clock, memory_clock, bus_type, memory_interface, stream_processors, display_port, hdmi, connectors, recommended_psu, consumption, multi_display, directX, dimensions, others, warranty, cut_price, final_price, description, product_image_path], (err, data) => {
+            dataBase.query(sql, [brand, model, type, size, resolution, boost_clock, game_clock, memory_clock, bus_type, memory_interface, stream_processors, display_port, hdmi, connectors, recommended_psu, consumption, multi_display, directX, dimensions, others, warranty, cut_price, final_price, description, imageBuffer], (err, data) => {
                 if (err) {
                     console.error('Error inserting graphics card information:', err);
                 } else {

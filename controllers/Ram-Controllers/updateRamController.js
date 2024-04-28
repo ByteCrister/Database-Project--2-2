@@ -1,25 +1,6 @@
+const dataBase = require('../../models/DB');
 const path = require('path');
 const fs = require('fs');
-const dataBase = require('../../models/DB');
-const multer = require('multer');
-
-// Set up multer storage
-const RamStorage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, 'C:/Users/WD-OLY/OneDrive/Database-Project--2-2/public/Images/Ram'); // Set the destination folder 
-    },
-    filename: function (req, file, cb) {
-        cb(null, Date.now() + '-' + file.originalname); // Create a unique filename
-    }
-});
-
-// Set up multer 
-const RamUpload = multer({ storage: RamStorage });
-exports.uploadRamImage = RamUpload.single('productImage');
-
-/* --------------------------------------------------------------------------------------------------- */
-
-
 
 
 exports.updateRamControllerGet = (request, response) => {
@@ -43,9 +24,11 @@ exports.updateRamControllerGet = (request, response) => {
             }
         );
     } else {
-        response.status(403).send('Forbidden');
+        response.redirect('/');
     }
 };
+
+
 
 
 
@@ -67,10 +50,15 @@ exports.updateRamControllerPost = (request, response) => {
         pcID
     } = request.body;
 
-    if (!request.file || !request.file.filename) {
-        return response.status(400).send('No file uploaded');
+
+    const product_image_path = request.file.path;
+
+    // Read image file as base64
+    const imageBuffer = fs.readFileSync(product_image_path, { encoding: 'base64' });
+
+    if (!product_image_path) {
+        return response.status(400).send("No image uploaded");
     }
-    const product_image_path = request.file.filename;
 
     const sql = `
     UPDATE ram_informations
@@ -92,39 +80,20 @@ exports.updateRamControllerPost = (request, response) => {
     WHERE 
     ram_id = ?;
 `;
-            // Retrieve current image path from the database
-            const getCurrentImagePathQuery = `SELECT product_image_path FROM ram_informations WHERE ram_id = ?;`;
-            dataBase.query(
-                getCurrentImagePathQuery,
-                [pcID],
-                (err, result) => {
-                    if (err) {
-                        response.status(500).send("Error retrieving current image path");
-                    } else {
-                        const currentImagePath = result[0].product_image_path;
 
-                        // Update the database with the new image path
-                        dataBase.query(
-                            sql,
-                            [brand, model, type, capacity, frequency, operatingVoltage, latency, pin, dimension, warranty, cut_price, price, description, product_image_path, pcID],
-                            (err, data) => {
-                                if (err) {
-                                    response.status(500).send("Internal server error from /update-ram post data" + err);
-                                } else {
-                                    // Delete the old image file
-                                    fs.unlink(path.join('C:/Users/WD-OLY/OneDrive/Database-Project--2-2/public/Images/Ram', currentImagePath), (err) => {
-                                        if (err) {
-                                            console.error("Error deleting old image file:", err);
-                                        } else {
-                                            console.log("Old image file deleted successfully");
-                                        }
-                                    });
+    // Update the database with the new image path
+    dataBase.query(
+        sql,
+        [brand, model, type, capacity, frequency, operatingVoltage, latency, pin, dimension, warranty, cut_price, price, description, imageBuffer, pcID],
+        (err, data) => {
+            if (err) {
+                response.status(500).send("Internal server error from /update-ram post data" + err);
+            } else {
+                console.log("Ram updated successfully");
 
-                                    response.redirect('/Ram-Carts');
-                                }
-                            }
-                        );
-                    }
-                } 
-            );
+                response.redirect('/Ram-Carts');
+            }
+        }
+    );
+
 };
