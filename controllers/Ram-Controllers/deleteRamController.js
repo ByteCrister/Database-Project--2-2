@@ -37,8 +37,13 @@ exports.deleteRamController = (request, response) => {
 
             } else {
                 const previousImagePath = result[0].product_image_path;
-                fs.unlink(previousImagePath, unlinkErr => unlinkErr && console.error("Error deleting previous image file:", unlinkErr));
-
+                fs.unlink(previousImagePath, unlinkErr => {
+                    if (!unlinkErr) {
+                        console.log("Previous image file deleted successfully");
+                    } else {
+                        console.error("Error deleting previous image file:", unlinkErr);
+                    }
+                });
             }
 
         });
