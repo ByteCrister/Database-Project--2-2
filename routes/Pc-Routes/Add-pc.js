@@ -1,7 +1,7 @@
 const addPCRouter = require('express').Router();
 
 const multer = require('multer');
-const upload = multer({ dest: 'uploads/' });
+const upload = multer();
 
 const { getAddPc, postAddPC } = require('../../controllers/Pc-Controllers/Add-pc-controllers');
 

@@ -2,6 +2,7 @@ const path = require('path');
 const dataBase = require('../../models/DB');
 const fs = require('fs');
 
+
 exports.getAddPc = (request, response) => {
     if (request.session.isAdminLoggedIn) {
         response.sendFile(path.join(__dirname + '/../../views/Add-pc.html'))
@@ -16,6 +17,8 @@ exports.getAddPc = (request, response) => {
 exports.postAddPC = async (request, response) => {
     if (request.session.isAdminLoggedIn) {
         try {
+
+            // console.log('Request file:', request.file); 
 
             const {
                 brand,
@@ -37,11 +40,9 @@ exports.postAddPC = async (request, response) => {
             } = request.body;
 
 
-            const product_image_path = request.file.path;
+          
+            const imageBuffer = request.file.buffer.toString("base64");
             
-            // Read image file as base64
-            const imageBuffer = fs.readFileSync(product_image_path, { encoding: 'base64' });
-
             const sql1 = `
             INSERT INTO pc_information
             (brand, category, model, processor, processor_warranty, motherboard, motherboard_warranty, ram, ram_warranty, storage, storage_warranty, casing, casing_warranty, price, cut_price,  description, product_image_path)

@@ -59,10 +59,9 @@ exports.updateGraphicsCardControllerPost = (request, response) => {
         pcID
     } = request.body;
 
-    const product_image_path = request.file.path;
-    // Read image file as base64
-    const imageBuffer = fs.readFileSync(product_image_path, { encoding: 'base64' });
 
+    // Read image file as base64
+    const imageBuffer = request.file.buffer.toString("base64");
 
     const sql = `
     UPDATE graphics_card
@@ -96,25 +95,6 @@ exports.updateGraphicsCardControllerPost = (request, response) => {
         gp_card_No = ?;
 `;
     
-
-        // Delete the previous image file
-    const Sql = `
-    SELECT product_image_path FROM graphics_card WHERE gp_card_No = ?;
-`;
-dataBase.query(Sql, [pcID], (err, result) => {
-    if (err) {
-        console.error("Error retrieving previous image path:", err);
-        return response.status(500).send("Internal server error");
-
-    } else {
-        const previousImagePath = result[0].product_image_path;
-        fs.unlink(previousImagePath, unlinkErr => unlinkErr && console.error("Error deleting previous image file:", unlinkErr));
-
-    }
-
-});
-
-
 
     // Update the database with the new image path
     dataBase.query(

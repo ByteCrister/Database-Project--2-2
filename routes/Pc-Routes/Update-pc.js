@@ -1,7 +1,7 @@
 const UpdatePcRouter = require('express').Router();
 
 const multer = require('multer');
-const upload = multer({ dest: 'uploads/' });
+const upload = multer();
 
 const{updatePcControllerGet,  updatePcControllerPost } = require('../../controllers/Pc-Controllers/updatePcController')
 

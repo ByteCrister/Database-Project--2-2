@@ -43,8 +43,7 @@ exports.postAddGraphicsCard = async (request, response) => {
             } = request.body;
 
             
-            const product_image_path = request.file.path;
-            const imageBuffer = fs.readFileSync(product_image_path, { encoding: 'base64' });
+            const imageBuffer = request.file.buffer.toString("base64");
 
             const sql = `
                 INSERT INTO graphics_card

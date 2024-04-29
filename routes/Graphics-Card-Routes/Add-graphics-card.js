@@ -1,7 +1,7 @@
 const { getAddGraphicsCard, postAddGraphicsCard } = require('../../controllers/Graphics-Card-Controllers/Add-graphics-card-controllers');
 
 const multer = require('multer');
-const upload = multer({ dest: 'uploads/' });
+const upload = multer();
 
 const addGraphicsCardRouter = require('express').Router();
 

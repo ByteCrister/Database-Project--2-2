@@ -33,10 +33,9 @@ exports.postAddRam = async (request, response) => {
                 description
             } = request.body;
 
-            
-            const product_image_path = request.file.path;
+
             // Read image file as base64
-            const imageBuffer = fs.readFileSync(product_image_path, { encoding: 'base64' });
+            const imageBuffer = request.file.buffer.toString("base64");
 
             const sql = `
                 INSERT INTO ram_informations

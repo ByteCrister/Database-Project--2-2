@@ -1,7 +1,7 @@
 const addRamRouter = require('express').Router();
 
 const multer = require('multer');
-const upload = multer({ dest: 'uploads/' });
+const upload = multer();
 
 const { getAddRam, postAddRam } = require('../../controllers/Ram-Controllers/Add-ram-controllers');
 

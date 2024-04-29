@@ -63,6 +63,10 @@ const DesktopReviewPostRouter = require('./routes/Desktop-View-Routes/Desktop-Re
 
 
 const AdminQuestionRoutes = require('./routes/Desktop-View-Routes/Admin-Question-Replay');
+const viewSellingHistoryRoutes = require('./routes/Desktop-View-Routes/Selling-history');
+const userRatingsRoutes = require('./routes/Desktop-View-Routes/Desktop-ratings');
+const userQuestionsRoutes = require('./routes/Desktop-View-Routes/Desktop-questions');
+const adminQuestionUpdates = require('./routes/Desktop-View-Routes/Admin-question-update');
 
 
 
@@ -131,6 +135,10 @@ app.use(DesktopReviewPostRouter);
 
 
 app.use(AdminQuestionRoutes);
+app.use(viewSellingHistoryRoutes);
+app.use(userRatingsRoutes);
+app.use(userQuestionsRoutes);
+app.use(adminQuestionUpdates);
 
 
 

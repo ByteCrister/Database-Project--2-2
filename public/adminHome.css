@@ -26,7 +26,7 @@
     
 }
 
-.views, .add-product, .answer-log-out{
+.views, .add-product, .rating-answer-log-out{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -36,11 +36,13 @@
 }
 
 
-.views > div, .answer-log-out > div{
+.views > div, .rating-answer-log-out > div{
     padding: 15px;
     background-color: rgb(157, 238, 238);
     margin: 10px;
     border-radius: 5px;
+    max-width: 250px;
+    text-align: center;
 }
 
 .add-product > div{

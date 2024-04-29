@@ -62,14 +62,9 @@ exports.updateBrandPcControllerPost = (request, response) => {
         pcID
     } = request.body;
 
-
-    const product_image_path = request.file.path;
     // Read image file as base64
-    const imageBuffer = fs.readFileSync(product_image_path, { encoding: "base64" });
-
-    if (!product_image_path) {
-        return response.status(400).send("No image uploaded");
-    }
+    const imageBuffer = request.file.buffer.toString("base64");
+    
 
     const sql = `
     UPDATE brand_pc
@@ -100,25 +95,6 @@ exports.updateBrandPcControllerPost = (request, response) => {
     WHERE 
         brand_pc_No = ?;
 `;
-
-
-
-    // Delete the previous image file
-    const Sql = `
-        SELECT product_image_path FROM brand_pc WHERE brand_pc_No = ?;
-    `;
-    dataBase.query(Sql, [pcID], (err, result) => {
-        if (err) {
-            console.error("Error retrieving previous image path:", err);
-            return response.status(500).send("Internal server error");
-
-        } else {
-            const previousImagePath = result[0].product_image_path;
-            fs.unlink(previousImagePath, unlinkErr => unlinkErr && console.error("Error deleting previous image file:", unlinkErr));
-
-        }
-
-    });
 
 
 

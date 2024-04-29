@@ -26,24 +26,6 @@ exports.deletePcController = (request, response) => {
         });
 
 
-        // Delete the previous image file
-    const Sql = `
-    SELECT product_image_path FROM pc_information WHERE pc_information_No = ?;
-`;
-database.query(Sql, [pcID], (err, result) => {
-    if (err) {
-        console.error("Error retrieving previous image path:", err);
-        return response.status(500).send("Internal server error");
-
-    } else {
-        const previousImagePath = result[0].product_image_path;
-        fs.unlink(previousImagePath, unlinkErr => unlinkErr && console.error("Error deleting previous image file:", unlinkErr));
-
-    }
-
-});
-
-
 
         const deleteQuery = `DELETE FROM pc_information WHERE pc_information_No=?`;
         database.query(
