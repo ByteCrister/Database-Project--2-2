@@ -1,7 +1,7 @@
 const dataBase = require('../../models/DB');
 
 
-exports.adminQuestionUpdate = (request, response) => {
+exports.QuestionUpdate = (request, response) => {
     const pId = request.body.productId;
     const category = request.body.category;
     const answer = request.body.answer;
