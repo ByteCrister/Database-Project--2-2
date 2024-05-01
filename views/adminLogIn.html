@@ -11,45 +11,43 @@
 </head>
 
 <body>
+    
+        <div class="main-form">
+            <div class="div" id="p-for-incorrect-information">
+                <p>
+                    <sup>*</sup>Your Admin name Or password is incorrect. Please try
+                    again.
+                </p>
+            </div>
 
-    <div class="main-form">
-        <div class="div" id="p-for-incorrect-information">
-            <p>
-                <sup>*</sup>Your Admin name Or password is incorrect. Please try again.
-            </p>
-        </div>
-
-        <div class="log-in-admin">
-            <h3>Log in as Admin</h3>
-        </div>
-        <div class="login-container">
-            <form action="/adminLogIn" method="post" onsubmit=" event.preventDefault(); logIn();">
-                <div class="admin-name box-style">
-                    <label for="adminName">Admin Name</label>
-                    <input type="text" id="adminName" name="adminName" placeholder="Admin" required />
-                </div>
-
-                <div class="admin-password box-style">
-                    <label for="adminPassword">Admin Password:</label>
-                    <input type="password" id="adminPassword" name="adminPassword" placeholder="Password" required />
-                    <div class="check-box">
-                        <input type="checkbox" id="show-password-checkbox" onclick="togglePasswordVisibility()">
-                        <label for="show-password-checkbox">Show Password</label>
+            <div class="log-in-admin">
+                <h3>Log in as Admin</h3>
+            </div>
+            <div class="login-container">
+                <form action="/adminLogIn" method="post" onsubmit=" event.preventDefault(); logIn();">
+                    <div class="admin-name box-style">
+                        <label for="adminName">Admin Name</label>
+                        <input type="text" id="adminName" name="adminName" placeholder="Admin" required />
                     </div>
-                </div>
-                <div class="log-in-button box-style">
-                    <button type="submit">Login</button>
-                </div>
-            </form>
+
+                    <div class="admin-password box-style">
+                        <label for="adminPassword">Admin Password:</label>
+                        <input type="password" id="adminPassword" name="adminPassword" placeholder="Password"
+                            required />
+                        <div class="check-box">
+                            <input type="checkbox" id="show-password-checkbox" onclick="togglePasswordVisibility()" />
+                            <label for="show-password-checkbox">Show Password</label>
+                        </div>
+                    </div>
+                    <div class="log-in-button box-style">
+                        <button type="submit">Login</button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
-
-
-
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="./adminLogIn.js"></script>
-
 </body>
 
 </html>
