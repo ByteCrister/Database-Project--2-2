@@ -45,40 +45,42 @@
                         </thead>
                         <tbody>
                             <% dataList.forEach((data)=>{ %>
-                                <tr>
-                                    <th>
-                                        <%=data.f%>
-                                            <%=data.l%>
-                                    </th>
-                                    <th>
-                                        <%=data.email%>
-                                    </th>
-                                    <th>
-                                        <a href="/Desktop/<%=data.category%>_id-<%=data.pId%>">View</a>
-                                    </th>
-                                    <th>
-                                        <%=data.question%>
-                                    </th>
-                                    <th>
-                                        <div class="input-update">
-                                            <form action="/update/user/question" method="post">
-                                                <input type="text" name="date1" value="<%=date1%>" hidden />
-                                                <input type="text" name="date2" value="<%=date2%>" hidden />
-                                                <input type="text" name="productId" value="<%=data.pId%>" hidden />
-                                                <input type="text" name="category" value="<%=data.category%>"
-                                                    hidden />
-                                                <div class="input">
-                                                    <input type="text" name="answer" id="question"
-                                                        value="<%=data.answer%>" required />
-                                                </div>
-                                                <div class="button">
-                                                   <button type="submit">Update</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </th>
-                                </tr>
-                                <% }) %>
+
+                              
+                                    <tr>
+                                        <th>
+                                            <%=data.f%>
+                                                <%=data.l%>
+                                        </th>
+                                        <th>
+                                            <%=data.email%>
+                                        </th>
+                                        <th>
+                                            <a href="/Desktop/<%=data.category%>_id-<%=data.pId%>">View</a>
+                                        </th>
+                                        <th>
+                                            <%=data.question%>
+                                        </th>
+                                        <th>
+                                            <div class="input-update">
+                                                <form action="/update/user/question" method="post">
+                                                    <input type="text" name="date1" value="<%=date1%>" hidden />
+                                                    <input type="text" name="date2" value="<%=date2%>" hidden />
+                                                    <input type="text" name="productId" value="<%=data.pId%>" hidden />
+                                                    <input type="text" name="category" value="<%=data.category%>"
+                                                        hidden />
+                                                    <div class="input">
+                                                        <input type="text" name="answer" id="question"
+                                                            value="<%=data.answer%>" required />
+                                                    </div>
+                                                    <div class="button">
+                                                        <button type="submit">Update</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                        <% }) %>
                         </tbody>
                     </table>
     </div>

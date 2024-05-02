@@ -21,7 +21,8 @@ exports.userQuestion = (request, response)=>{
             user_questions.answers as answer
 
             from users join user_questions 
-            on user_questions.user_id = users.user_id;
+            on user_questions.user_id = users.user_id
+            where user_questions.answers is not null;
             `;
         }else{
             sql = `
@@ -36,7 +37,7 @@ exports.userQuestion = (request, response)=>{
 
             from users join user_questions 
             on user_questions.user_id = users.user_id
-            where user_questions.question_date between '${date1}' and '${date2}';
+            where user_questions.question_date between '${date1}' and '${date2} and user_questions.answers is not null ';
             `
         }
 
