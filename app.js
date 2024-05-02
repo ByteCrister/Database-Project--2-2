@@ -67,7 +67,7 @@ const viewSellingHistoryRoutes = require('./routes/Desktop-View-Routes/Selling-h
 const userRatingsRoutes = require('./routes/Desktop-View-Routes/Desktop-ratings');
 const userQuestionsRoutes = require('./routes/Desktop-View-Routes/Desktop-questions');
 const adminQuestionUpdates = require('./routes/Desktop-View-Routes/Admin-question-update');
-
+const adminHomeViewRoutes = require('./routes/Desktop-View-Routes/Admin-Home-View');
 
 
 
@@ -139,6 +139,7 @@ app.use(viewSellingHistoryRoutes);
 app.use(userRatingsRoutes);
 app.use(userQuestionsRoutes);
 app.use(adminQuestionUpdates);
+app.use(adminHomeViewRoutes);
 
 
 
