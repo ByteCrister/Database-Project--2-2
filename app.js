@@ -1,12 +1,13 @@
 const express = require('express');
 const session = require('express-session');
 const cors = require('cors');
+require('dotenv').config();
 const app = express();
 
 
 /************ session variable setup *************/
 app.use(session({
-    secret: '---pc_gallery---',
+    secret: process.env.Session_secret,
     resave: false,
     saveUninitialized: true,
 }));
