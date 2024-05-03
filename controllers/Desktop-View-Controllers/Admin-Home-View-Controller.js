@@ -18,7 +18,7 @@ exports.adminHomeViewController = (request, response)=>{
     `
 
     const sql2 = `
-    select format(SUM(REPLACE(product_amount, ',', '')), 0) as total
+    select format(SUM(REPLACE(product_amount, ',', '')), 2) as total
     from selling_history;
     `;
 

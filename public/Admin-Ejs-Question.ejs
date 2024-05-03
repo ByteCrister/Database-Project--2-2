@@ -25,7 +25,7 @@
                     <div class="form">
                         <form action="/Answer-Questions" method="post">
                             <input type="text" name="question_no" id="question_no" value="<%= Question.question_no %>" hidden>
-                            <input type="text" name="answer" id="answer" placeholder="A : Give The Correct Answer" />
+                            <input type="text" name="answer" id="answer" placeholder="A : Give The Correct Answer" required/>
                             <button type="submit">Send Answer</button>
                         </form>
                     </div>
