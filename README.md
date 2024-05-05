@@ -10,8 +10,8 @@
 
 ## What was my contribution to this poject?
 - Designed the overall structure.(Both frontend and backend)
-- Followed MVC architecture rest of the project.
-- Intigrated User and Admin's authentication
+- Followed MVC architecture throughout of the project.
+- Intigrated User and Admin authentication
 - Worked on complex SQL commands.
 - Integrated CRUD operations for all products
 - Integrated Admin Dashboard features
