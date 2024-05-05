@@ -1,6 +1,7 @@
 const path = require('path');
 const dataBase = require('../../models/DB');
 
+/********************** sending values to the users Question form **********************/
 exports.getQuestion = (request, response) => {
 
     if (request.session.isLoggedIn) {

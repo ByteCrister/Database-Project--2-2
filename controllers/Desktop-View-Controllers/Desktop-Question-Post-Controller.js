@@ -1,4 +1,6 @@
 const dataBase = require('../../models/DB');
+
+/****************** Fetching data from users question form and send it to the database ****************/
 exports.DesktopQuestionPostController = (request, response) => {
 
     const category = request.body.category;

@@ -1,6 +1,6 @@
 const path = require('path');
-const dataBase = require('../../models/DB');
 
+/******************** sending values to the users review form **********************/
 exports.getReview = (request, response) => {
     if (request.session.isLoggedIn) {
         // const user_id = request.session.userId;

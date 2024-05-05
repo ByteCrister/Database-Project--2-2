@@ -1,6 +1,8 @@
 const dataBase = require('../../models/DB');
 const path = require('path');
 
+
+/****************** Get all users replayed questions  ********************/
 exports.userQuestion = (request, response) => {
     if (request.session.isAdminLoggedIn) {
 

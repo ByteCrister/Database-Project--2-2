@@ -9,8 +9,6 @@ exports.sellingHistory = (request, response)=>{
         const date1 = request.query.form_date;
         const date2 = request.query.to_date;
 
-
-
         
         if(date1 == 0){
             

@@ -1,5 +1,7 @@
 const dataBase = require('../../models/DB');
 
+
+/*********************** Fetching values from users review form and send it to the database ****************/
 exports.postReview = (request, response) => {
 
     const productID = request.body.productID;
