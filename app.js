@@ -1,12 +1,13 @@
 const express = require('express');
 const session = require('express-session');
 const cors = require('cors');
+require('dotenv').config();
 const app = express();
 
 
 /************ session variable setup *************/
 app.use(session({
-    secret: '---pc_gallery---',
+    secret: process.env.Session_secret,
     resave: false,
     saveUninitialized: true,
 }));
@@ -16,7 +17,6 @@ const homeRoutes = require('./routes/Home-Routes/homeBeforeSignInRoutes');
 const logInRoutes = require('./routes/Home-Routes/logInRoutes');
 const adminLogInRoutes = require('./routes/Home-Routes/adminLogInRoute');
 const signInRoutes = require('./routes/Home-Routes/signInRoutes');
-const homeAfterSignIn = require('./routes/Home-Routes/homeAfterSignInRoute');
 const logOutRoutes = require('./routes/Home-Routes/logOutRoutes');
 
 
@@ -85,7 +85,6 @@ app.use(homeRoutes);
 app.use(logInRoutes);
 app.use(adminLogInRoutes);
 app.use(signInRoutes);
-app.use(homeAfterSignIn);
 app.use(logOutRoutes);
 
 
