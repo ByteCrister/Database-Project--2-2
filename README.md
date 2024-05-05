@@ -1,7 +1,7 @@
 # Personal E-Commerce Platform for PC Components
 
 ## You should know!
-<p>This database project serves as an introduction to the server environment and databases for me. I have recently learned some basic Node.js, Express.js, MySql, and EJS components to connect the database with the frontend. Within two weeks, I learned these components and started applying them to this project. Lots of mistakes happened, but more than mistakes, I have gained practical knowledge from this project, which I must apply to my upcoming projects.</p>
+<p>This database project serves as an introduction to the server environment and databases for me. I have recently learned some basic <b>Node.js</b>, <b>Express.js</b>, <b>MySql</b>, and <b>EJS</b> components to connect the database with the frontend. Within two weeks, I learned these components and started applying them to this project. Lots of mistakes happened, but more than mistakes, I have gained practical knowledge from this project, which I must apply to my upcoming projects.</p>
 <br><br>
 
 ## Overview
