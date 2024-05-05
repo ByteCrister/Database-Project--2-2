@@ -6,7 +6,22 @@
 
 ## Overview
 
-<p>This project is a personal e-commerce platform tailored for the sale of PC components. Developed as a group project for North East University Bangladesh, this platform empowers website owners to efficiently manage their PC component inventory while providing a seamless shopping experience for users.</p><br>
+<p>This project is a personal e-commerce platform tailored for the sale of PC components. Developed as a group project for North East University Bangladesh, this platform empowers website owners to efficiently manage their PC component inventory while providing a seamless shopping experience for users.</p><br><br>
+
+## What was my contribution to this poject?
+- Designed the overall structure.(Both frontend and backend)
+- Followed MVC architecture rest of the project.
+- Intigrated User and Admin's authentication
+- Worked on complex SQL commands.
+- Integrated CRUD operations for all products
+- Integrated Admin Dashboard features
+  - Find purchase history by date.
+  - User questions by date.
+  - Product ratings by category and sorting.
+  - Answer user questions.
+  - For each find you can view the product.
+  - Update or Delete any product.
+  - Fully integrated with dataabse.
 
 ## Features
 
