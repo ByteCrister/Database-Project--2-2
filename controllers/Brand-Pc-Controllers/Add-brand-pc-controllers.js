@@ -1,6 +1,5 @@
 const path = require('path');
 const dataBase = require('../../models/DB');
-const fs = require('fs');
 
 exports.getAddBrandPC = (request, response) => {
     if (request.session.isAdminLoggedIn) {
