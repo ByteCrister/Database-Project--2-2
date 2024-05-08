@@ -22,7 +22,8 @@ exports.updateBrandPcControllerGet = (request, response) => {
                         if (err) {
                             response.status(500).send('Internal server error form UpdateBrandPcRouter get/ data');
                         } else {
-                            response.render(path.join(__dirname, '../../public', 'update-brand-pc-information'), { data });
+                            response.render(path.join(__dirname, '../../public', 'Brand-Pc', 'Ejs', 'update-brand-pc-information.ejs'), { data });
+                            
                         }
                     }
                 );

@@ -1,8 +1,8 @@
 const path = require('path');
 const dataBase = require('../../models/DB');
 
-const { getQuestion } = require('../../controllers/Desktop-View-Controllers/Desktop-Question');
-const { getReview } = require('../../controllers/Desktop-View-Controllers/Desktop-Review');
+const { getQuestion } = require('../../controllers/Desktop-View-Controllers/Admin/Questions/Desktop-Question');
+const { getReview } = require('../../controllers/Desktop-View-Controllers/Admin/Review/Desktop-Review');
 
 const DesktopViewQuestionRouter = require('express').Router();
 

@@ -1,4 +1,4 @@
-const { getAdminQuestion, postAdminQuestion } = require('../../controllers/Desktop-View-Controllers/Admin-Question-Replay-Controller');
+const { getAdminQuestion, postAdminQuestion } = require('../../controllers/Desktop-View-Controllers/Admin/Questions/Admin-Question-Replay-Controller');
 
 const AdminQuestion = require('express').Router();
 

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pc Gallery || Ram Cart View's</title>
+    <link rel="stylesheet" href="/Ram/Style/User.Cart.View.css">
+    <link rel="stylesheet" href="/Navbar/nav-bar.css">
+</head>
+
+<body>
+
+    <%- include("../../Navbar/nav-bar.ejs") %>
+
+        <div class="full-outer">
+            <div class="left-side">
+                <!-- Sorting options on the left side -->
+                <div class="sorting-container">
+                    <div class="s-range">
+                        <label for="priceRange">Price Range:</label>
+                        <input type="range" id="priceRange" name="priceRange" min="<%= low %>" max="<%= high %>" <% if
+                            (priceRange=='0' ) { %>
+                        value="<%= high %>"
+                            <% } else { %>
+                                value="<%= priceRange %>"
+                                    <% } %>
+                                        />
+
+                                        <div id="rangeValue">
+                                        </div>
+                    </div>
+                    <div class="s-brand">
+                        <label for="sortBrand">Sort by Capacity:</label>
+                        <select id="sortBrand">
+                            <option value="0" <% if (size=='0' ) { %>
+                                selected="selected" <% } %>></option>
+                            <option value="2" <% if (size=="2" ) { %>
+                                selected="selected" <% } %>>2GB</option>
+                            <option value="8" <% if (size=="8" ) { %>
+                                selected="selected" <% } %>>8GB</option>
+                            <option value="12" <% if (size=="12" ) { %>
+                                selected="selected" <% } %>>12GB</option>
+                        </select>
+                    </div>
+
+                    <div class="s-model">
+                        <label for="sortModel">Sort by Model:</label>
+                        <select id="sortModel">
+                            <option value="0" <% if (model=='0' ) { %>
+                                selected="selected" <% } %>></option>
+                            <option value="Colorful" <% if (model=="Colorful" ) { %>
+                                selected="selected" <% } %>>Colorful
+                                    Pentium</option>
+                            <option value="WOLFRINE " <% if (model=="WOLFRINE " ) { %>
+                                selected="selected" <% } %>>WOLFRINE
+                            </option>
+                            <option value="Adata " <% if (model=="Adata " ) { %>
+                                selected="selected" <% } %>>Adata </option>
+                            <option value="XLR8" <% if (model=="XLR8" ) { %>
+                                selected="selected" <% } %>>XLR8</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="right-side">
+                <div class="head">
+                    <div class="desktop"><span>Desktop</span></div>
+                    <div class="sort-by">
+                        <select id="sortByPrice">
+                            <option value="0" <% if (highOrLow=="0" ) { %>
+                                selected="selected" <% } %>>Default
+                            </option>
+                            <option value="High-to-Low" <% if (highOrLow=="High-to-Low" ) { %>
+                                selected="selected" <% } %>>High to
+                                    Low</option>
+                            <option value="Low-to-High" <% if (highOrLow=="Low-to-High" ) { %>
+                                selected="selected" <% } %>>Low to
+                                    High</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="pcs-main-container">
+                    <% RamList.forEach(ram=> { %>
+                        <div class="pc-id-<%= ram.ram_id %>  pc-style">
+                            <span class="pc-id" style="display: none;">
+                                <%= ram.ram_id %>
+                            </span>
+                            <div class="upper-div">
+                                <% if(ram.cut_price && ram.cut_price.length> 0) { %>
+                                    <% const cutPrice=parseFloat(ram.cut_price.replace(',', '' )); %>
+                                        <% const price=parseFloat(ram.price.replace(',', '' )); %>
+                                            <% const saveAmount=cutPrice - price; %>
+                                                <div class="save-text">
+                                                    <span>Save: <%= saveAmount.toLocaleString('en-US', {
+                                                            style: 'currency' , currency: 'BDT' , minimumFractionDigits:
+                                                            0, maximumFractionDigits: 0 }) %></span>
+                                                </div>
+                                                <% } %>
+                                                    <div class="images">
+                                                        <div class="product-image"
+                                                            style="background-image: url('data:image;base64, <%= ram.product_image_path %>')">
+                                                        </div>
+                                                    </div>
+                            </div>
+
+                            <div class="lower-div">
+                                <div class="pc-name">
+                                    <a href="/Desktop/Ram_id-<%= ram.ram_id %>">
+                                        <%= ram.brand %>
+                                            <%= ram.capacity %>
+                                                <%= ram.model %> Desktop Ram
+                                    </a>
+                                    <div class="list">
+                                        <ul>
+                                            <li>Type : <%= ram.type %>
+                                            </li>
+                                            <li>Capacity : <%= ram.capacity %>
+                                            </li>
+                                            <li>Frequency : <%= ram.frequency %>
+                                            </li>
+                                            <li>Operation Voltage : <%= ram.operatingVoltage %>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <hr class="line" />
+                                </div>
+
+                                <div class="price-and-buttons">
+                                    <div class="pc-price">
+                                        <div class="final-price">
+                                            <% const formattedPrice=parseFloat(ram.price.replace(/[^0-9.-]+/g,"")); %>
+                                                <%= formattedPrice.toLocaleString('en-US', { style: 'currency' ,
+                                                    currency: 'BDT' , minimumFractionDigits: 0, maximumFractionDigits: 0
+                                                    }) %>
+                                        </div>
+
+                                        <% if(ram.cut_price && ram.cut_price.length>
+                                            0) { %>
+                                            <% const
+                                                formattedCutPrice=parseFloat(ram.cut_price.replace(/[^0-9.-]+/g,"")); %>
+                                                <div class="cut-price">
+                                                    <%= formattedCutPrice.toLocaleString('en-US', { style: 'currency' ,
+                                                        currency: 'BDT' , minimumFractionDigits: 0,
+                                                        maximumFractionDigits: 0 }) %>
+                                                </div>
+                                                <% } %>
+                                    </div>
+
+                                    <div class="buy-now-button">
+                                        <!-- Add shopping emoji -->
+
+                                        <span class="shopping-emoji">🛒</span>
+                                        <a href="/Buy-Now/ram-<%= ram.ram_id %>">Buy
+                                            Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <% }); %>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            const rangeInput = document.getElementById("priceRange");
+            const rangeValueDisplay = document.getElementById("rangeValue");
+            const sortBrand = document.getElementById("sortBrand");
+            const sortModel = document.getElementById("sortModel");
+            const sortByPrice = document.getElementById("sortByPrice");
+
+            function constructURL() {
+                const pcType = "<%= encodeURIComponent(RamBrand) %>";
+                const priceRange = rangeInput.value;
+                const brand = sortBrand.value;
+                const model = sortModel.value;
+                const highOrLow = sortByPrice.value;
+
+                const url = `/Desktop/ram-${encodeURIComponent(pcType)}-${encodeURIComponent(priceRange)}-${encodeURIComponent(brand)}-${encodeURIComponent(model)}-${encodeURIComponent(highOrLow)}`;
+                window.location.href = url;
+            }
+
+            rangeInput.addEventListener("input", function () {
+                rangeValueDisplay.textContent = rangeInput.value;
+                constructURL();
+            });
+
+            sortBrand.addEventListener("change", function () {
+                constructURL();
+            });
+
+            sortModel.addEventListener("change", function () {
+                constructURL();
+            });
+
+            sortByPrice.addEventListener("change", function () {
+                constructURL();
+            });
+
+            // Set initial value for range display
+            rangeValueDisplay.textContent = rangeInput.value;
+        </script>
+
+</body>
+
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pc Gallery || Graphics Card</title>
+    <link rel="stylesheet" href="/Graphics-Card/Style/User.Cart.View.css">
+    <link rel="stylesheet" href="/Navbar/nav-bar.css">
+</head>
+
+<body>
+    <%- include("../../Navbar/nav-bar.ejs") %>
+
+
+        <div class="full-outer">
+            <div class="left-side">
+                <!-- Sorting options on the left side -->
+                <div class="sorting-container">
+                    <div class="s-range">
+                        <label for="priceRange">Price Range:</label>
+                        <input type="range" id="priceRange" name="priceRange" min="<%= low %>" max="<%= high %>" <% if
+                            (priceRange=='0' ) { %>
+                        value="<%= high %>"
+                            <% } else { %>
+                                value="<%= priceRange %>"
+                                    <% } %>
+                                        />
+
+                                        <div id="rangeValue">
+                                        </div>
+                    </div>
+                    <div class="s-brand">
+                        <label for="sortBrand">Sort by Size:</label>
+                        <select id="sortBrand">
+                            <option value="0" <% if (size=='0' ) { %>
+                                selected="selected" <% } %>></option>
+                            <option value="2" <% if (size=="2" ) { %>
+                                selected="selected" <% } %>>2GB</option>
+                            <option value="8" <% if (size=="8" ) { %>
+                                selected="selected" <% } %>>8GB</option>
+                            <option value="12" <% if (size=="12" ) { %>
+                                selected="selected" <% } %>>12GB</option>
+                        </select>
+                    </div>
+
+                    <div class="s-model">
+                        <label for="sortModel">Sort by Model:</label>
+                        <select id="sortModel">
+                            <option value="0" <% if (model=='0' ) { %>
+                                selected="selected" <% } %>></option>
+                            <option value="GeForce" <% if (model=="GeForce" ) { %>
+                                selected="selected" <% } %>>GeForce
+                                    Pentium</option>
+                            <option value="Pulse AMD" <% if (model=="Pulse AMD" ) { %>
+                                selected="selected" <% } %>>Pulse AMD
+                            </option>
+                            <option value="ASUS" <% if (model=="ASUS" ) { %>
+                                selected="selected" <% } %>>ASUS</option>
+                            <option value="RX" <% if (model=="RX" ) { %>
+                                selected="selected" <% } %>>RX</option>
+                            <option value="Quadro " <% if (model=="Quadro " ) { %>
+                                selected="selected" <% } %>>Quadro</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="right-side">
+                <div class="head">
+                    <div class="desktop"><span>Desktop</span></div>
+                    <div class="sort-by">
+                        <select id="sortByPrice">
+                            <option value="0" <% if (highOrLow=="0" ) { %> selected="selected" <% } %>>Default
+                            </option>
+                            <option value="High-to-Low" <% if (highOrLow=="High-to-Low" ) { %> selected="selected" <% }
+                                    %>>High to
+                                    Low</option>
+                            <option value="Low-to-High" <% if (highOrLow=="Low-to-High" ) { %> selected="selected" <% }
+                                    %>>Low to
+                                    High</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="pcs-main-container">
+                    <!-- Loop through each PC in the pcList -->
+                    <% graphicsCardList.forEach(card=> { %>
+                        <div class="pc-id-<%= card.gp_card_No  %> pc-style">
+                            <!-- Display PC ID -->
+                            <span class="pc-id" style="display: none;">
+                                <%= card.gp_card_No %>
+                            </span>
+
+                            <div class="upper-div">
+                                <!-- Display save amount if applicable -->
+                                <% if(card.cut_price && card.cut_price.length> 0) { %>
+                                    <% const cutPrice=parseFloat(card.cut_price.replace(',', '' )); %>
+                                        <% const price=parseFloat(card.final_price.replace(',', '' )); %>
+                                            <% const saveAmount=cutPrice - price; %>
+                                                <div class="save-text">
+                                                    <span>Save: <%= saveAmount.toLocaleString('en-US', {
+                                                            style: 'currency' , currency: 'BDT' , minimumFractionDigits:
+                                                            0, maximumFractionDigits: 0 }) %></span>
+                                                </div>
+                                                <% } %>
+
+                                                    <!-- Display PC image -->
+                                                    <div class="images">
+                                                        <div class="product-image"
+                                                            style="background-image: url('data:image;base64,<%= card.product_image_path %>')">
+                                                        </div>
+                                                    </div>
+                            </div>
+
+                            <div class="lower-div">
+                                <!-- Display PC name -->
+                                <div class="pc-name">
+                                    <a href="/Desktop/Graphics-Card_id-<%= card.gp_card_No  %>">
+                                        <%= card.model %>
+                                    </a>
+                                    <!-- Add list of items -->
+                                    <div class="list">
+                                        <ul>
+                                            <li>Type : <%= card.type %>
+                                            </li>
+                                            <li>Resolution : <%= card.resolution %>
+                                            </li>
+                                            <li>Stream Processor : <%= card.stream_processors %>
+                                            </li>
+                                            <li>Warranty : <%= card.warranty %>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <hr class="line" />
+                                </div>
+
+                                <div class="price-and-buttons">
+                                    <!-- Display PC price -->
+                                    <div class="pc-price">
+                                        <div class="final-price">
+                                            <% const
+                                                formattedPrice=parseFloat(card.final_price.replace(/[^0-9.-]+/g,"")); %>
+                                                <%= formattedPrice.toLocaleString('en-US', { style: 'currency' ,
+                                                    currency: 'BDT' , minimumFractionDigits: 0, maximumFractionDigits: 0
+                                                    }) %>
+                                        </div>
+
+                                        <!-- Display cut price if applicable -->
+                                        <% if(card.cut_price && card.cut_price.length> 0) { %>
+                                            <% const
+                                                formattedCutPrice=parseFloat(card.cut_price.replace(/[^0-9.-]+/g,""));
+                                                %>
+                                                <div class="cut-price">
+                                                    <%= formattedCutPrice.toLocaleString('en-US', { style: 'currency' ,
+                                                        currency: 'BDT' , minimumFractionDigits: 0,
+                                                        maximumFractionDigits: 0 }) %>
+                                                </div>
+                                                <% } %>
+                                    </div>
+
+                                    <div class="buy-now-button">
+                                        <!-- Add shopping emoji -->
+
+                                        <span class="shopping-emoji">🛒</span>
+                                        <a href="/Buy-Now/graphics-card-<%= card.gp_card_No %>">Buy Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <% }); %>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            const rangeInput = document.getElementById("priceRange");
+            const rangeValueDisplay = document.getElementById("rangeValue");
+            const sortBrand = document.getElementById("sortBrand");
+            const sortModel = document.getElementById("sortModel");
+            const sortByPrice = document.getElementById("sortByPrice");
+
+            function constructURL() {
+                const pcType = "<%= encodeURIComponent(GraphicsCardType) %>";
+                const priceRange = rangeInput.value;
+                const brand = sortBrand.value;
+                const model = sortModel.value;
+                const highOrLow = sortByPrice.value;
+
+                const url = `/Desktop/graphics-card-${encodeURIComponent(pcType)}-${encodeURIComponent(priceRange)}-${encodeURIComponent(brand)}-${encodeURIComponent(model)}-${encodeURIComponent(highOrLow)}`;
+                window.location.href = url;
+            }
+
+            rangeInput.addEventListener("input", function () {
+                rangeValueDisplay.textContent = rangeInput.value;
+                constructURL();
+            });
+
+            sortBrand.addEventListener("change", function () {
+                constructURL();
+            });
+
+            sortModel.addEventListener("change", function () {
+                constructURL();
+            });
+
+            sortByPrice.addEventListener("change", function () {
+                constructURL();
+            });
+
+            // Set initial value for range display
+            rangeValueDisplay.textContent = rangeInput.value;
+        </script>
+
+</body>
+
+</html>

@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pc Gallery || <%= graphicsCardData[0].brand %>
+        <%= graphicsCardData[0].model %>
+            <%= graphicsCardData[0].type %>
+                <%= graphicsCardData[0].size %> Desktop Graphics Card</title>
+                <link rel="stylesheet" href="/Graphics-Card/Style/Desktop-View.css">
+
+                <link rel="stylesheet" href="/Navbar/nav-bar.css">
+                <link rel="stylesheet" href="/Footer/footer.css">
+                
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <%- include("../../Navbar/nav-bar.ejs") %>
+
+    <div class="main-view">
+        <div class="upper-content">
+
+            <div class="image-name-dives-features-view-mores">
+                <div class="ram-image">
+                    <div class="product-image"
+                        style="background-image: url('data:image;base64,<%= graphicsCardData[0].product_image_path %>')">
+                    </div>
+                </div>
+
+                <div class="name-dives-features-view-mores">
+                    <div class="name">
+                        <h2>
+                            <%= graphicsCardData[0].brand %>
+                                <%= graphicsCardData[0].model %>
+                                    <%= graphicsCardData[0].type %>
+                                        <%= graphicsCardData[0].size %> Desktop Graphics Card</h3>
+                    </div>
+
+                    <% const formattedPrice=parseFloat(graphicsCardData[0].final_price.replace(/[^0-9.-]+/g,"")); %>
+                        <div class="prices-and-brand">
+                            <div class="price"><span></span>Price: <span class="bold">
+                                    <%= formattedPrice.toLocaleString('en-US', { style: 'currency' , currency: 'BTD' ,
+                                        minimumFractionDigits: 0, maximumFractionDigits: 0 }) %>৳
+                                </span></div>
+
+                            <% const
+                                formattedCutPrice=parseFloat(graphicsCardData[0].cut_price.replace(/[^0-9.-]+/g,"")); %>
+                                <div class="regular-price"><span>Regular Price:
+                                        <span class="bold">
+                                            <%= formattedCutPrice.toLocaleString('en-US', { style: 'currency' ,
+                                                currency: 'BDT' , minimumFractionDigits: 0, maximumFractionDigits: 0 })
+                                                %>৳
+                                        </span></span></div>
+                                <div class="brand"><span>Brand: <span class="bold">
+                                            <%= graphicsCardData[0].brand %>
+                                        </span></span></div>
+                        </div>
+                        <div class="key-features">
+
+                            <ul style="font-family:'Times New Roman', Times, serif;">
+                                <li>
+                                    <h3 style="font-family: 'Times New Roman', Times, serif;">Key
+                                        Features</h3>
+                                </li>
+                                <li>Model: <%= graphicsCardData[0].model %>
+                                </li>
+                                <li>Type: <%= graphicsCardData[0].type %>
+                                </li>
+                                <li>Capacity: <%= graphicsCardData[0].size %>
+                                </li>
+                                <li>
+                                    <%= graphicsCardData[0].resolution %>
+                                </li>
+                                <li>
+                                    <%= graphicsCardData[0].bus_type %>
+                                </li>
+                                <li>
+                                    <h4><a href="#four-div" style="color: rgb(218, 77, 52);">View
+                                            More Info</a></h4>
+                                </li>
+                            </ul>
+                        </div>
+                </div>
+            </div>
+
+            <div class="buy-now-option">
+                <div class="quantity">
+                    <div class="minus-button" onclick="minus()">-</div>
+                    <div class="amount">1</div>
+                    <div class="plus-button" onclick="plus()">+</div>
+                </div>
+                <div class="Buy-now-Button">
+                    <a href="/Desktop/Buy-Now?category=Graphics-Card&productID=<%= graphicsCardData[0].gp_card_No  %>">Buy
+                        Now</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="four-div" id="four-div">
+            <div class="specification_"><a href="#specification" class="div1">Specification</a></div>
+            <div class="description"><a href="#description" class="div">Description</a></div>
+            <div class="question"><a href="#questions" class="div">Question(<%= totalQuestions[0].ans %>)</a></div>
+            <div class="reviews"><a href="#reviews" class="div">Reviews(<%= reviewData.length %>)</a></div>
+        </div>
+        <div class="specification" id="specification">
+            <div class="inner-specification">
+                <div class="specification-head">
+                    <h2>Specification</h2>
+                </div>
+                <div class="key-features">
+                    <div class="key-features-head features-head">
+                        <h4>Video Memory Specifications</h4>
+                    </div>
+                    <div class="type display-flex">
+                        <h4 class="grey-color font-set">Type</h4>
+                        <h4 class="normal-color">
+                            <%= graphicsCardData[0].type %>
+                                <br>
+                        </h4>
+                    </div>
+                    <hr class="hr">
+
+                    <div class="capacity display-flex">
+                        <h4 class="grey-color font-set">Size</h4>
+                        <h4 class="normal-color">
+                            <%= graphicsCardData[0].size %>
+                                <br>
+                        </h4>
+                    </div>
+                    <hr class="hr">
+
+                    <div class="frequency display-flex">
+                        <h4 class="grey-color font-set">Resolution</h4>
+                        <h4 class="normal-color">
+                            <%= graphicsCardData[0].resolution %>
+                                <br>
+                        </h4>
+                    </div>
+                    <hr class="hr">
+
+                    <% if(graphicsCardData[0].boost_clock && graphicsCardData[0].boost_clock !=='N/A' ) { %>
+
+                        <div class="operating-voltage display-flex">
+                            <h4 class="grey-color font-set">Boost Clock</h4>
+                            <h4 class="normal-color">
+                                <%= graphicsCardData[0].boost_clock %>
+                                    <br>
+                            </h4>
+                        </div>
+                        <hr class="hr">
+                        <% }%>
+
+
+                            <% if(graphicsCardData[0].game_clock && graphicsCardData[0].game_clock !=='N/A' ) { %>
+
+                                <div class="latency display-flex">
+                                    <h4 class="grey-color font-set">Game Clock</h4>
+                                    <h4 class="normal-color">
+                                        <%= graphicsCardData[0].game_clock %>
+                                            <br>
+                                    </h4>
+                                </div>
+                                <hr class="hr">
+                                <%}%>
+
+
+                                    <% if(graphicsCardData[0].memory_clock && graphicsCardData[0].memory_clock !=='N/A'
+                                        ) { %>
+
+                                        <div class="latency display-flex">
+                                            <h4 class="grey-color font-set">Memory Clock</h4>
+                                            <h4 class="normal-color">
+                                                <%= graphicsCardData[0].memory_clock %>
+                                                    <br>
+                                            </h4>
+                                        </div>
+                                        <hr class="hr">
+                                        <%}%>
+
+                                            <% if(graphicsCardData[0].bus_type && graphicsCardData[0].bus_type !=='N/A'
+                                                ) { %>
+
+                                                <div class="latency display-flex">
+                                                    <h4 class="grey-color font-set">Bus Type</h4>
+                                                    <h4 class="normal-color">
+                                                        <%= graphicsCardData[0].bus_type %>
+                                                            <br>
+                                                    </h4>
+                                                </div>
+                                                <hr class="hr">
+                                                <%}%>
+
+                                                    <% if(graphicsCardData[0].memory_interface &&
+                                                        graphicsCardData[0].memory_interface !=='N/A' ) { %>
+
+                                                        <div class="latency display-flex">
+                                                            <h4 class="grey-color font-set">Memory Interface</h4>
+                                                            <h4 class="normal-color">
+                                                                <%= graphicsCardData[0].memory_interface %>
+                                                                    <br>
+                                                            </h4>
+                                                        </div>
+                                                        <hr class="hr">
+                                                        <%}%>
+
+                                                            <% if(graphicsCardData[0].stream_processors &&
+                                                                graphicsCardData[0].stream_processors !=='N/A' ) { %>
+                                                                <div class="latency display-flex">
+                                                                    <h4 class="grey-color font-set">Stream Processor
+                                                                    </h4>
+                                                                    <h4 class="normal-color">
+                                                                        <%= graphicsCardData[0].stream_processors %>
+                                                                            <br>
+                                                                    </h4>
+                                                                </div>
+                                                                <hr class="hr">
+
+                                                                <%}%>
+
+                </div>
+
+
+                <div class="warranty-information">
+                    <div class="warranty-information-head features-head">
+                        <h3>Interface</h3>
+                    </div>
+
+                    <div class="warranty display-flex">
+                        <h4 class="grey-color font-set">Display Port</h4>
+                        <h4 class="normal-color">
+                            <%= graphicsCardData[0].display_port %>
+                        </h4>
+                    </div>
+                    <hr>
+
+                    <% if(graphicsCardData[0].hdmi && graphicsCardData[0].hdmi !=='N/A' ) { %>
+
+                        <div class="warranty display-flex">
+                            <h4 class="grey-color font-set">HDMI</h4>
+                            <h4 class="normal-color">
+                                <%= graphicsCardData[0].hdmi %>
+                            </h4>
+                        </div>
+                        <%}%>
+                            <hr>
+
+                </div>
+
+                <div class="warranty-information">
+                    <div class="warranty-information-head features-head">
+                        <h3>Power Specifications</h3>
+                    </div>
+                    <div class="warranty display-flex">
+                        <h4 class="grey-color font-set">Connectors</h4>
+                        <h4 class="normal-color">
+                            <%= graphicsCardData[0].connectors %>
+                        </h4>
+                    </div>
+                    <hr>
+
+                    <% if(graphicsCardData[0].recommended_psu && graphicsCardData[0].recommended_psu !=='N/A' ) { %>
+
+                        <div class="warranty display-flex">
+                            <h4 class="grey-color font-set">Recommended PSU</h4>
+                            <h4 class="normal-color">
+                                <%= graphicsCardData[0].recommended_psu %>
+                            </h4>
+                        </div>
+                        <%}%>
+                            <hr>
+
+                            <% if(graphicsCardData[0].boost_clock && graphicsCardData[0].boost_clock !=='N/A' ) { %>
+
+                                <div class="warranty display-flex">
+                                    <h4 class="grey-color font-set">Consumption</h4>
+                                    <h4 class="normal-color">
+                                        <%= graphicsCardData[0].consumption %>
+                                    </h4>
+                                </div>
+                                <hr>
+                                <%}%>
+
+
+                </div>
+
+                <div class="warranty-information">
+                    <div class="warranty-information-head features-head">
+                        <h3>Application Programming Interfaces</h3>
+                    </div>
+
+                    <% if(graphicsCardData[0].multi_display && graphicsCardData[0].multi_display !=='N/A' ) { %>
+
+                        <div class="warranty display-flex">
+                            <h4 class="grey-color font-set">Multi-Display</h4>
+                            <h4 class="normal-color">
+                                <%= graphicsCardData[0].multi_display %>
+                            </h4>
+                        </div>
+                        <hr>
+                        <%}%>
+
+                            <div class="warranty display-flex">
+                                <h4 class="grey-color font-set">DirectX</h4>
+                                <h4 class="normal-color">
+                                    <%= graphicsCardData[0].directX %>
+                                </h4>
+                            </div>
+                            <hr>
+
+
+                </div>
+
+
+                <% if(graphicsCardData[0].dimensions && graphicsCardData[0].dimensions !=='N/A' ) { %>
+
+                    <div class="warranty-information">
+                        <div class="warranty-information-head features-head">
+                            <h3>Physical Specifications</h3>
+                        </div>
+                        <div class="warranty display-flex">
+                            <h4 class="grey-color font-set">Dimensions</h4>
+                            <h4 class="normal-color">
+                                <%= graphicsCardData[0].dimensions %>
+                            </h4>
+                        </div>
+                    </div>
+                    <%}%>
+
+                        <!-- <% if(graphicsCardData[0].boost_clock && graphicsCardData[0].boost_clock !== 'N/A') { %>
+                             <%}%> -->
+
+                        <% if(graphicsCardData[0].others && graphicsCardData[0].others !=='N/A' ) { %>
+
+                            <div class="warranty-information">
+                                <div class="warranty-information-head features-head">
+                                    <h3>Others</h3>
+                                </div>
+                                <div class="warranty display-flex">
+                                    <h4 class="grey-color font-set">Others</h4>
+                                    <h4 class="normal-color">
+                                        <%= graphicsCardData[0].others %>
+                                    </h4>
+                                </div>
+                            </div>
+                            <%}%>
+
+                                <div class="warranty-information">
+                                    <div class="warranty-information-head features-head">
+                                        <h3>Warranty Information</h3>
+                                    </div>
+                                    <div class="warranty display-flex">
+                                        <h4 class="grey-color font-set">Warranty</h4>
+                                        <h4 class="normal-color">
+                                            <%= graphicsCardData[0].warranty %>
+                                        </h4>
+                                    </div>
+                                </div>
+            </div>
+        </div>
+        <div class="description" id="description">
+            <div class="description-head">
+                <h2>Description</h2>
+            </div>
+            <div class="product-model-name">
+                <h2>
+                    <%= graphicsCardData[0].brand %>
+                        <%= graphicsCardData[0].model %>
+                            <%= graphicsCardData[0].type %>
+                                <%= graphicsCardData[0].size %> Pc
+                </h2>
+            </div>
+            <div class="main-description">
+                <h4>
+                    <%= graphicsCardData[0].description %>
+                </h4>
+            </div>
+        </div>
+
+        <!--------------------------------- Questions -------------------------------- -->
+        <div class="questions" id="questions">
+            <div class="inner-number-text-button">
+                <div class="number-text-button">
+                    <div class="number-and-text">
+                        <div class="number-of-questions" style="border-bottom: 10px; margin-bottom: 10px;">
+                            <h3>Questions (<%= totalQuestions[0].ans %>)</h3>
+                        </div>
+                        <div class="question-tests">
+                            <h5 class="normal-color">Have question about
+                                this product? Get specific details about
+                                this
+                                product from expert.
+                            </h5>
+                        </div>
+                    </div>
+                    <div class="ask-button ">
+                        <form action="/Ask-Question">
+                            <input type="text" name="productName" id="productName"
+                                value="<%= graphicsCardData[0].brand %> <%= graphicsCardData[0].model %> <%= graphicsCardData[0].type %> <%= graphicsCardData[0].size %>"
+                                hidden>
+                            <input type="text" name="productId" id="productId"
+                                value="<%= graphicsCardData[0].gp_card_No   %>" hidden>
+                            <input type="text" name="category" id="category" value="Graphics-Card" hidden>
+                            <button type="submit" class="ask-and-review-button">Ask
+                                Question</button>
+                        </form>
+                    </div>
+                </div>
+                <hr class="hr">
+
+                <% if(totalQuestions[0].ans==0) { %>
+                    <div class="empty-div">
+                        <div class="message-logo" style="margin: 20px 0px 20px 0px;"><span class="message-logo"
+                                style="font-size: 35px; color:aqua">&#128172;</span>
+                        </div>
+                        <div class="message-text">
+                            <h5 class="normal-color">There are no questions
+                                asked yet. Be the first one to ask a question.
+                            </h5>
+                        </div>
+                    </div>
+
+                    <% } else { %>
+
+                        <div class="questions-div">
+
+                            <% questionData.forEach( question=>{ %>
+
+                                <% if(question.answer && question.answer.length !==0){ %>
+
+                                    <ul>
+                                        <li style="margin: 5px 0px 5px 0px;">
+                                            <div class="name-date">
+                                                <p class="name-date"><span
+                                                        style="font-size: smaller; font-weight:500"><span class="name"
+                                                            style="color: rgb(131, 131, 243);">
+                                                            <%= question.f_name %>
+                                                        </span> <span class="date" style="color: rgb(149, 158, 165);">
+                                                            on <%= question.question_date %>
+                                                        </span></span></p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="q"><span
+                                                    style="font-family: 'Times New Roman', Times, serif; font-weight:bold">Q:
+                                                    <%= question.question %>
+                                                </span></div>
+                                        </li>
+                                        <li>
+                                            <div class="a"><span
+                                                    style="font-family: 'Times New Roman', Times, serif;">A:
+                                                    <%= question.answer %>
+                                                </span></div>
+                                        </li>
+                                        <hr class="li-hr" style="margin-top:10px">
+                                    </ul>
+
+                                    <% } %>
+
+                                        <% } )%>
+                        </div>
+
+                        <%}%>
+            </div>
+        </div>
+
+        <!--------------------------------- Reviews -------------------------->
+        <div class="reviews" id="reviews">
+            <div class="number-text-button">
+                <div class="number-and-text">
+                    <div class="number-of-questions" style="border-bottom: 10px; margin-bottom: 10px;">
+                        <h3>Reviews (<%= reviewData.length %>)</h3>
+                    </div>
+                    <div class="question-tests">
+                        <h5 class="normal-color">Get specific details about
+                            this product from customers who own it.</h5>
+                    </div>
+                </div>
+                <div class="review-button ">
+                    <form action="/Review">
+                        <input type="text" name="productName" id="productName"
+                            value="<%= graphicsCardData[0].brand %> <%= graphicsCardData[0].model %> <%= graphicsCardData[0].type %> <%= graphicsCardData[0].size %>"
+                            hidden>
+                        <input type="text" name="productId" id="productId"
+                            value="<%= graphicsCardData[0].gp_card_No  %>" hidden>
+                        <input type="text" name="category" id="category" value="Graphics-Card" hidden>
+                        <button type="submit" class="ask-and-review-button">Write a
+                            Review</button>
+                    </form>
+                </div>
+            </div>
+            <div class="reviev-rating" style="text-align: center; margin:10px 0px 10px 0px; display:none"><span
+                    style="font-family: 'Times New Roman', Times, serif; font-size:25px; color:rgb(77, 65, 65)">4.5
+                    out
+                    of 5</span></div>
+            <hr class="hr">
+
+            <% if(reviewData.length==0){ %>
+
+                <div class="empty-div">
+                    <div class="message-logo" style="margin:20px 0px 20px 0px"><span class="document-logo"
+                            style="font-size: 35px; color:aqua;">&#128196;</span>
+                    </div>
+                    <div class="message-text">
+                        <h5 class="normal-color">This product has no reviews
+                            yet. Be the first one to write a review.
+                        </h5>
+                    </div>
+                </div>
+
+                <%} else{ %>
+
+                    <% reviewData.forEach( review=>{ %>
+
+                        <div class="user-reviews">
+                            <ul>
+                                <li>
+                                    <div class="starts"
+                                        style="font-size: larger; color:rgb(107, 105, 105); margin-bottom:10px">
+                                        <% for(let i=0; i< review.star; i++){ %>
+                                            <span>&#x2B50;</span>
+                                            <% } %>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="review" style="font-size: 15px;">
+                                        <%= review.review %>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="from"
+                                        style="margin-top: 10px; font-size:12px; color:rgb(136, 140, 143)"><span>By
+                                            <span style="color: rgb(67, 67, 202);">
+                                                <%= review.f_name %>
+                                                    <%= review.l_name %>
+                                            </span> on <%= review.date %></span></div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <% }) %>
+
+                            <% } %>
+
+        </div>
+    </div>
+    <%- include ("../../Footer/footer.ejs") %>
+
+    <script>
+        function minus() {
+            var amount = document.querySelector('.amount');
+            var value = parseInt(amount.innerText);
+            if (value > 1) {
+                amount.innerText = value - 1;
+            }
+        }
+
+        function plus() {
+            var amount = document.querySelector('.amount');
+            var value = parseInt(amount.innerText);
+            amount.innerText = value + 1;
+        }
+
+    </script>
+</body>
+
+</html>

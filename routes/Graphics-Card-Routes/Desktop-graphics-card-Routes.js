@@ -3,5 +3,5 @@ const { getDesktopGraphicsCard } = require('../../controllers/Graphics-Card-Cont
 const DesktopGraphicsCardRouter = require('express').Router();
 
 
-DesktopGraphicsCardRouter.get('/Desktop/graphics-card-:GraphicsCardType', getDesktopGraphicsCard);
+DesktopGraphicsCardRouter.get('/Desktop/graphics-card-:GraphicsCardType-:priceRange-:size-:model-:highOrLow*', getDesktopGraphicsCard);
 module.exports = DesktopGraphicsCardRouter;

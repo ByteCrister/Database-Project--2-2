@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pc Gallery || Total information's</title>
+        <link rel="stylesheet" href="/Home.Admin/Home/Admin-Home-View.css">
+    </head>
+
+    <body>
+        <div class="main">
+            <h1 style="text-align: center; color:rgb(94, 144, 189)">TOTAL</h1>
+            <div class="div-1">
+                <div class="users">
+                    <h2>Users</h2>
+                    <h3><%=data3[0].totalUsers%></h3>
+                </div>
+                <div class="Purchases">
+                    <h2>Purchases</h2>
+                    <h3><%=data2[0].total%>৳</h3>
+                </div>
+            </div>
+            <div class="div-2" style="margin-top: 15px;">
+                <div class="Products">
+                    <h2>Products</h2>
+                    <h3><%=data1[0].TotalProducts%></h3>
+                </div>
+                <div class="Reviews">
+                    <h2>Reviews</h2>
+                    <h3><%=data5[0].totalReviews%></h3>
+                </div>
+                <div class="Questions">
+                    <h2>Questions</h2>
+                    <h3><%=data4[0].totalQuestions%></h3>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>

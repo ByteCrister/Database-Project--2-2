@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pc Gallery || Pc Information</title>
+  <link rel="stylesheet" href="/Pc/Style/User.Cart.View.css" />
+  <link rel="stylesheet" href="/Navbar/nav-bar.css" />
+</head>
+
+<body>
+  <%- include("../../Navbar/nav-bar.ejs") %>
+
+    <div class="full-outer">
+      <div class="left-side">
+        <!-- Sorting options on the left side -->
+        <div class="sorting-container">
+          <div class="s-range">
+            <label for="priceRange">Price Range:</label>
+            <input type="range" id="priceRange" name="priceRange" min="<%= low %>" max="<%= high %>" <% if
+              (priceRange=='0' ) { %>
+            value="<%= high %>"
+              <% } else { %>
+                value="<%= priceRange %>"
+                  <% } %>
+                    />
+
+                    <div id="rangeValue">
+                    </div>
+          </div>
+          <div class="s-brand">
+            <label for="sortBrand">Sort by Brand:</label>
+            <select id="sortBrand">
+              <option value="0" <% if (brand=='0' ) { %>
+                selected="selected" <% } %>></option>
+              <option value="INTEL" <% if (brand=="INTEL" ) { %>
+                selected="selected" <% } %>>INTEL</option>
+              <option value="AMD Ryzen" <% if (brand=="AMD Ryzen" ) { %>
+                selected="selected" <% } %>>AMD Ryzen</option>
+              <option value="Rayzen" <% if (brand=="Rayzen" ) { %>
+                selected="selected" <% } %>>Rayzen</option>
+            </select>
+          </div>
+
+          <div class="s-model">
+            <label for="sortModel">Sort by Model:</label>
+            <select id="sortModel">
+              <option value="0" <% if (model=='0' ) { %>
+                selected="selected" <% } %>></option>
+              <option value="Intel Pentium" <% if (model=="Intel Pentium" ) { %>
+                selected="selected" <% } %>>Intel
+                  Pentium</option>
+              <option value="AMD Athlon" <% if (model=="AMD Athlon" ) { %>
+                selected="selected" <% } %>>AMD Athlon
+              </option>
+              <option value="Intel" <% if (model=="Intel" ) { %>
+                selected="selected" <% } %>>Intel</option>
+              <option value="AMD Ryzen" <% if (model=="AMD Ryzen" ) { %>
+                selected="selected" <% } %>>AMD Ryzen</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="right-side">
+        <div class="laptops-main-container">
+          <div class="head">
+            <div class="desktop"><span>Desktop</span></div>
+            <div class="sort-by">
+              <select id="sortByPrice">
+                <option value="0" <% if (highOrLow=="0" ) { %> selected="selected" <% } %>>Default
+                </option>
+                <option value="High-to-Low" <% if (highOrLow=="High-to-Low" ) { %> selected="selected" <% } %>>High to
+                    Low</option>
+                <option value="Low-to-High" <% if (highOrLow=="Low-to-High" ) { %> selected="selected" <% } %>>Low to
+                    High</option>
+              </select>
+            </div>
+          </div>
+          <!-- Loop through each PC in the pcList -->
+          <% pcList.forEach(pc=> { %>
+            <div class="laptop-id-<%= pc.pc_information_No %> PcStyle">
+              <!-- Display PC ID -->
+              <span id="pc_id">
+                <%= pc.pc_information_No %>
+              </span>
+
+              <div class="upper-div">
+                <!-- Display save amount if applicable -->
+                <% if(pc.cut_price && pc.cut_price.length> 0) { %> <% const
+                    cutPrice=parseFloat(pc.cut_price.replace(',', '' )); %>
+                    <% const price=parseFloat(pc.price.replace(',', '' )); %>
+                      <% const saveAmount=cutPrice - price; %>
+                        <div class="save-text">
+                          <span>Save: <%= saveAmount.toLocaleString('en-US', { style: 'currency' , currency: 'BDT' ,
+                              minimumFractionDigits: 0, maximumFractionDigits: 0 }) %></span>
+                        </div>
+                        <% } %>
+
+                          <!-- Display PC image -->
+                          <div class="images">
+                            <a href="/Desktop/Pc_id-<%= pc.pc_information_No %>">
+                              <div class="product-image" style="
+                      background-image: url('data:image;base64, <%= pc.product_image_path %>');
+                    "></div>
+                            </a>
+                          </div>
+              </div>
+
+              <div class="lower-div">
+                <!-- Display PC name -->
+                <div class="laptop-name">
+                  <a href="/Desktop/Pc_id-<%= pc.pc_information_No %>">
+                    <%= pc.model %>
+                  </a>
+                  <!-- Add list of items -->
+                  <div class="list">
+                    <ul>
+                      <li>
+                        <%= pc.processor %>
+                      </li>
+                      <li>
+                        <%= pc.motherboard %>
+                      </li>
+                      <li>
+                        <%= pc.ram %>
+                      </li>
+                      <li>
+                        <%= pc.storage %>
+                      </li>
+                    </ul>
+                  </div>
+                  <hr id="line" />
+                </div>
+
+                <div class="price-and-buttons">
+                  <!-- Display PC price -->
+                  <div class="laptop-price">
+                    <div class="final-price">
+                      <% const formattedPrice=parseFloat(pc.price.replace(/[^0-9.-]+/g,"")); %>
+                        <%= formattedPrice.toLocaleString('en-US', { style: 'currency' , currency: 'BDT' ,
+                          minimumFractionDigits: 0, maximumFractionDigits: 0 }) %>
+                    </div>
+
+                    <!-- Display cut price if applicable -->
+                    <% if(pc.cut_price && pc.cut_price.length> 0) { %> <% const
+                        formattedCutPrice=parseFloat(pc.cut_price.replace(/[^0-9.-]+/g,"")); %>
+                        <div class="cut-price">
+                          <%= formattedCutPrice.toLocaleString('en-US', { style:'currency' , currency: 'BDT' ,
+                            minimumFractionDigits: 0, maximumFractionDigits: 0 }) %>
+                        </div>
+                        <% } %>
+                  </div>
+
+                  <!-- Button for buying now -->
+                  <div class="buy-now-button">
+                    <!-- Add shopping emoji -->
+
+                    <span class="shopping-emoji">🛒</span>
+                    <a href="/Buy-Now/pc-<%= pc.pc_information_No %>">Buy Now</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% }); %>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div id="updatedURL"></div> -->
+
+    <script>
+      const rangeInput = document.getElementById("priceRange");
+      const rangeValueDisplay = document.getElementById("rangeValue");
+      const sortBrand = document.getElementById("sortBrand");
+      const sortModel = document.getElementById("sortModel");
+      const sortByPrice = document.getElementById("sortByPrice");
+
+      function constructURL() {
+        const pcType = "<%= encodeURIComponent(pcType) %>";
+        const priceRange = rangeInput.value;
+        const brand = sortBrand.value;
+        const model = sortModel.value;
+        const highOrLow = sortByPrice.value;
+
+        const url = `/Desktop/pc-${encodeURIComponent(pcType)}-${encodeURIComponent(priceRange)}-${encodeURIComponent(brand)}-${encodeURIComponent(model)}-${encodeURIComponent(highOrLow)}`;
+        window.location.href = url;
+      }
+
+      rangeInput.addEventListener("input", function () {
+        rangeValueDisplay.textContent = rangeInput.value;
+        constructURL();
+      });
+
+      sortBrand.addEventListener("change", function () {
+        constructURL();
+      });
+
+      sortModel.addEventListener("change", function () {
+        constructURL();
+      });
+
+      sortByPrice.addEventListener("change", function () {
+        constructURL();
+      });
+
+      // Set initial value for range display
+      rangeValueDisplay.textContent = rangeInput.value;
+    </script>
+
+</body>
+
+</html>

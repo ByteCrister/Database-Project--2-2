@@ -3,5 +3,5 @@ const { getDesktopBrandPc } = require('../../controllers/Brand-Pc-Controllers/De
 const DesktopBrandPcRouter = require('express').Router();
 
 
-DesktopBrandPcRouter.get('/Desktop/brand-pc-:pcType', getDesktopBrandPc);
+DesktopBrandPcRouter.get('/Desktop/brand-pc-:pcType-:priceRange-:size-:model-:highOrLow*', getDesktopBrandPc);
 module.exports = DesktopBrandPcRouter;

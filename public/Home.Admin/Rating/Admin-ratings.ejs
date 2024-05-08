@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Ratings</title>
+    <link rel="stylesheet" href="/Home.Admin/Rating/Admin-ratings.css">
+</head>
+
+<body>
+    <div class="main">
+        <div class="head">
+            <h1>User Ratings</h1>
+        </div>
+        <div class="section-sort">
+
+            <div class="head-selection">
+                <h3>Select Category:</h3>
+                <div class="selection">
+                    <select id="categorySelect">
+                        <option value="All">All</option>
+                        <option value="Pc">Pc</option>
+                        <option value="Brand-Pc">Brand-Pc</option>
+                        <option value="Graphics-Card">Graphics-Card</option>
+                        <option value="Ram">Ram</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="sortings">
+                <h2>Sort By:</h2>
+                <div>
+                    <input type="radio" id="sortByRating" name="sortOption" value="all" checked>
+                    <label for="sortByRating">Any</label>
+                </div>
+                <div>
+                    <input type="radio" id="sortByRating" name="sortOption" value="rating desc">
+                    <label for="sortByRating">Top to Bottom</label>
+                </div>
+                <div>
+                    <input type="radio" id="sortByName" name="sortOption" value="rating">
+                    <label for="sortByName">Bottom to Top</label>
+                </div>
+            </div>
+            <div class="search">
+                <button onclick="search()">Search</button>
+            </div>
+        </div>
+
+        <div id="urlDisplay"></div>
+
+        <div class="contents">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Total Reviews's</th>
+                        <th>Ratings</th>
+                        <th>View Product</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <% ratingList.forEach((rating)=>{ %>
+
+                        <tr>
+                            <td>
+                                <%= rating.reviews %>
+                            </td>
+                            <td>
+                                <%= rating.rating %>
+                            </td>
+                            <td><a href="/Desktop/<%=rating.category%>_id-<%=rating.pId%>">View</a></td>
+                            <td>
+                                <%= rating.category %>
+                            </td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+
+        function search() {
+            const selectedCategory = document.getElementById('categorySelect').value;
+            const sortingOptions = document.getElementsByName('sortOption');
+            let selectedSortingOption;
+            for (const option of sortingOptions) {
+                if (option.checked) {
+                    selectedSortingOption = option.value;
+                    break;
+                }
+            }
+            //document.getElementById('urlDisplay').innerText = `/User/Ratings?category=${selectedCategory}&sort=${selectedSortingOption}`; 
+            window.location.href = `/User/Ratings?category=${selectedCategory}&sort=${selectedSortingOption}`;
+        }
+
+        window.onload = () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const categoryParam = urlParams.get('category');
+            const sortParam = urlParams.get('sort');
+            const categorySelect = document.getElementById('categorySelect');
+            const sortingOptions = document.getElementsByName('sortOption');
+
+
+            if (categoryParam) {
+                const categoryOption = categorySelect.querySelector(`option[value="${categoryParam}"]`);
+                if (categoryOption) {
+                    categoryOption.selected = true;
+                }
+            }
+
+            if (sortParam) {
+                for (const option of sortingOptions) {
+                    if (option.value === sortParam) {
+                        option.checked = true;
+                        break;
+                    }
+                }
+            }
+        };
+
+    </script>
+</body>
+
+</html>

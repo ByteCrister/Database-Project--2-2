@@ -1,4 +1,4 @@
-const { adminHomeViewController } = require('../../controllers/Desktop-View-Controllers/Admin-Home-View-Controller');
+const { adminHomeViewController } = require('../../controllers/Desktop-View-Controllers/Admin/Home/Admin-Home-View-Controller');
 
 const adminHomeViewRouter = require('express').Router();
 

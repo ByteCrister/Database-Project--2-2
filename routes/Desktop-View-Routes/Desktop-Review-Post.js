@@ -1,4 +1,4 @@
-const { postReview } = require('../../controllers/Desktop-View-Controllers/Desktop-Review-Post-Controller');
+const { postReview } = require('../../controllers/Desktop-View-Controllers/Admin/Review/Desktop-Review-Post-Controller');
 const DesktopReviewPost = require('express').Router();
 
 DesktopReviewPost.post('/Submit-Review', postReview);

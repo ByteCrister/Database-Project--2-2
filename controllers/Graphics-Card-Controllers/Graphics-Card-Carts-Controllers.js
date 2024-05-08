@@ -13,7 +13,7 @@ exports.getGraphicsCardCarts = (request, response) => {
                 if (data.length > 0) {
                     console.log(data[0].product_image_path);
                 }
-                response.render(path.join(__dirname, '../../public/graphics_card_carts'), { graphicsCardList: data });
+                response.render(path.join(__dirname, '../../public/Graphics-Card/Ejs/Admin.Cart.View.ejs'), { graphicsCardList: data });
 
             }
         });

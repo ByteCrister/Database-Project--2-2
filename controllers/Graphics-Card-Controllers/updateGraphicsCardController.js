@@ -19,7 +19,8 @@ exports.updateGraphicsCardControllerGet = (request, response) => {
                     response.status(500).send('Internal server error');
                 } else {
                     console.log('Graphics card data retrieved successfully:', data);
-                    response.render(path.join(__dirname, '../../public', 'update-graphics-card-information'), { data });
+                    response.render(path.join(__dirname, '../../public', 'Graphics-Card', 'Ejs', 'update-graphics-card-information.ejs'), { data });
+                    
                 }
             }
         );

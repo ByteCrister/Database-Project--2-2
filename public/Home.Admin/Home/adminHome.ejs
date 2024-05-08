@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/Home.Admin/Home/adminHome.css" />
+    <title>Admin Dashboard</title>
+</head>
+
+<body>
+    <header class="admin-header">
+        <a href="/"><h1>Admin Dashboard</h1></a>
+    </header>
+
+    <div class="admin-container">
+        <aside class="admin-sidebar">
+            <ul>
+                <li> 
+                    <div class="sidebar-section">
+                        <div class="sub-head">
+                            <h1>Views</h1>
+                        </div>
+                        <ul>
+                            <li><a href="/Pc-Carts" target="iframe">View PC</a></li>
+                            <li><a href="/Graphics-Card-Carts" target="iframe">View Graphics Card</a></li>
+                            <li><a href="/Ram-Carts" target="iframe">View RAM</a></li>
+                            <li><a href="/Brand-PC-Carts" target="iframe">View Brand PC</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="sidebar-section">
+                        <div class="sub-head">
+                            <h1>+Add</h1>
+
+                        </div>
+                        <ul>
+                            <li><a href="/add-pc" target="iframe">Add PC</a></li>
+                            <li><a href="/add-graphics-card" target="iframe">Add Graphics Card</a></li>
+                            <li><a href="/add-ram" target="iframe">Add Desktop RAM</a></li>
+                            <li><a href="/add-brand-pc" target="iframe">Add Brand PC</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="sidebar-section">
+                        <div class="sub-head">
+                            <h1>Other</h1>
+
+                        </div>
+                        <ul>
+                            <li><a href="/Product-selling-history-?form_date=0&to_date=0" target="iframe">Product
+                                    Purchase History</a></li>
+                            <li><a href="/User/Questions?from=0&to=0" target="iframe">User Questions</a></li>
+                            <li><a href="/User/Ratings?category=0&sort=0" target="iframe">Product Ratings</a></li>
+                            <li><a href="/Answer-Questions" target="iframe">Answer User Questions</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </aside>
+
+        <main class="admin-content">
+            <iframe name="iframe" src="/admin-home-view" width="100%" height="100%" frameborder="0"></iframe>
+        </main>
+    </div>
+
+    <footer class="admin-footer">
+        <div class="logout-btn" onclick="logOut()">Log Out</div>
+    </footer>
+
+    <script src="/Home.Admin/Home/adminHome.js"></script>
+</body>
+
+</html>
+
+
+<!-- select format(SUM(REPLACE(product_amount, ',', '')), 0) as total
+from selling_history; -->

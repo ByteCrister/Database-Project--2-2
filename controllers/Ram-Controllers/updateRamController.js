@@ -1,6 +1,5 @@
 const dataBase = require('../../models/DB');
 const path = require('path');
-const fs = require('fs');
 
 
 exports.updateRamControllerGet = (request, response) => {
@@ -19,7 +18,7 @@ exports.updateRamControllerGet = (request, response) => {
                     response.status(500).send('Internal server error');
                 } else {
                     console.log('Graphics card data retrieved successfully:', data);
-                    response.render(path.join(__dirname, '../../public', 'update-ram-information'), { data });
+                    response.render(path.join(__dirname, '../../public', 'Ram', 'Ejs', 'update-ram-information.ejs'), { data });
                 }
             }
         );

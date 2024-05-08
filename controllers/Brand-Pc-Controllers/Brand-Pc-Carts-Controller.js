@@ -13,7 +13,7 @@ exports.getBrandPcCarts = (request, response) => {
                 if (data.length > 0) {
                     console.log(data[0].product_image_path);
                 }
-                response.render(path.join(__dirname, '../../public/brand_pc_carts'), { brandPcList: data });
+                response.render(path.join(__dirname, '../../public/Brand-Pc/Ejs/Admin.Cart.View.ejs'), { brandPcList: data });
 
             }
         });

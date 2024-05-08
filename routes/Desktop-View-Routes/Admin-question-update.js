@@ -1,4 +1,4 @@
-const { QuestionUpdate } = require('../../controllers/Desktop-View-Controllers/Admin-Question-update');
+const { QuestionUpdate } = require('../../controllers/Desktop-View-Controllers/Admin/Questions/Admin-Question-update');
 
 const adminQuestionUpdate = require('express').Router();
 

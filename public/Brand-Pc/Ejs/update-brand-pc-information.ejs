@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Brand-Pc/Style/Add-brand-pc-items.css">
+    <title>Enter Brand PC Information's</title>
+</head>
+
+<body>
+    <div class="form-container">
+        <form action="/update-brand-pc" method="post" enctype="multipart/form-data">
+            <div class="form-section">
+                <h2>Update Brand PC Specifications</h2>
+                <input type="text" id="pc-id" name="pcID"  value="<%= data[0].brand_pc_No %>" hidden>
+                <div class="form-group">
+                    <label for="brand">Brand:</label>
+                    <input type="text" id="brand" name="brand" value="<%= data[0].brand %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="model">Model:</label>
+                    <input type="text" id="model" name="model" value="<%= data[0].model %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="processor">Processor:</label>
+                    <input type="text" id="processor" name="processor" value="<%= data[0].processor %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="motherboard">Motherboard:</label>
+                    <input type="text" id="motherboard" name="motherboard" value="<%= data[0].motherboard %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="ram">RAM:</label>
+                    <input type="text" id="ram" name="ram" value="<%= data[0].ram %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="graphics_card">Graphics Card:</label>
+                    <input type="text" id="graphics_card" name="graphics_card" value="<%= data[0].graphics_card %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="_storage_">Storage:</label>
+                    <input type="text" id="_storage_" name="_storage_" value="<%= data[0]._storage_ %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="power_supply">Power Supply:</label>
+                    <input type="text" id="power_supply" name="power_supply" value="<%= data[0].power_supply %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="network_and_wareless_connectivity">Network and Wireless Connectivity:</label>
+                    <input type="text" id="network_and_wareless_connectivity" name="network_and_wareless_connectivity" value="<%= data[0].network_and_wareless_connectivity %>"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label for="operating_system">Operating System:</label>
+                    <input type="text" id="operating_system" name="operating_system" value="<%= data[0].operating_system %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="security_management">Security Management:</label>
+                    <input type="text" id="security_management" name="security_management" value="<%= data[0].security_management %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="keyboard">Keyboard:</label>
+                    <input type="text" id="keyboard" name="keyboard" value="<%= data[0].keyboard %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="mouse">Mouse:</label>
+                    <input type="text" id="mouse" name="mouse" value="<%= data[0].mouse %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="optical_drive">Optical Drive:</label>
+                    <input type="text" id="optical_drive" name="optical_drive" value="<%= data[0].optical_drive %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="extarnal_io_port">External I/O Port:</label>
+                    <input type="text" id="extarnal_io_port" name="extarnal_io_port" value="<%= data[0].extarnal_io_port %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="dimension">Dimension:</label>
+                    <input type="text" id="dimension" name="dimension" value="<%= data[0].dimension %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="weight">Weight:</label>
+                    <input type="text" id="weight" name="weight" value="<%= data[0].weight %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="color">Color:</label>
+                    <input type="text" id="color" name="color" value="<%= data[0].color %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="warranty">Warranty:</label>
+                    <input type="text" id="warranty" name="warranty" value="<%= data[0].warranty %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="cut-price">Cut price (Optional):</label>
+                    <input type="text" id="cut_price" name="cut_price" value="<%= data[0].cut_price %>">
+                </div>
+                <div class="form-group">
+                    <label for="final_price">Final Price:</label>
+                    <input type="text" id="final_price" name="final_price" value="<%= data[0].final_price %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="productImage">Product Image:</label>
+                    <input type="file" id="productImage" name="productImage" accept="image/*" required>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>Enter Basic Information</h2>
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" rows="4" required><%= data[0].description %></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit">Add Item</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

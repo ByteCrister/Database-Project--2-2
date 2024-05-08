@@ -16,7 +16,8 @@ exports.updatePcControllerGet = (request, response) => {
                     .send("Internal server error form UpdatePcRouter get/ data");
             } else {
                 response.render(
-                    path.join(__dirname, "../../public", "update-pc-information"),
+                    path.join(__dirname, "../../public', 'Pc', 'Ejs', 'update-pc-information.ejs"),
+                    
                     { data }
                 );
             }

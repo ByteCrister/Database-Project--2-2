@@ -1,0 +1,370 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(239, 242, 245);
+}
+
+
+
+.ask-and-review-button{
+    padding: 10px 15px 10px 15px;
+    border: 3px solid #5c5ccc;
+    border-radius: 5px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 14px;
+    color: #5c5ccc;
+    font-weight: 700;
+    transition: ease-in-out 0.5s;
+}
+
+.ask-and-review-button:hover{
+    background-color: #5c5ccc;
+    color: aliceblue;
+    cursor: pointer;
+}
+
+.empty-div{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background-color: rgb(115, 226, 158); */
+    height: 250px;
+}
+
+.font-set{
+    font-family:'Times New Roman', Times, serif;
+}
+.normal-color{
+    color: rgb(107, 102, 102);
+    font-size: 17px;
+}
+
+.grey-color{
+    color: rgb(196, 196, 196);
+    margin-right: 20%;
+    width: 50px;
+}
+
+.bold-color{
+    font-weight: bold;
+}
+
+.display-flex{
+    display: flex;
+    justify-content:left;
+    padding: 15px;
+}
+
+
+
+
+
+
+.main-view{
+    display: flex;
+    flex-direction: column;
+    justify-content:right;
+}
+
+.name h2{
+    color: rgb(59, 59, 199);
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.prices-and-brand > div{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.prices-and-brand  div {
+    color: rgb(163, 163, 163);
+}
+
+.bold{
+    font-weight: bold;
+    color: black;
+}
+
+
+.upper-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.image-name-dives-features-view-mores{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: brown; */
+    padding: 10px;
+    width: 100%;
+}
+.image-name-dives-features-view-mores>div{
+    margin: 10px;
+}
+
+.ram-image{
+   height: auto;
+   width: 100%;
+   /* background-color: #5c5ccc; */
+   display:flex;
+   justify-content: center;
+   align-items: center;
+    
+}
+
+.prices-and-brand{
+    padding: 5px;
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-around;
+    align-items: center;
+    width: 100%;
+    /* background-color: blue; */
+}
+
+.prices-and-brand div{
+    margin: 5px;
+    border-radius: 30px;
+    background-color: rgb(231, 231, 231);
+    padding: 10px;
+}
+
+.name-dives-features-view-mores{
+    /* background-color: rgb(107, 189, 52); */
+    width: 100%;
+    padding: 5px;
+}
+
+.buy-now-option{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    width:70%;
+    padding: 10px;
+    margin: 10px;
+    /* background-color: aquamarine; */
+}
+
+.quantity{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    /* background-color: blueviolet; */
+}
+.quantity>div{
+    border: 2px solid rgb(219, 216, 216);
+    padding: 10px;
+}
+ .amount{
+    width: 60px;
+}
+.minus-button, .plus-button{
+    width: 50px;
+    cursor: pointer;
+}
+
+.Buy-now-Button{
+    border-left: 40px;
+    padding: 10px;
+    width: 40%;
+    background-color: rgb(73, 73, 206);
+    border-radius: 5px;
+    margin-right: 20px;
+}
+.Buy-now-Button a{
+    text-decoration: none;
+    color: antiquewhite;
+}
+
+
+
+
+
+
+
+
+.product-image {
+    height: 330px;
+    width: 100%;
+    background-size:contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+
+
+
+
+
+
+
+
+.key-features >ul li{
+    list-style: none;
+    padding: 5px;
+    margin: 5px;
+
+}
+
+.four-div{
+    /* background-color: aqua; */
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+ .div {
+    text-decoration: none;
+    color: black;
+}
+.div1{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+.four-div> div:hover a, .four-div> div:hover{
+    background-color: rgb(255, 120, 79);
+    color: rgb(255, 255, 255);
+}
+
+#hr{
+    border-color: #dfdfe9;
+}
+
+
+.specification_, .description, .question, .reviews{
+    margin: 10px;
+    padding: 10px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    font-weight: 700;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.specification_{
+    background-color: rgb(255, 120, 79);
+
+}
+
+.specification{
+    /* background-color: cadetblue; */
+    padding: 20px;
+}
+
+.inner-specification{
+    background-color: rgb(255, 255, 255);
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.features-head{
+    background-color: rgb(229, 255, 255);
+    margin: 10px 0px 10px 0px;
+    padding: 5px;
+    border-radius: 5px;
+    padding: 10px 0px 10px 10px;
+    color: rgb(144, 194, 238);
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.description{
+    padding: 15px;
+    /* background-color: aqua; */
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+
+}
+
+.description > div{
+    margin-top: 10px;
+}
+
+.description-head{
+    margin-bottom: 10px;
+
+}
+
+.main-description > h4{
+    line-height: 30px;
+    font-weight: 300;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+
+.questions{
+    /* background-color: aquamarine; */
+    padding: 20px;
+    width: 100%;
+}
+
+.inner-number-text-button{
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.number-text-button{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-between;
+    align-items: center;
+    padding: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.number-text-button > div{
+    margin: 10px;
+}
+
+
+.questions-div{
+    /* background-color: #5c5ccc; */
+    padding: 10px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+.questions-div > ul li,  .user-reviews > ul li{
+    list-style: none;
+    margin: 10px 0px 10px 0px;
+}
+.questions-div > ul ,  .user-reviews > ul{
+    margin-top: 30px;
+}
+
+
+
+@media (max-width : 891px) {
+    .image-name-dives-features-view-mores{
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* .product-image {
+        height: 280px;
+    
+    } */
+}

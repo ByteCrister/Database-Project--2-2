@@ -1,4 +1,4 @@
-const { sellingHistory } = require('../../controllers/Desktop-View-Controllers/Desktop-selling-history');
+const { sellingHistory } = require('../../controllers/Desktop-View-Controllers/Admin/Selling/Desktop-selling-history');
 
 const viewSellingHistory = require('express').Router();
 

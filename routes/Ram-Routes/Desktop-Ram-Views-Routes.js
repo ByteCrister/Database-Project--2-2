@@ -2,5 +2,5 @@ const { getDesktopRamViews } = require('../../controllers/Ram-Controllers/Deskto
 const DesktopViewRamRouter = require('express').Router();
 
 
-DesktopViewRamRouter.get('/Desktop/ram-:ramBrand', getDesktopRamViews);
+DesktopViewRamRouter.get('/Desktop/ram-:ramBrand-:priceRange-:size-:model-:highOrLow*', getDesktopRamViews);
 module.exports = DesktopViewRamRouter;

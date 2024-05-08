@@ -1,8 +1,8 @@
 
-const { getRamView } = require('../../controllers/Desktop-View-Controllers/Desktop-Ram-View');
-const { getPcView } = require('../../controllers/Desktop-View-Controllers/Desktop-Pc-View');
-const { getBrandPcView } = require('../../controllers/Desktop-View-Controllers/Desktop-Brand-Pc-View');
-const { getGraphicsCardView } = require('../../controllers/Desktop-View-Controllers/Desktop-Graphics-View');
+const { getRamView } = require('../../controllers/Desktop-View-Controllers/Ram/Desktop-Ram-View');
+const { getPcView } = require('../../controllers/Desktop-View-Controllers/Pc/Desktop-Pc-View');
+const { getBrandPcView } = require('../../controllers/Desktop-View-Controllers/Brand-Pc/Desktop-Brand-Pc-View');
+const { getGraphicsCardView } = require('../../controllers/Desktop-View-Controllers/Graphics-Card/Desktop-Graphics-View');
 const DesktopViewRouter = require('express').Router();
 
 DesktopViewRouter.get('/Desktop/Ram_id-:product_id', getRamView);
