@@ -14,6 +14,7 @@
 - Intigrated User and Admin authentication
 - Worked on complex SQL commands.
 - Integrated CRUD operations for all products
+- Implemented Sortings on the user pages like sort by category, price, model, brand ..
 - Integrated Admin Dashboard features
   - Find purchase history by date.
   - User questions by date.
