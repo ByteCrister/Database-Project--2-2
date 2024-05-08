@@ -30,7 +30,7 @@
 
 - User-Friendly Interface: A meticulously crafted dashboard ensures ease of use and navigation for website owners.
 
-- Responsive Design: Utilizes Tailwind CSS for modern, responsive design, ensuring optimal viewing across various devices.
+- Responsive Design: Responsive design, ensuring optimal viewing across various devices.
 
 - Dynamic Product Listings: Categorize products, enable search and filtering options, and display product images for enhanced user experience.
 
