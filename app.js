@@ -53,6 +53,8 @@ const DesktopRamViews = require('./routes/Ram-Routes/Desktop-Ram-Views-Routes');
 
 
 
+
+
 /****************** Desktop View Requiring  *******************/
 const DesktopViewRoutes = require('./routes/Desktop-View-Routes/Desktop-View-Router');
 
@@ -68,6 +70,7 @@ const userRatingsRoutes = require('./routes/Desktop-View-Routes/Desktop-ratings'
 const userQuestionsRoutes = require('./routes/Desktop-View-Routes/Desktop-questions');
 const adminQuestionUpdates = require('./routes/Desktop-View-Routes/Admin-question-update');
 const adminHomeViewRoutes = require('./routes/Desktop-View-Routes/Admin-Home-View');
+const usersViewRoutes = require('./routes/Desktop-View-Routes/Users.view');
 
 
 
@@ -139,7 +142,7 @@ app.use(userRatingsRoutes);
 app.use(userQuestionsRoutes);
 app.use(adminQuestionUpdates);
 app.use(adminHomeViewRoutes);
-
+app.use(usersViewRoutes);
 
 
 

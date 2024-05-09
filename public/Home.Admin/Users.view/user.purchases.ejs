@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Purchases</title>
+    <link rel="stylesheet" href="/Home.Admin/Users.view/user.reviews.css">
+</head>
+<body>
+    <div class="full-outer">
+        <div class="search-container">
+               <%if(data.length!=0){ %>
+                Purchases of <%= data[0].first_name %> <%= data[0].last_name %>
+                <%}%>
+        </div>
+        <div class="table">
+            <table class="user-table">
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Total amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%if(data.length > 0){ %>
+                    
+                        <% data.forEach((purchase)=>{ %>
+
+                            <% const date = new Date(purchase.purchase_date); %>
+                          <%  const formattedDate = date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });%>
+                            <tr>
+                                <td><%= formattedDate %></td>
+                                <td><a href="/Desktop/<%=purchase.product_category%>_id-<%=purchase.product_id%>">View</a></td>
+                                <td><%=purchase.quantity%></td>
+                                <td><%=purchase.amount%></td>
+                            </tr>
+                        <%})%>
+
+                   <% } else{ %>
+
+                    User have no Purchases!
+                  <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>

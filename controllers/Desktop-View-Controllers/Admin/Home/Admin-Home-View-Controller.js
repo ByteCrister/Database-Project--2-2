@@ -18,8 +18,8 @@ exports.adminHomeViewController = (request, response)=>{
     `
 
     const sql2 = `
-    select format(SUM(REPLACE(product_amount, ',', '')), 2) as total
-    from selling_history;
+    SELECT FORMAT(SUM(CAST(REPLACE(product_amount, ',', '') AS UNSIGNED)*quantity), 0) AS total
+    FROM selling_history;
     `;
 
     const sql3 = `
@@ -35,13 +35,19 @@ exports.adminHomeViewController = (request, response)=>{
     const sql5 = `
     SELECT COUNT(*) as totalReviews FROM user_reviews;
     `;
+    const sql6 = `
+    SELECT SUM(quantity) as sold FROM selling_history;
+    `
 
     dataBase.query(sql1, (error1, data1)=>{
     dataBase.query(sql2, (error2, data2)=>{
     dataBase.query(sql3, (error3, data3)=>{
     dataBase.query(sql4, (error4, data4)=>{
     dataBase.query(sql5, (error5, data5)=>{
-        response.render(path.join(__dirname, '../../../../public/Home.Admin/Home/Admin-Home-View.ejs'), { data1, data2, data3, data4, data5 });
+    dataBase.query(sql6,(error6, data6)=>{
+
+        response.render(path.join(__dirname, '../../../../public/Home.Admin/Home/Admin-Home-View.ejs'), { data1, data2, data3, data4, data5, data6 });
+    })
     })
     })
     })

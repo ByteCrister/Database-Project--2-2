@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Reviews</title>
+    <link rel="stylesheet" href="/Home.Admin/Users.view/user.reviews.css">
+</head>
+<body>
+    <div class="full-outer">
+        <div class="search-container">
+               <%if(data.length!=0){ %>
+                Reviews of <%= data[0].first_name %> <%= data[0].last_name %>
+                <%}%>
+        </div>
+        <div class="table">
+            <table class="user-table">
+                <thead>
+                    <tr>
+                        <th>Reviews</th>
+                        <th>Time</th>
+                        <th>Product</th>
+                        <th>Ratings</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%if(data.length > 0){ %>
+                    
+                        <% data.forEach((review)=>{ %>
+
+                            <% const date = new Date(review.review_date); %>
+                          <%  const formattedDate = date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });%>
+                            <tr>
+                                <td><%=review.review%></td>
+                                <td><%= formattedDate %></td>
+                                <td><a href="/Desktop/<%=review.product_category%>_id-<%=review.product_id%>">View</a></td>
+                                <th><%= review.stars%></th>
+                            </tr>
+                        <%})%>
+
+                   <% } else{ %>
+
+                    User have no Reviews!
+                  <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>

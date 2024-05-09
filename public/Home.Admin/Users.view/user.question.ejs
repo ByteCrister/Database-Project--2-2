@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Questions</title>
+    <link rel="stylesheet" href="/Home.Admin/Users.view/user.reviews.css">
+</head>
+<body>
+    <div class="full-outer">
+        <div class="search-container">
+               <%if(data.length!=0){ %>
+                Questions of <%= data[0].first_name %> <%= data[0].last_name %>
+                <%}%>
+        </div>
+        <div class="table">
+            <table class="user-table">
+                <thead>
+                    <tr>
+                        <th>Questions</th>
+                        <th>Time</th>
+                        <th>Product</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%if(data.length > 0){ %>
+                    
+                        <% data.forEach((Questions)=>{ %>
+
+                            <% const date = new Date(Questions.question_date); %>
+                          <%  const formattedDate = date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });%>
+                            <tr>
+                                <td><%=Questions.user_question%></td>
+                                <td><%= formattedDate %></td>
+                                <td><a href="/Desktop/<%=Questions.product_category%>_id-<%=Questions.product_id%>">View</a></td>
+                            </tr>
+                        <%})%>
+
+                   <% } else{ %>
+
+                    User have no Question!
+                  <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>

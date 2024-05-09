@@ -1,0 +1,97 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.full-outer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    margin-left: 20px;
+    background-color: rgb(216, 236, 255);
+   padding: 20px;
+    border-radius: 5px;
+    width: 80%;
+    text-align: center;
+    font-size: 20px;
+    color: #363232;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 600;
+}
+
+.search-input {
+    width: 80%;
+    padding: 15px;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    background-color: transparent;
+    color: rgb(12, 12, 51);
+    font-size: 15px;
+    font-weight: 700;
+    font-family: 'Times New Roman', Times, serif;
+}
+.search-input:focus{
+    outline: none; 
+    border-color: transparent; 
+    box-shadow: none; 
+}
+
+.search-button {
+    padding: 8px 10px;
+    background-color: transparent;
+    cursor: pointer;
+    margin-left: 10px;
+    border: none;
+    font-size: 20px;
+    color: rgb(137, 137, 170);
+}
+
+.table{
+    width: 100%;
+    
+}
+
+.user-table {
+    margin-top: 20px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.user-table th, .user-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    color: rgb(150, 147, 147);
+}
+
+.user-table th {
+    background-color: #f2f2f2;
+}
+
+.user-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.user-table tr:hover {
+    background-color: #ddd;
+}
+
+.user-table td {
+    color: #363232;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 600;
+}
+
+
+.user-table td a{
+    color: #363232;
+}
