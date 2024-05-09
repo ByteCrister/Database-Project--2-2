@@ -14,6 +14,7 @@
 - Intigrated User and Admin authentication
 - Worked on complex SQL commands.
 - Integrated CRUD operations for all products
+- Implemented Sortings on the user pages like sort by category, price, model, brand ..
 - Integrated Admin Dashboard features
   - Find purchase history by date.
   - User questions by date.
@@ -29,7 +30,7 @@
 
 - User-Friendly Interface: A meticulously crafted dashboard ensures ease of use and navigation for website owners.
 
-- Responsive Design: Utilizes Tailwind CSS for modern, responsive design, ensuring optimal viewing across various devices.
+- Responsive Design: Responsive design, ensuring optimal viewing across various devices.
 
 - Dynamic Product Listings: Categorize products, enable search and filtering options, and display product images for enhanced user experience.
 
