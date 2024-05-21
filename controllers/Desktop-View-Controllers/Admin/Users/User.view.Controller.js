@@ -25,6 +25,20 @@ exports.userViewRouter = (request, response) => {
     }
 };
 
+exports.UserRestrictions = (request, response)=>{
+    const id = request.params.id;
+    const value = request.params.value;
+    const sql = `update users set restricted = ${value} where user_id = ${id}; `;
+    dataBase.query(sql, (error, data)=>{
+        if(error){
+            console.log(error);
+        }else{
+            console.log(id+"   "+value);
+            response.redirect('/Users-view-0');
+        }
+    })
+};
+
 
 exports.userReview  = (request, response)=>{
     if(request.session.isAdminLoggedIn){

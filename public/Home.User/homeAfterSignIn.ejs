@@ -1,18 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pc Gallery</title>
 
-    
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <link rel="stylesheet" href="/Home.User/homeAfterSignIn.css">
+    <link rel="stylesheet" href="/Navbar/nav-bar.css">
     <link rel="stylesheet" href="/Footer/footer.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    
+
 </head>
+
 <body>
     <%- include ("../Navbar/nav-bar.ejs") %>
-    <%- include ("../Footer/footer.ejs") %>
+        <!-- ---------------- Make it dynamic ---------------------- -->
+        <div class="main-advertise">
+            <div class="left">
+                <div class="main-wrapper">
+                    <div class="slider-btns">
+                        <span id="prev-btn"></span>
+                        <span id="next-btn"></span>
+                    </div>
+                    <div class="slider-wrapper">
+                        <div class="dots">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+
+                        </div>
+                        <div class="slides">
+
+                            <img src="/images/t20-world-cup-2024-projector-offer-home-banner-2-982x500.webp"
+                                alt="nature">
+                        </div>
+                        <div class="slides">
+
+                            <img src="/images/home-delivery-web-banner-982x500.webp" alt="nature">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!---------------------------------- Support ----------------------------->
+        <div class="main-support">
+            <div class="inner-support">
+                <div class="inner-support-logo">
+                    <i class="fas fa-laptop"></i>
+                </div>
+                <div class="support-head-text">
+                    <h3>Pc Finder</h3>
+                    <h4>Find Your Laptop Easily</h4>
+                </div>
+            </div>
+            <div class="inner-support">
+                <div class="inner-support-logo">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="support-head-text">
+                    <h3>Raise a Complain</h3>
+                    <h4>Share Your Experience</h4>
+                </div>
+            </div>
+            <div class="inner-support">
+                <div class="inner-support-logo">
+                    <i class="fas fa-question-circle"></i>
+                </div>
+                <div class="support-head-text">
+                    <h3>Online Support</h3>
+                    <h4>Get online Support</h4>
+                </div>
+            </div>
+            <div class="inner-support">
+                <div class="inner-support-logo">
+                    <i class="fas fa-cog"></i>
+                </div>
+                <div class="support-head-text">
+                    <h3>Servicing Center</h3>
+                    <h4>Repair your Device</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="support-text">
+            <div class="inner-text">
+                <p>This is the moving text that scrolls across the screen just like a news ticker.</p>
+
+            </div>
+        </div>
+
+
+        <div class="featured-products-text">
+            <h2>Featured Products</h2>
+            <h3>Check & Get Your Desired Product!</h3>
+        </div>
+
+
+        <!------------------------------------- Brand Pc slider -------------------->
+        <%- include('EJSBrandPc') %>
+
+
+
+            <!------------------------------------- Pc slider -------------------->
+
+            <!------------------------------------- Graphics Card slider -------------------->
+
+            <!------------------------------------- Ram slider -------------------->
+
+
+
+
+            <%- include ("../Footer/footer.ejs") %>
+                <script src="/Home.User/JS/BrandPcSlider.js"></script>
+                <script src="/Home.User/JS/PcSlider.js"></script>
+                <script src="/Home.User/JS/GraphicsCardSlider.js"></script>
+                <script src="/Home.User/JS/RamSlider.js"></script>
+                <script src="/Home.User/JS/homeBeforeSignIn.js"></script>
 </body>
+
 </html>

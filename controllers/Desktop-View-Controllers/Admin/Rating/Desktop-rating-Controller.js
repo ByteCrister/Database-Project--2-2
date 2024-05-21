@@ -69,3 +69,23 @@ exports.usersRating = (request, response) => {
         response.redirect('/');
     }
 };
+
+
+exports.dropUserRating = (request, response)=>{
+
+    const category = request.params.category;
+    const id = request.params.id;
+    const sortCategory = request.params.sortCategory;
+    const sortBy = request.params.sortBy;
+
+    const sql = `delete from user_reviews where product_category = '${category}' and product_id = ${id}`;
+
+    dataBase.query(sql, (error, data)=>{
+        if(error){
+            console.log(error);
+        }else{
+            response.redirect(`/User/Ratings?category=${sortCategory}&sort=${sortBy}`);
+        }
+    });
+
+};

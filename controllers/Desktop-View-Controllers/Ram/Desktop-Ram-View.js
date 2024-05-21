@@ -17,7 +17,8 @@ exports.getRamView = (request, response) => {
         from user_questions join users 
         
         on user_questions.user_id =  users.user_id
-        where user_questions.product_category = "Ram" and user_questions.product_id = ${product_id};`;
+        where user_questions.product_category = "Ram" and user_questions.product_id = ${product_id}
+        and users.restricted=0;`;
 
         const sql3 = `
         select 
@@ -30,7 +31,8 @@ exports.getRamView = (request, response) => {
         from user_reviews join users
         on user_reviews.user_id = users.user_id 
         
-        where user_reviews.product_category = "Ram" and user_reviews.product_id = ${product_id};`;
+        where user_reviews.product_category = "Ram" and user_reviews.product_id = ${product_id}
+        and users.restricted=0;`;
 
         dataBase.query(sql1, (err1, data1) => {
             if (err1) {
@@ -51,7 +53,7 @@ exports.getRamView = (request, response) => {
                     }
 
                     dataBase.query(
-                        `select count(answers) as ans from user_questions where answers is not null and product_category ="Ram" and product_id = ${product_id};`,
+                        `select count(user_questions.answers) as ans from user_questions join users on user_questions.user_id=users.user_id where user_questions.answers is not null and user_questions.product_category ="Ram" and user_questions.product_id = ${product_id} and users.restricted=0;`,
                         (err4, data4) => {
                             console.log("Data sended Successfully ");
 

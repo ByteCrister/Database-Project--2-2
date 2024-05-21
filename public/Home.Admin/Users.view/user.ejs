@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +8,12 @@
     <link rel="stylesheet" href="/Home.Admin/Users.view/user.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
+
 <body>
     <div class="full-outer">
         <div class="search-container">
-                <input type="text" placeholder="Email" class="search-input" id="input">
-                <button class="search-button" onclick="buttonPress()"><i class="fas fa-search"></i></button>
+            <input type="text" placeholder="Email" class="search-input" id="input">
+            <button class="search-button" onclick="buttonPress()"><i class="fas fa-search"></i></button>
         </div>
         <div class="table">
             <table class="user-table">
@@ -23,40 +25,78 @@
                         <th>Reviews</th>
                         <th>Questions</th>
                         <th>Purchases</th>
+                        <th>Restrict</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <%if(data.length > 0){ %>
-                    
+                    <%if(data.length> 0){ %>
+
                         <% data.forEach((user)=>{ %>
 
-                            <% const date = new Date(user.sign_In_date); %>
-                          <%  const formattedDate = date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });%>
-                            <tr>
-                                <td><%= user.first_name %> <%= user.last_name %></td>
-                                <td><%= user.email %></td>
-                                <td><%= formattedDate %></td>
-                                <td><a href="/User/Reviews-<%= user.user_id %>">Reviews</a></td>
-                                <td><a href="/User/Questions-<%= user.user_id %>">Questions</a></td>
-                                <td><a href="/User/Purchases-<%= user.user_id %>">Purchases</a></td>
-                            </tr>
-                        <%})%>
+                            <% const date=new Date(user.sign_In_date); %>
+                                <% const formattedDate=date.toLocaleDateString('en-US', { year: 'numeric' ,
+                                    month: 'short' , day: 'numeric' });%>
+                                    <tr>
+                                        <td>
+                                            <%= user.first_name %>
+                                                <%= user.last_name %>
+                                        </td>
+                                        <td>
+                                            <%= user.email %>
+                                        </td>
+                                        <td>
+                                            <%= formattedDate %>
+                                        </td>
+                                        <td><a href="/User/Reviews-<%= user.user_id %>">Reviews</a></td>
+                                        <td><a href="/User/Questions-<%= user.user_id %>">Questions</a></td>
+                                        <td><a href="/User/Purchases-<%= user.user_id %>">Purchases</a></td>
+                                        <td>
+                                            <input type="checkbox" onchange="send('<%= user.user_id %>')" class="box"
+                                                id="myCheckbox-<%= user.user_id %>" <% if (user.restricted==1) { %>
+                                            checked <% } %> >
 
-                   <% }else{ %>
-                        No user found!
-                   <%}%>
+                                        </td>
+                                        <!-- <% if (user.restricted == 1) { %> checked <% } %> -->
+                                    </tr>
+                                    <%})%>
+
+                                        <% }else{ %>
+                                            No user found!
+                                            <%}%>
                 </tbody>
             </table>
         </div>
     </div>
 
     <script>
-        function buttonPress(){
-            if(document.getElementById('input').value.trim() != ''){
+        function send(userId) {
+            let value;
+            if (document.querySelector(`#myCheckbox-${userId}`).checked) {
+                value = 1;
+                if (confirm('User will no longer able to review, ask questions or any thing!')) {
+                    window.location.href = `/Restricted/User/${userId}/${value}`;
+
+                }else{
+                    document.getElementById(`myCheckbox-${userId}`).checked = false;
+
+                }
+            } else {
+
+                value = 0;
+                window.location.href = `/Restricted/User/${userId}/${value}`;
+
+            }
+
+        }
+
+
+        function buttonPress() {
+            if (document.getElementById('input').value.trim() != '') {
                 window.location.href = `/Users-view-${document.getElementById('input').value}`;
 
             }
         }
     </script>
 </body>
+
 </html>

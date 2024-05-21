@@ -10,9 +10,9 @@ exports.getSignIn = (request, response) => {
 
 exports.postSignIn = async  (request, response) => {
     try {
-        const firstName = request.body.firstName;
-        const lastName = request.body.lastName;
-        const email = request.body.email;
+        const firstName = request.body.firstName.trim();
+        const lastName = request.body.lastName.trim();
+        const email = request.body.email.trim();
 
         const password = await bcrypt.hash(request.body.password, 10);
 

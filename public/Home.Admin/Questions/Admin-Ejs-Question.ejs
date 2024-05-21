@@ -11,22 +11,32 @@
 <body>
     <div class="main">
         <% if(userQuestions && userQuestions.length> 0){ %>
-             <% userQuestions.forEach(function(Question) { %>
+            <% userQuestions.forEach(function(Question) { %>
 
                 <div class="answer-questions">
                     <div class="question-data">
                         <ul>
-                            <li>Name : <%= Question.f_name %> <%= Question.l_name %></li>
-                            <li>Email : <%= Question.email %></li>
-                            <li>Q : <%= Question.question %></li>
+                            <li>Name : <%= Question.f_name %>
+                                    <%= Question.l_name %>
+                            </li>
+                            <li>Email : <%= Question.email %>
+                            </li>
+                            <li>Q : <%= Question.question %>
+                            </li>
                             <li><a href="/Desktop/<%=Question.category%>_id-<%= Question.pId%>">View Product</a></li>
                         </ul>
                     </div>
                     <div class="form">
                         <form action="/Answer-Questions" method="post">
-                            <input type="text" name="question_no" id="question_no" value="<%= Question.question_no %>" hidden>
-                            <input type="text" name="answer" id="answer" placeholder="A : Give The Correct Answer" required/>
-                            <button type="submit">Send Answer</button>
+                            <input type="text" name="question_no" id="question_no" value="<%= Question.question_no %>"
+                                hidden>
+                            <input type="text" name="answer" id="answer" placeholder="A : Give The Correct Answer"
+                                required />
+                            <div class="button-drop">
+                                <div class="button"><button type="submit">Send Answer</button></div>
+                                <div class="drop" onclick="send('<%= Question.category %>', '<%= Question.pId %>')">Drop
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -35,8 +45,17 @@
                     <% } else{ %>
 
                         <h1 style="text-align:center">No Question In Queue</h1>
-                    <% } %>
+                        <% } %>
     </div>
+
+    <script>
+        function send(category, pId) {
+            if (confirm('Do you want to Drop the Question')) {
+                window.location.href = `/Desktop/Question-Drop/${category}/${pId}`;
+            }
+        }        
+    </script>
+
 </body>
 
 </html>
