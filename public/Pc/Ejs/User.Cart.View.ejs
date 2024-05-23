@@ -7,6 +7,7 @@
   <title>Pc Gallery || Pc Information</title>
   <link rel="stylesheet" href="/Pc/Style/User.Cart.View.css" />
   <link rel="stylesheet" href="/Navbar/nav-bar.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
@@ -33,7 +34,7 @@
             <label for="sortBrand">Sort by Brand:</label>
             <select id="sortBrand">
               <option value="0" <% if (brand=='0' ) { %>
-                selected="selected" <% } %>></option>
+                selected="selected" <% } %>>Any</option>
               <option value="INTEL" <% if (brand=="INTEL" ) { %>
                 selected="selected" <% } %>>INTEL</option>
               <option value="AMD Ryzen" <% if (brand=="AMD Ryzen" ) { %>
@@ -47,7 +48,7 @@
             <label for="sortModel">Sort by Model:</label>
             <select id="sortModel">
               <option value="0" <% if (model=='0' ) { %>
-                selected="selected" <% } %>></option>
+                selected="selected" <% } %>>Any</option>
               <option value="Intel Pentium" <% if (model=="Intel Pentium" ) { %>
                 selected="selected" <% } %>>Intel
                   Pentium</option>
@@ -171,6 +172,15 @@
     <!-- <div id="updatedURL"></div> -->
 
     <script>
+      function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+    }
+    
       const rangeInput = document.getElementById("priceRange");
       const rangeValueDisplay = document.getElementById("rangeValue");
       const sortBrand = document.getElementById("sortBrand");

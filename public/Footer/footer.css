@@ -1,4 +1,9 @@
 /* General styles */
+*{
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+}
 .footer {
     width: 100%;
     background-color: #77B0AA;
@@ -137,7 +142,7 @@
     text-align: center;
     background-color: #102C57;
     width: 100%;
-    padding: 15px;
+    padding: 10px;
     /* margin-top: 15px; */
 }
 .copyright-text{
