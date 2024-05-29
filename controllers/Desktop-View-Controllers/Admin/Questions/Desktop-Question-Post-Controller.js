@@ -7,6 +7,12 @@ exports.DesktopQuestionPostController = (request, response) => {
     const productID = request.body.productID;
     const description = request.body.description;
 
+    const count = `
+    UPDATE count_messages
+    set questions = 1+ (SELECT questions from count_messages where ID = 1)
+    where ID = 1;`
+   dataBase.query(count, (error, data)=>{});
+
     console.log(description);
 
     const sql = `

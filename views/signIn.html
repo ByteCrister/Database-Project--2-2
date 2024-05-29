@@ -10,16 +10,20 @@
 
 <body>
     <div class="signin-container">
-        <div class="register-account">
-            <h3>Register Account</h3>
-        </div>
         <div class="email-exists-text">
             <p id="p-for-incorrect-information" style="visibility: hidden; color: red">
                 <sup>*</sup> Email already exists
             </p>
         </div>
+        <div class="password-invalid-text">
+            <p id="p-for-invalid-password" style="visibility: hidden; color: red">
+                <sup>*</sup> Password must be at least 6 characters long and include at least one uppercase letter, one lowercase letter, and one special symbol.
+            </p>
+        </div>
+        <div class="register-account">
+            <h3>Register Account</h3>
+        </div>
         <form id="signInForm">
-            <!-- Add an ID to the form -->
             <div class="first-last-name">
                 <div class="fist-name box-style">
                     <label for="firstName" class="label-style">First Name <sup class="red-sup">*</sup></label>
@@ -50,7 +54,6 @@
                 <button type="button" id="signInButton">Continue</button>
             </div>
             <div class="link-to-log-in">
-                <!-- Change type to 'button' -->
                 <h4 id="link-to-log-in">
                     Or are you already registered? <a href="/logIn">LogIn.</a>
                 </h4>
@@ -59,7 +62,6 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- Add jQuery -->
     <script src="/User.log.in/signIn.js"></script>
 </body>
 

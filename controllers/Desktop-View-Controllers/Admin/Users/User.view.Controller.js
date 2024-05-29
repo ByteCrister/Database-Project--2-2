@@ -86,7 +86,8 @@ exports.userQuestion = (request, response)=>{
             from user_questions 
             join users
             on user_questions.user_id = users.user_id
-            where users.user_id = ${request.params.id};
+            where users.user_id = ${request.params.id}
+            and user_questions.answers is not null;
         `;
 
         dataBase.query(sql, (error, data)=>{

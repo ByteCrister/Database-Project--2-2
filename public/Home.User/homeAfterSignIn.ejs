@@ -17,6 +17,26 @@
 </head>
 
 <body>
+    
+    <div class="messages">
+        <div class="popup-message questionMessage">
+            <p id="question"></p>
+            <div class="timer question-timer"></div>
+        </div>
+        <div class="popup-message reviewMessage">
+            <p id="review"></p>
+            <div class="timer review-timer"></div>
+        </div>
+        <div class="popup-message purchasesMessage">
+            <p id="purchases"></p>
+            <div class="timer purchases-timer"></div>
+        </div>
+        <div class="popup-message contactMessage">
+            <p id="contact"></p>
+            <div class="timer contact-timer"></div>
+        </div>
+    </div>
+
     <%- include ("../Navbar/nav-bar.ejs") %>
         <!-- ---------------- Make it dynamic ---------------------- -->
         <div class="main-advertise">
@@ -122,6 +142,8 @@
                 <script src="/Home.User/JS/GraphicsCardSlider.js"></script>
                 <script src="/Home.User/JS/RamSlider.js"></script>
                 <script src="/Home.User/JS/homeBeforeSignIn.js"></script>
+
+                <script src="/Home.User/JS/popUp.js"></script>
 </body>
 
 </html>

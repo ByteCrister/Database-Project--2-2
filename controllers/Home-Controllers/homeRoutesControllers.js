@@ -32,11 +32,52 @@ exports.getHome = async (request, response) => {
             response.render(path.join(__dirname, '..', '..', 'public', 'Home.User', 'homeAfterSignIn.ejs'), { brandPcList });
         } else if (request.session.isAdminLoggedIn) {
             response.render(path.join(__dirname, '..', '..', 'public', 'Home.Admin', 'Home', 'adminHome.ejs'));
+
         } else {
             response.render(path.join(__dirname, '..', '..', 'public', 'Home.User', 'homeBeforeSignIn.ejs'), { brandPcList });
         }
     } catch (error) {
         console.log(error);
         // Handle error appropriately
+    }
+};
+
+
+
+
+
+
+exports.getAdminData = (req, res) => {
+    if (req.session.isAdminLoggedIn) {
+        // Query to fetch data
+        dataBase.query('SELECT * FROM count_messages WHERE ID = 1', (err, data) => {
+            if (err) {
+                console.error(err);
+                res.status(500).json({ error: 'Internal Server Error' });
+                return;
+            }
+
+            if (!data || !data.length) {
+                console.error('No data found');
+                res.status(404).json({ error: 'Data not found' });
+                return;
+            }
+
+            const { questions, reviews, purchases, messages } = data[0];
+
+            // Query to update data
+            dataBase.query('UPDATE count_messages SET questions = 0, reviews = 0, purchases = 0, messages = 0 WHERE ID = 1', (error, value) => {
+                if (error) {
+                    console.error(error);
+                    res.status(500).json({ error: 'Internal Server Error' });
+                    return;
+                }
+
+                // Sending response with the updated data
+                res.json({ questions, reviews, purchases, messages });
+            });
+        });
+    } else {
+        res.redirect('/');
     }
 };
