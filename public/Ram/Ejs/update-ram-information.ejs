@@ -57,15 +57,15 @@
 
                 <div class="form-group">
                     <label for="cut-price">Cut price (Optional):</label>
-                    <input type="text" id="cut_price" name="cut_price" value="<%= data[0].cut_price %>" >
+                    <input type="number" id="cut_price" name="cut_price" value="<%= data[0].cut_price %>" >
                 </div>
                 <div class="form-group">
                     <label for="price">Price:</label>
-                    <input type="text" id="price" name="price" value="<%= data[0].price %>" required>
+                    <input type="number" id="price" name="price" value="<%= data[0].price %>" required>
                 </div>
                 <div class="form-group">
                     <label for="productImage">Product Image:</label>
-                    <input type="file" id="productImage" name="productImage" accept="image/*" required>
+                    <input type="file" id="productImage" name="productImage" value="<%= data[0].product_image_path %>" accept="image/*" required>
                 </div>
             </div>
 
