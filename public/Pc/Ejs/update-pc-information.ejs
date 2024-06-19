@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../Style/Add-pc-items.css">
+    <link rel="stylesheet" href="/Pc/Style/Add-pc-items.css">
     <title>Enter PC Information's</title>
 </head>
 
@@ -76,7 +76,7 @@
                 </div>
                 <div class="form-group">
                     <label for="productImage">Product Image:</label>
-                    <input type="file" id="productImage" name="productImage" accept="image/*" required>
+                    <input type="file" id="productImage" name="productImage" value="<%= data[0].product_image_path %>" accept="image/*" required>
                 </div>
             </div>
 

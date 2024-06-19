@@ -18,7 +18,7 @@
             <div class="head-selection">
                 <h3>Select Category:</h3>
                 <div class="selection">
-                    <select id="categorySelect">
+                    <select id="categorySelect" onchange="search()">
                         <option value="All">All</option>
                         <option value="Pc">Pc</option>
                         <option value="Brand-Pc">Brand-Pc</option>
@@ -31,21 +31,21 @@
             <div class="sortings">
                 <h2>Sort By:</h2>
                 <div>
-                    <input type="radio" id="sortByRating" name="sortOption" value="all" checked>
+                    <input type="radio" id="sortByRating" name="sortOption" value="all" onchange="search()" checked>
                     <label for="sortByRating">Any</label>
                 </div>
                 <div>
-                    <input type="radio" id="sortByRating" name="sortOption" value="rating desc">
+                    <input type="radio" id="sortByRating" name="sortOption" onchange="search()" value="rating desc">
                     <label for="sortByRating">Top to Bottom</label>
                 </div>
                 <div>
-                    <input type="radio" id="sortByName" name="sortOption" value="rating">
+                    <input type="radio" id="sortByName" name="sortOption" onchange="search()" value="rating">
                     <label for="sortByName">Bottom to Top</label>
                 </div>
             </div>
-            <div class="search">
-                <button onclick="search()">Search</button>
-            </div>
+            <!-- <div class="search">
+                <button onchange="search()">Search</button>
+            </div> -->
         </div>
 
         <div id="urlDisplay"></div>
@@ -58,6 +58,7 @@
                         <th>Ratings</th>
                         <th>View Product</th>
                         <th>Category</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -75,6 +76,8 @@
                             <td>
                                 <%= rating.category %>
                             </td>
+                            <td onclick="send('<%= rating.category %>', '<%= rating.pId %>')" style="cursor: pointer;">
+                                Drop</td>
                         </tr>
                         <% }) %>
                 </tbody>
@@ -96,6 +99,22 @@
             }
             //document.getElementById('urlDisplay').innerText = `/User/Ratings?category=${selectedCategory}&sort=${selectedSortingOption}`; 
             window.location.href = `/User/Ratings?category=${selectedCategory}&sort=${selectedSortingOption}`;
+        }
+
+        function send(category, pId) {
+            if (confirm('Do you want to Drop the Rating information')) {
+                const sortCategory = document.getElementById('categorySelect').value;
+                const sortBy = document.getElementsByName('sortOption');
+                let selectedSortingOption;
+                for (const option of sortBy) {
+                    if (option.checked) {
+                        selectedSortingOption = option.value;
+                        break;
+                    }
+                }
+                console.log(`/User/Ratings/Delete/${category}/${pId}/${sortCategory}/${selectedSortingOption}`);
+                window.location.href = `/User/Ratings/Delete/${category}/${pId}/${sortCategory}/${selectedSortingOption}`;
+            }
         }
 
         window.onload = () => {

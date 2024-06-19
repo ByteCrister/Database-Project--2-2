@@ -58,6 +58,10 @@ button:hover {
     background-color: #555;
 }
 
+#p-for-incorrect-information, #p-for-invalid-password{
+    font-family: 'Times New Roman', Times, serif;
+}
+
 #link-to-log-in,
 a {
     text-decoration: none;

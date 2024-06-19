@@ -39,6 +39,9 @@ body {
 .sorting-container {
     margin-bottom: 20px;
 }
+.desktop{
+    color: #888;
+}
 
 .s-range,
 .s-brand,

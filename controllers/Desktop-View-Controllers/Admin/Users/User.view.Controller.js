@@ -25,6 +25,20 @@ exports.userViewRouter = (request, response) => {
     }
 };
 
+exports.UserRestrictions = (request, response)=>{
+    const id = request.params.id;
+    const value = request.params.value;
+    const sql = `update users set restricted = ${value} where user_id = ${id}; `;
+    dataBase.query(sql, (error, data)=>{
+        if(error){
+            console.log(error);
+        }else{
+            console.log(id+"   "+value);
+            response.redirect('/Users-view-0');
+        }
+    })
+};
+
 
 exports.userReview  = (request, response)=>{
     if(request.session.isAdminLoggedIn){
@@ -72,7 +86,8 @@ exports.userQuestion = (request, response)=>{
             from user_questions 
             join users
             on user_questions.user_id = users.user_id
-            where users.user_id = ${request.params.id};
+            where users.user_id = ${request.params.id}
+            and user_questions.answers is not null;
         `;
 
         dataBase.query(sql, (error, data)=>{

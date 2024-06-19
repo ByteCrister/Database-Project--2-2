@@ -12,6 +12,7 @@ app.use(session({
     saveUninitialized: true,
 }));
 
+
 /**************** Home Routes Handling *****************/
 const homeRoutes = require('./routes/Home-Routes/homeBeforeSignInRoutes');
 const logInRoutes = require('./routes/Home-Routes/logInRoutes');
@@ -89,7 +90,7 @@ app.use(logInRoutes);
 app.use(adminLogInRoutes);
 app.use(signInRoutes);
 app.use(logOutRoutes);
-
+// app.use(require('./routes/Home-Routes/confirm'));
 
 /**************** PC Routes ************/
 app.use(addPCRoutes);

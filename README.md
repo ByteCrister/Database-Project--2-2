@@ -1,28 +1,30 @@
 # Personal E-Commerce Platform for PC Components
 
-## You should know!
+## Do you know?
 <p>This database project serves as an introduction to the server environment and databases for me. I have recently learned some basic <b>Node.js</b>, <b>Express.js</b>, <b>MySql</b>, and <b>EJS</b> components to connect the database with the frontend. Within two weeks, I learned these components and started applying them to this project. Lots of mistakes happened, but more than mistakes, I have gained practical knowledge from this project, which I must apply to my upcoming projects.</p>
 <br><br>
 
 ## Overview
 
-<p>This project is a personal e-commerce platform tailored for the sale of PC components. Developed as a group project for North East University Bangladesh, this platform empowers website owners to efficiently manage their PC component inventory while providing a seamless shopping experience for users.</p><br><br>
+<p>This project is a personal e-commerce platform tailored for the sale of PC components. Developed as a group project for <b>North East University Bangladesh</b>, this platform empowers website owners to efficiently manage their PC component inventory while providing a seamless shopping experience for users.</p><br><br>
 
-## What was my contribution to this poject?
+## What was my contribution to this project?
 - Designed the overall structure.(Both frontend and backend)
 - Followed MVC architecture throughout the project.
-- Intigrated User and Admin authentication
+- Integrated User and Admin authentication
 - Worked on complex SQL commands.
 - Integrated CRUD operations for all products
-- Implemented Sortings on the user pages like sort by category, price, model, brand ..
-- Integrated Admin Dashboard features
+- Implemented Sorting on the user pages like sort by category, price, model, brand ..
+- Admin Dashboard features
+  - Search users by email
+  - Instant notifications of user reviews, questions, purchases or other things.
   - Find purchase history by date.
   - User questions by date.
   - Product ratings by category and sorting.
   - Answer user questions.
-  - For each find you can view the product.
+  - For each user you can view their individual purchases, reviews and questions etc.
   - Update or Delete any product.
-  - Fully integrated with dataabse.
+  - Fully integrated with database.
 
 ## Features
 

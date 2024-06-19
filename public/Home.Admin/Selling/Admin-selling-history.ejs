@@ -35,6 +35,7 @@
                 <th>View Product</th>
                 <th>Purchase Date</th>
                 <th>Product Amount</th>
+                <th>Quantity</th>
             </tr>
         </thead>
         <tbody>
@@ -46,6 +47,7 @@
                     <td><a href="/Desktop/<%=data.pCategory%>_id-<%=data.pid%>">View</a></td>
                     <td><%= new Date(data.pDate).toISOString().slice(0, 10); %></td>
                     <td><%= data.pAmount %>৳</td>
+                    <td>x<%= data.quantity %></td>
                 </tr>
             <%})%>
             

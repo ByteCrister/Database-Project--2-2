@@ -8,6 +8,11 @@ exports.postReview = (request, response) => {
     const category = request.body.category;
     const review = request.body.description;
     const stars = request.body.rating;
+    const count = `
+    UPDATE count_messages
+    set reviews = 1+ (SELECT reviews from count_messages where ID = 1)
+    where ID = 1;`
+   dataBase.query(count, (error, data)=>{});
 
     const sql = `
         insert into user_reviews (user_id, product_category, product_id, review, stars, review_date)

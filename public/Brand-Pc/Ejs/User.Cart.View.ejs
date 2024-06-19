@@ -6,6 +6,9 @@
     <title>Pc Gallery || Brand PC Carts</title>
     <link rel="stylesheet" href="/Brand-Pc/Style/Admin.Cart.View.css">
     <link rel="stylesheet" href="/Navbar/nav-bar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
 </head>
 <body>
 
@@ -32,7 +35,7 @@
                     <label for="sortBrand">Sort by Ram:</label>
                     <select id="sortBrand">
                         <option value="0" <% if (size=='0' ) { %>
-                            selected="selected" <% } %>></option>
+                            selected="selected" <% } %>>Any</option>
                         <option value="2" <% if (size=="2" ) { %>
                             selected="selected" <% } %>>2GB</option>
                         <option value="4" <% if (size=="4" ) { %>
@@ -50,7 +53,7 @@
                     <label for="sortModel">Sort by Model:</label>
                     <select id="sortModel">
                         <option value="0" <% if (model=='0' ) { %>
-                            selected="selected" <% } %>></option>
+                            selected="selected" <% } %>>Any</option>
                         <option value="Pro DP180" <% if (model=="Pro DP180" ) { %>
                             selected="selected" <% } %>>Pro DP180 
                                 Pentium</option>
@@ -159,6 +162,15 @@
 
 
     <script>
+        function myFunction() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
+        }
+        
         const rangeInput = document.getElementById("priceRange");
         const rangeValueDisplay = document.getElementById("rangeValue");
         const sortBrand = document.getElementById("sortBrand");

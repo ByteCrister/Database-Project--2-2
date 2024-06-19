@@ -44,3 +44,20 @@ exports.postAdminQuestion = (request, response)=>{
         }
     })
 }
+
+
+exports.getQuestionDrop = (request, response)=>{
+    const category = request.params.category;
+    const id = request.params.id;
+
+    const sql = `delete from user_questions where product_category = "${category}" and product_id = ${id};`
+    dataBase.query(sql, (error, data)=>{
+        if(error){
+            console.log(error);
+        }else{
+            console.log(category+"-"+id);
+            response.redirect('/Answer-Questions');
+        }
+    })
+
+};

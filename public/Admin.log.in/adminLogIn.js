@@ -9,7 +9,7 @@ const logIn = () => {
     console.log("logIn function called");
 
     $.ajax({
-        url: "/adminLogIn",
+        url: "/admin/jhvvytcsxersrewqawquygtoiuhiohhgiuguygfuyf",
         method: "post",
         contentType: "application/json",
         data: JSON.stringify({
