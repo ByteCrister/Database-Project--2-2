@@ -16,6 +16,11 @@ document.addEventListener('DOMContentLoaded', function() {
         return password;
     };
 
+    const validateEmail = (email) => {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email);
+    };
+
     const validatePassword = (password) => {
         const minLength = 6;
         const hasUpperCase = /[A-Z]/.test(password);
@@ -31,6 +36,17 @@ document.addEventListener('DOMContentLoaded', function() {
         const password = $("#password").val();
         const passwordInvalidText = document.getElementById('p-for-invalid-password');
         const emailExistsText = document.getElementById('p-for-incorrect-information');
+        const emailInvalidText = document.getElementById('email-invalid-text');
+
+        if (!validateEmail(email)) {
+            emailInvalidText.style.visibility = 'visible';
+            passwordInvalidText.style.visibility = 'hidden';
+            emailExistsText.style.visibility = 'hidden';
+            return;
+        } else {
+            emailInvalidText.style.visibility = 'hidden';
+        }
+
 
         if (!validatePassword(password)) {
             passwordInvalidText.style.visibility = 'visible';
@@ -53,9 +69,12 @@ document.addEventListener('DOMContentLoaded', function() {
             success: (data) => {
                 console.log("Server response:", data);
                 if (data.success) {
-                    window.location.href = "/"; // Redirect to home route
+                    // window.location.href = "/"; // Redirect to home route
+                    emailExistsText.style.visibility = 'visible';
+                    emailExistsText.innerHTML = 'Confirmation send to your email';
                 } else {
                     emailExistsText.style.visibility = 'visible';
+                    emailExistsText.innerHTML = 'Email already exists or something problem on your email. Please try again';
                 }
             },
             error: (error) => {

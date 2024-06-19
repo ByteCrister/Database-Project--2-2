@@ -71,26 +71,29 @@ body {
 }
 
 .cart a,
-.account a {
+.account a,
+.logOut a {
     text-decoration: none;
     color: rgb(10, 77, 116);
 
 }
 
 .cart a:hover,
-.account a:hover {
+.account a:hover,
+.logOut a:hover {
     text-decoration: underline;
     color: #a584b8;
 }
 
 .cart i,
-.account i {
+.account i
+.logOut i {
     margin-right: 5px;
 }
 
 .topnav {
-    /* display: flex;
-    justify-content: space-around; */
+    display: flex;
+    justify-content: space-evenly;
     width: 100%;
     background-color: #240750;
     overflow: hidden;
@@ -169,6 +172,9 @@ body {
     .upper-nav {
         flex-direction: column;
         align-items: center;
+    }
+    .topnav{
+            flex-direction: column;
     }
 
     .search-bar-account {

@@ -1,7 +1,7 @@
 <div class="main-navigation">
     <div class="upper-nav">
-        <div class="logo" style="background-image: url('/images/—Pngtree—computer icon_5064133.png');">
-        </div>
+       <a href="/"> <div class="logo" style="background-image: url('/images/PcImage.png');">
+    </div></a>
         <div class="search-bar-account">
             <div class="search-bar">
                 <input type="text" placeholder="Search.." id="search-bar">
@@ -11,6 +11,9 @@
             </div>
             <div class="account">
                 <a href="#"><i class="fas fa-user"></i> Account</a>
+            </div>
+            <div class="logOut">
+                <a href="#" onclick="isLogOut()"><i class="fas fa-sign-out-alt"></i> log out</a>
             </div>
         </div>
     </div>
@@ -76,3 +79,11 @@
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
     </div>
 </div>
+
+<script>
+    function isLogOut(){
+        if(confirm('Do you want to log out?')){
+            window.location.href = '/logOut';
+        }
+    }
+</script>
