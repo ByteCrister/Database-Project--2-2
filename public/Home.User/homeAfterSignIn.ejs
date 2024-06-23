@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    
+
     <div class="messages">
         <div class="popup-message questionMessage">
             <p id="question"></p>
@@ -110,7 +110,8 @@
 
         <div class="support-text">
             <div class="inner-text">
-                <p>Eid Mubarak! Due to Eid Holiday our online activities and some outlets are out of operation. For Eid holiday schedule please visit our contact page.
+                <p>Eid Mubarak! Due to Eid Holiday our online activities and some outlets are out of operation. For Eid
+                    holiday schedule please visit our contact page.
                 </p>
 
             </div>
@@ -126,25 +127,28 @@
         <!------------------------------------- Brand Pc slider -------------------->
         <%- include('EJSBrandPc') %>
 
-
-
             <!------------------------------------- Pc slider -------------------->
+            <%- include('EJSPc') %>
 
-            <!------------------------------------- Graphics Card slider -------------------->
-
-            <!------------------------------------- Ram slider -------------------->
-
-
+                <!------------------------------------- Graphics Card slider -------------------->
+                <%- include('EJSGraphicsCard') %>
 
 
-            <%- include ("../Footer/footer.ejs") %>
-                <script src="/Home.User/JS/BrandPcSlider.js"></script>
-                <script src="/Home.User/JS/PcSlider.js"></script>
-                <script src="/Home.User/JS/GraphicsCardSlider.js"></script>
-                <script src="/Home.User/JS/RamSlider.js"></script>
-                <script src="/Home.User/JS/homeBeforeSignIn.js"></script>
+                    <!------------------------------------- Ram slider -------------------->
+                    <%- include('EJSRam') %>
 
-                <script src="/Home.User/JS/popUp.js"></script>
+
+
+
+
+                        <%- include ("../Footer/footer.ejs") %>
+                            <script src="/Home.User/JS/BrandPcSlider.js"></script>
+                            <script src="/Home.User/JS/PcSlider.js"></script>
+                            <script src="/Home.User/JS/GraphicsCardSlider.js"></script>
+                            <script src="/Home.User/JS/RamSlider.js"></script>
+                            <script src="/Home.User/JS/homeBeforeSignIn.js"></script>
+
+                            <script src="/Home.User/JS/popUp.js"></script>
 </body>
 
 </html>

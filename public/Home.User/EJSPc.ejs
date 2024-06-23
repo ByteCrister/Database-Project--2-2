@@ -1,0 +1,53 @@
+<div class="product-slider-container">
+    <div class="pc-product-slider">
+
+        <% pcList.forEach((pc)=>{ %>
+
+            <div class="pc-product-slide">
+                <div class="pcs-main-container">
+                    <div class="pc-id-<%= pc.pc_information_No %> pc-style">
+                        <span class="pc-id" style="display: none;"></span>
+                        <div class="upper-div">
+                            <div class="save-text">
+                                <span>Save: <%= pc.saveText %></span>
+                            </div>
+                            <div class="images">
+                                <div class="product-image"
+                                    style="background-image: url('data:image;base64, <%= pc.product_image_path %>')"></div>
+                            </div>
+                        </div>
+                        <div class="lower-div">
+                            <div class="pc-name">
+                                <a href="/Desktop/Pc_id-<%= pc.pc_information_No %>"><%=pc.brand%> <%=pc.model%></a>
+                                <div class="list">
+                                    <ul>
+                                        <li>Processor : <%= pc.processor %></li>
+                                        <li>Motherboard : <%= pc.motherboard %></li>
+                                        <li>Ram : <%= pc.ram %></li>
+                                        <li>Storage : <%= pc.storage %></li>
+                                    </ul>
+                                </div>
+                                <hr class="line" />
+                            </div>
+                            <div class="price-and-buttons">
+                                <div class="pc-price">
+                                    <div class="final-price"><%= pc.final_price %></div>
+                                    <div class="cut-price"><%= pc.cut_price %></div>
+                                </div>
+                                <div class="buy-now-button">
+                                    <span class="shopping-emoji">🛒</span>
+                                    <a href="/Buy-Now/Pc-<%= pc.pc_information_No %>">Buy Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       <% }) %>
+
+
+        <!-- Add more .brand-pc-product-slide elements as needed -->
+    </div>
+    <button class="product-prev" onclick="PcProductPrevSlide()">❮</button>
+    <button class="product-next" onclick="PcProductNextSlide()">❯</button>
+</div>

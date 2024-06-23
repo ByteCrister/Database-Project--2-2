@@ -1,0 +1,53 @@
+<div class="product-slider-container">
+    <div class="ram-product-slider">
+
+        <% ramList.forEach((ram)=>{ %>
+
+            <div class="ram-product-slide">
+                <div class="pcs-main-container">
+                    <div class="pc-id-<%= ram.ram_id %> pc-style">
+                        <span class="pc-id" style="display: none;"></span>
+                        <div class="upper-div">
+                            <div class="save-text">
+                                <span>Save: <%= ram.saveText %></span>
+                            </div>
+                            <div class="images">
+                                <div class="product-image"
+                                    style="background-image: url('data:image;base64, <%= ram.product_image_path %>')"></div>
+                            </div>
+                        </div>
+                        <div class="lower-div">
+                            <div class="pc-name">
+                                <a href="/Desktop/Ram_id-<%= ram.ram_id %>"><%=ram.brand%> <%=ram.model%></a>
+                                <div class="list">
+                                    <ul>
+                                        <li>Type : <%= ram.type %></li>
+                                        <li>Size : <%= ram.capacity %></li>
+                                        <li>Frequency : <%= ram.frequency %></li>
+                                        <li>Operating Voltage : <%= ram.operatingVoltage %></li>
+                                    </ul>
+                                </div>
+                                <hr class="line" />
+                            </div>
+                            <div class="price-and-buttons">
+                                <div class="pc-price">
+                                    <div class="final-price"><%= ram.final_price %></div>
+                                    <div class="cut-price"><%= ram.cut_price %></div>
+                                </div>
+                                <div class="buy-now-button">
+                                    <span class="shopping-emoji">🛒</span>
+                                    <a href="/Buy-Now/Ram-<%= ram.ram_id %>">Buy Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       <% }) %>
+
+
+        <!-- Add more .brand-pc-product-slide elements as needed -->
+    </div>
+    <button class="product-prev" onclick="RamProductPrevSlide()">❮</button>
+    <button class="product-next" onclick="RamProductNextSlide()">❯</button>
+</div>

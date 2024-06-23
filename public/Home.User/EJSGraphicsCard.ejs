@@ -1,0 +1,53 @@
+<div class="product-slider-container">
+    <div class="graphics-card-product-slider">
+
+        <% graphicsCardList.forEach((graphicsCard)=>{ %>
+
+            <div class="graphics-card-product-slide">
+                <div class="pcs-main-container">
+                    <div class="pc-id-<%= graphicsCard.gp_card_No %> pc-style">
+                        <span class="pc-id" style="display: none;"></span>
+                        <div class="upper-div">
+                            <div class="save-text">
+                                <span>Save: <%= graphicsCard.saveText %></span>
+                            </div>
+                            <div class="images">
+                                <div class="product-image"
+                                    style="background-image: url('data:image;base64, <%= graphicsCard.product_image_path %>')"></div>
+                            </div>
+                        </div>
+                        <div class="lower-div">
+                            <div class="pc-name">
+                                <a href="/Desktop/Graphics-Card_id-<%= graphicsCard.gp_card_No %>"><%=graphicsCard.brand%> <%=graphicsCard.model%></a>
+                                <div class="list">
+                                    <ul>
+                                        <li>Type : <%= graphicsCard.type %></li>
+                                        <li>Size : <%= graphicsCard.size %></li>
+                                        <li>Display Port : <%= graphicsCard.display_port %></li>
+                                        <li>Resolution : <%= graphicsCard.resolution %></li>
+                                    </ul>
+                                </div>
+                                <hr class="line" />
+                            </div>
+                            <div class="price-and-buttons">
+                                <div class="pc-price">
+                                    <div class="final-price"><%= graphicsCard.final_price %></div>
+                                    <div class="cut-price"><%= graphicsCard.cut_price %></div>
+                                </div>
+                                <div class="buy-now-button">
+                                    <span class="shopping-emoji">🛒</span>
+                                    <a href="/Buy-Now/Brand-Pc-<%= graphicsCard.gp_card_No %>">Buy Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       <% }) %>
+
+
+        <!-- Add more .brand-pc-product-slide elements as needed -->
+    </div>
+    <button class="product-prev" onclick="GraphicsCardProductPrevSlide()">❮</button>
+    <button class="product-next" onclick="GraphicsCardProductNextSlide()">❯</button>
+</div>

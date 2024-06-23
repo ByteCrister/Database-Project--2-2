@@ -27,14 +27,91 @@ exports.getHome = async (request, response) => {
                 }
             });
         });
+        const graphicsCardList = await new Promise((resolve, reject) => {
+            dataBase.query(`
+                SELECT 
+                    gp_card_No, 
+                    brand, 
+                    model, 
+                    type, 
+                    size, 
+                    resolution, 
+                    display_port,
+                    product_image_path, 
+                    FORMAT(CAST(REPLACE(cut_price, ',', '') AS UNSIGNED), 0) AS cut_price, 
+                    FORMAT(CAST(REPLACE(final_price, ',', '') AS UNSIGNED), 0) AS final_price,
+                    FORMAT(CAST(REPLACE(cut_price, ',', '') AS UNSIGNED) - CAST(REPLACE(final_price, ',', '') AS UNSIGNED), 0) AS saveText
+                FROM 
+                    graphics_card;
+            `, (error, data) => {
+                if (error) {
+                    reject(error);
+                } else {
+                    resolve(data);
+                }
+            });
+        });
+        const ramList = await new Promise((resolve, reject) => {
+            dataBase.query(`
+                SELECT 
+                    ram_id, 
+                    brand, 
+                    model, 
+                    type, 
+                    capacity, 
+                    frequency, 
+                    operatingVoltage,
+                    product_image_path, 
+                    FORMAT(CAST(REPLACE(cut_price, ',', '') AS UNSIGNED), 0) AS cut_price, 
+                    FORMAT(CAST(REPLACE(price, ',', '') AS UNSIGNED), 0) AS final_price,
+                    FORMAT(CAST(REPLACE(cut_price, ',', '') AS UNSIGNED) - CAST(REPLACE(price, ',', '') AS UNSIGNED), 0) AS saveText
+                FROM 
+                    ram_informations;
+            `, (error, data) => {
+                if (error) {
+                    reject(error);
+                } else {
+                    resolve(data);
+                }
+            });
+        });
+        const pcList = await new Promise((resolve, reject) => {
+            dataBase.query(`
+                SELECT 
+                    pc_information_No, 
+                    brand, 
+                    model, 
+                    processor, 
+                    motherboard, 
+                    ram, 
+                    storage,
+                    product_image_path, 
+                    FORMAT(CAST(REPLACE(cut_price, ',', '') AS UNSIGNED), 0) AS cut_price, 
+                    FORMAT(CAST(REPLACE(price, ',', '') AS UNSIGNED), 0) AS final_price,
+                    FORMAT(CAST(REPLACE(cut_price, ',', '') AS UNSIGNED) - CAST(REPLACE(price, ',', '') AS UNSIGNED), 0) AS saveText
+                FROM 
+                    pc_information;
+            `, (error, data) => {
+                if (error) {
+                    reject(error);
+                } else {
+                    resolve(data);
+                }
+            });
+        });
+
+
+
+
+
 
         if (request.session.isLoggedIn) {
-            response.render(path.join(__dirname, '..', '..', 'public', 'Home.User', 'homeAfterSignIn.ejs'), { brandPcList });
+            response.render(path.join(__dirname, '..', '..', 'public', 'Home.User', 'homeAfterSignIn.ejs'), { brandPcList, graphicsCardList, ramList, pcList });
         } else if (request.session.isAdminLoggedIn) {
             response.render(path.join(__dirname, '..', '..', 'public', 'Home.Admin', 'Home', 'adminHome.ejs'));
 
         } else {
-            response.render(path.join(__dirname, '..', '..', 'public', 'Home.User', 'homeBeforeSignIn.ejs'), { brandPcList });
+            response.render(path.join(__dirname, '..', '..', 'public', 'Home.User', 'homeBeforeSignIn.ejs'), { brandPcList, graphicsCardList, ramList, pcList });
         }
     } catch (error) {
         console.log(error);
