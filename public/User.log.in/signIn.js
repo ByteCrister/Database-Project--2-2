@@ -1,13 +1,16 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("DOMContentLoaded", function () {
     const togglePasswordVisibility = () => {
         const passwordInput = document.getElementById("password");
-        const showPasswordCheckbox = document.getElementById("show-password-checkbox");
-    
+        const showPasswordCheckbox = document.getElementById(
+            "show-password-checkbox"
+        );
+
         passwordInput.type = showPasswordCheckbox.checked ? "text" : "password";
     };
 
     const generateStrongPassword = () => {
-        const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+~`|}{[]:;?><,./-=";
+        const charset =
+            "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+~`|}{[]:;?><,./-=";
         let password = "";
         for (let i = 0; i < 10; i++) {
             const randomIndex = Math.floor(Math.random() * charset.length);
@@ -26,7 +29,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const hasUpperCase = /[A-Z]/.test(password);
         const hasLowerCase = /[a-z]/.test(password);
         const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
-        return password.length >= minLength && hasUpperCase && hasLowerCase && hasSpecialChar;
+        return (
+            password.length >= minLength &&
+            hasUpperCase &&
+            hasLowerCase &&
+            hasSpecialChar
+        );
     };
 
     const signIn = () => {
@@ -34,26 +42,29 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const email = $("#email").val();
         const password = $("#password").val();
-        const passwordInvalidText = document.getElementById('p-for-invalid-password');
-        const emailExistsText = document.getElementById('p-for-incorrect-information');
-        const emailInvalidText = document.getElementById('email-invalid-text');
+        const passwordInvalidText = document.getElementById(
+            "p-for-invalid-password"
+        );
+        const emailExistsText = document.getElementById(
+            "p-for-incorrect-information"
+        );
+        const emailInvalidText = document.getElementById("email-invalid-text");
 
         if (!validateEmail(email)) {
-            emailInvalidText.style.visibility = 'visible';
-            passwordInvalidText.style.visibility = 'hidden';
-            emailExistsText.style.visibility = 'hidden';
+            emailInvalidText.style.visibility = "visible";
+            passwordInvalidText.style.visibility = "hidden";
+            emailExistsText.style.visibility = "hidden";
             return;
         } else {
-            emailInvalidText.style.visibility = 'hidden';
+            emailInvalidText.style.visibility = "hidden";
         }
 
-
         if (!validatePassword(password)) {
-            passwordInvalidText.style.visibility = 'visible';
-            emailExistsText.style.visibility = 'hidden';
+            passwordInvalidText.style.visibility = "visible";
+            emailExistsText.style.visibility = "hidden";
             return;
         } else {
-            passwordInvalidText.style.visibility = 'hidden';
+            passwordInvalidText.style.visibility = "hidden";
         }
 
         $.ajax({
@@ -69,12 +80,21 @@ document.addEventListener('DOMContentLoaded', function() {
             success: (data) => {
                 console.log("Server response:", data);
                 if (data.success) {
-                    // window.location.href = "/"; // Redirect to home route
-                    emailExistsText.style.visibility = 'visible';
-                    emailExistsText.innerHTML = 'Confirmation send to your email';
+                    if (
+                        document.getElementById("firstName").value.trim().length === 0 ||
+                        document.getElementById("lastName").value.trim().length ===0
+                    ) {
+                        emailExistsText.style.visibility = "visible";
+                        emailExistsText.innerHTML = "Please provide a valid user name";
+                    } else {
+                        window.location.href = "/"; // Redirect to home route
+                    }
+                    // emailExistsText.style.visibility = 'visible';
+                    // emailExistsText.innerHTML = 'Confirmation send to your email';
                 } else {
-                    emailExistsText.style.visibility = 'visible';
-                    emailExistsText.innerHTML = 'Email already exists or something problem on your email. Please try again';
+                    emailExistsText.style.visibility = "visible";
+                    emailExistsText.innerHTML =
+                        "Email already exists or Invalid User Name. Please try again";
                 }
             },
             error: (error) => {
@@ -83,11 +103,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     };
 
-    const signInButton = document.getElementById('signInButton');
-    signInButton.addEventListener('click', signIn);
+    const signInButton = document.getElementById("signInButton");
+    signInButton.addEventListener("click", signIn);
 
-    const togglePasswordButton = document.querySelector("#show-password-checkbox");
-    togglePasswordButton.addEventListener('click', togglePasswordVisibility);
+    const togglePasswordButton = document.querySelector(
+        "#show-password-checkbox"
+    );
+    togglePasswordButton.addEventListener("click", togglePasswordVisibility);
 
     const generatedPassword = generateStrongPassword();
     document.getElementById("password").value = generatedPassword;
