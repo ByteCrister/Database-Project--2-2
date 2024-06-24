@@ -43,7 +43,8 @@ exports.getDesktopRamViews = (request, response) => {
     dataBase.query(`
    SELECT MAX(CAST(REPLACE(price, ',', '') AS UNSIGNED)) AS high,
    MIN(CAST(REPLACE(price, ',', '') AS UNSIGNED)) AS low
-   FROM ram_informations;
+   FROM ram_informations
+   where Hide=0;
 `, (error1, data1) => {
         if (error1) {
             console.error('Error fetching min and max prices:', error1);
@@ -64,12 +65,13 @@ exports.getDesktopRamViews = (request, response) => {
        AND CAST(REPLACE(price, ',', '') AS UNSIGNED) <= ${priceRange}
        AND capacity LIKE '${size1}%'
        AND model LIKE '${model1}%'
+       and Hide=0;
    `;
 
         if (highOrLow == 'High-to-Low') {
-            sql += ' ORDER BY CAST(REPLACE(price, ",", "") AS UNSIGNED) DESC;';
+            sql += ' ORDER BY CAST(REPLACE(price, ",", "") AS UNSIGNED) DESC where Hide=0;';
         } else if (highOrLow == 'Low-to-High') {
-            sql += ' ORDER BY CAST(REPLACE(price, ",", "") AS UNSIGNED) ASC;';
+            sql += ' ORDER BY CAST(REPLACE(price, ",", "") AS UNSIGNED) ASC where Hide=0;';
         }
 
         console.log("Ram Type - " + RamBrand);

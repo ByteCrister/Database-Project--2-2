@@ -10,7 +10,7 @@
 
 <body>
     <div class="form-container">
-        <form action="/update-brand-pc" method="post" enctype="multipart/form-data">
+        <form action="/update-brand-pc" method="post" enctype="multipart/form-data" id="ramForm">
             <div class="form-section">
                 <h2>Update Brand PC Specifications</h2>
                 <input type="text" id="pc-id" name="pcID"  value="<%= data[0].brand_pc_No %>" hidden>
@@ -113,10 +113,69 @@
                 </div>
             </div>
             <div class="form-group">
-                <button type="submit">Add Item</button>
+                <button type="submit" id="submitButton">Add Item</button>
             </div>
+            <div class="error" style="color: red; font-size: 0.9em; font-family: 'Times New Roman', Times, serif;"
+                id="errorMessages"></div>
         </form>
     </div>
+
+
+    <script>
+        function validateForm() {
+            const errorDiv = document.getElementById('errorMessages');
+            const submitButton = document.getElementById('submitButton');
+            errorDiv.innerHTML = '';  // Clear previous error messages
+            let errors = [];
+
+            const form = document.getElementById('ramForm');
+            const inputs = form.querySelectorAll('input[required], textarea[required]');
+
+            inputs.forEach(input => {
+                if (!input.value.trim()) {
+                    const label = form.querySelector(`label[for="${input.id}"]`).innerText;
+                    errors.push(`${label} is required.`);
+                }
+            });
+
+            // Check if the description is valid
+            const description = document.getElementById('description').value.trim();
+            if (description.length === 0) {
+                errors.push('Enter a valid Description.');
+            }
+
+            // Check if the price is a valid number after removing commas and decimal places
+            const priceInput = document.getElementById('final_price');
+            const cutPriceInput = document.getElementById('cut_price');
+            const cutPriceValue = parseFloat(cutPriceInput.value.replace(/,/g, ''));
+            const priceValue = parseFloat(priceInput.value.replace(/,/g, ''));
+
+            if (isNaN(cutPriceValue) || cutPriceValue <= 0 || !Number.isInteger(cutPriceValue)) {
+                errors.push('Cut Price must be a valid whole number.');
+            } else if (isNaN(priceValue) || priceValue <= 0 || !Number.isInteger(priceValue)) {
+                errors.push('Price must be a valid whole number.');
+            } else if (priceValue >= cutPriceValue) {
+                errors.push('Cut Price must be greater than Price.');
+            }
+
+            // Update the error messages div
+            errorDiv.innerHTML = errors.join('<br>');
+
+            // Enable or disable the submit button based on the presence of errors
+            submitButton.disabled = errors.length > 0;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('ramForm');
+            form.addEventListener('input', validateForm);
+            form.addEventListener('submit', (event) => {
+                validateForm();
+                if (document.getElementById('errorMessages').innerHTML !== '') {
+                    event.preventDefault();
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

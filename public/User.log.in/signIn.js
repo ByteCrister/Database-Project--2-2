@@ -1,16 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
     const togglePasswordVisibility = () => {
         const passwordInput = document.getElementById("password");
-        const showPasswordCheckbox = document.getElementById(
-            "show-password-checkbox"
-        );
+        const showPasswordCheckbox = document.getElementById("show-password-checkbox");
 
         passwordInput.type = showPasswordCheckbox.checked ? "text" : "password";
     };
 
     const generateStrongPassword = () => {
-        const charset =
-            "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+~`|}{[]:;?><,./-=";
+        const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+~`|}{[]:;?><,./-=";
         let password = "";
         for (let i = 0; i < 10; i++) {
             const randomIndex = Math.floor(Math.random() * charset.length);
@@ -20,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     const validateEmail = (email) => {
-        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const regex = /^[^\s@]+@gmail\.com$/;
         return regex.test(email);
     };
 
@@ -28,13 +25,30 @@ document.addEventListener("DOMContentLoaded", function () {
         const minLength = 6;
         const hasUpperCase = /[A-Z]/.test(password);
         const hasLowerCase = /[a-z]/.test(password);
+        const hasDigit = /\d/.test(password);
         const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
-        return (
-            password.length >= minLength &&
-            hasUpperCase &&
-            hasLowerCase &&
-            hasSpecialChar
-        );
+        const errors = [];
+
+        if (password.length < minLength) {
+            errors.push("Password must be at least 6 characters long.");
+        }
+        if (!hasUpperCase) {
+            errors.push("Password must contain at least one uppercase letter.");
+        }
+        if (!hasLowerCase) {
+            errors.push("Password must contain at least one lowercase letter.");
+        }
+        if (!hasDigit) {
+            errors.push("Password must contain at least one digit.");
+        }
+        if (!hasSpecialChar) {
+            errors.push("Password must contain at least one special character.");
+        }
+
+        return {
+            isValid: errors.length === 0,
+            errors: errors
+        };
     };
 
     const signIn = () => {
@@ -42,12 +56,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const email = $("#email").val();
         const password = $("#password").val();
-        const passwordInvalidText = document.getElementById(
-            "p-for-invalid-password"
-        );
-        const emailExistsText = document.getElementById(
-            "p-for-incorrect-information"
-        );
+        const passwordInvalidText = document.getElementById("p-for-invalid-password");
+        const emailExistsText = document.getElementById("p-for-incorrect-information");
         const emailInvalidText = document.getElementById("email-invalid-text");
 
         if (!validateEmail(email)) {
@@ -59,9 +69,11 @@ document.addEventListener("DOMContentLoaded", function () {
             emailInvalidText.style.visibility = "hidden";
         }
 
-        if (!validatePassword(password)) {
+        const passwordValidationResult = validatePassword(password);
+        if (!passwordValidationResult.isValid) {
             passwordInvalidText.style.visibility = "visible";
             emailExistsText.style.visibility = "hidden";
+            passwordInvalidText.innerHTML = passwordValidationResult.errors.join("<br>");
             return;
         } else {
             passwordInvalidText.style.visibility = "hidden";
@@ -82,15 +94,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (data.success) {
                     if (
                         document.getElementById("firstName").value.trim().length === 0 ||
-                        document.getElementById("lastName").value.trim().length ===0
+                        document.getElementById("lastName").value.trim().length === 0
                     ) {
                         emailExistsText.style.visibility = "visible";
                         emailExistsText.innerHTML = "Please provide a valid user name";
                     } else {
                         window.location.href = "/"; // Redirect to home route
                     }
-                    // emailExistsText.style.visibility = 'visible';
-                    // emailExistsText.innerHTML = 'Confirmation send to your email';
                 } else {
                     emailExistsText.style.visibility = "visible";
                     emailExistsText.innerHTML =
@@ -106,9 +116,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const signInButton = document.getElementById("signInButton");
     signInButton.addEventListener("click", signIn);
 
-    const togglePasswordButton = document.querySelector(
-        "#show-password-checkbox"
-    );
+    const togglePasswordButton = document.querySelector("#show-password-checkbox");
     togglePasswordButton.addEventListener("click", togglePasswordVisibility);
 
     const generatedPassword = generateStrongPassword();

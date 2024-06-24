@@ -44,7 +44,8 @@ exports.getDesktopGraphicsCard = (request, response) => {
     dataBase.query(`
    SELECT MAX(CAST(REPLACE(final_price, ',', '') AS UNSIGNED)) AS high,
    MIN(CAST(REPLACE(final_price, ',', '') AS UNSIGNED)) AS low
-   FROM graphics_card;
+   FROM graphics_card
+   where Hide=0;
 `, (error1, data1) => {
         if (error1) {
             console.error('Error fetching min and max prices:', error1);
@@ -65,12 +66,13 @@ exports.getDesktopGraphicsCard = (request, response) => {
        AND CAST(REPLACE(final_price, ',', '') AS UNSIGNED) <= ${priceRange}
        AND size LIKE '${size1}%'
        AND model LIKE '${model1}%'
+       and Hide=0;
    `;
 
         if (highOrLow == 'High-to-Low') {
-            sql += ' ORDER BY CAST(REPLACE(final_price, ",", "") AS UNSIGNED) DESC;';
+            sql += ' ORDER BY CAST(REPLACE(final_price, ",", "") AS UNSIGNED) DESC where Hide=0;';
         } else if (highOrLow == 'Low-to-High') {
-            sql += ' ORDER BY CAST(REPLACE(final_price, ",", "") AS UNSIGNED) ASC;';
+            sql += ' ORDER BY CAST(REPLACE(final_price, ",", "") AS UNSIGNED) ASC where Hide=0;';
         }
 
         console.log("Graphics Card - " + GraphicsCardType);

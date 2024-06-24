@@ -63,6 +63,8 @@
                         <div class="update-button">
                             <a href="/update-ram/<%= ram.ram_id %>">Update</a>
                         </div>
+                        <input type="checkbox" id="myCheckbox" onclick="hideProduct('<%= ram.ram_id %>')" <% if(ram.Hide==1){ %> 
+                        checked <% } %>>
                         <div class="remove-button">
                             <a href="/remove-ram/<%= ram.ram_id %>">Remove</a>
                         </div>
@@ -72,6 +74,19 @@
         </div>
         <% }); %>
     </div>
+
+    <script>
+        function hideProduct(ID) {
+          if (document.getElementById('myCheckbox').checked) {
+            window.location.href = `/Hide/Ram/${ID}`
+            console.log(document.getElementById('myCheckbox').checked);
+          } else {
+            window.location.href = `/Unhide/Ram/${ID}`
+            console.log(document.getElementById('myCheckbox').checked);
+    
+          }
+        }
+      </script>
     
 </body>
 </html>

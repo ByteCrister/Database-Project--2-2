@@ -66,8 +66,8 @@
                     <input type="text" id="casingWarranty" name="casingWarranty" required>
                 </div>
                 <div class="form-group">
-                    <label for="cut-price">Cut price (Optional):</label>
-                    <input type="text" id="cut_price" name="cut_price" >
+                    <label for="cut-price">Cut price :</label>
+                    <input type="text" id="cut_price" name="cut_price" required>
                 </div>
                 <div class="form-group">
                     <label for="price">Price:</label>
@@ -89,68 +89,69 @@
             <div class="form-group">
                 <button type="submit" id="submitButton">Add Item</button>
             </div>
-            <div class="error" style="color: red; font-size: 0.9em;" id="errorMessages"></div>
-            <div  style="color: red; font-size: 0.9em;" id="errorMessagess"></div>
+            <div class="error" style="color: red; font-size: 0.9em; font-family: 'Times New Roman', Times, serif;"
+                id="errorMessages"></div>
         </form>
         </form>
 
     </div>
 
-    <script>
 
-        function validateForm() {
-            const errorDiv = document.getElementById('errorMessages');
-            const error = document.querySelector('#errorMessagess');
-            const submitButton = document.getElementById('submitButton');
-            error.innerHTML = '';  // Clear previous error messages
-            let errors = [];
+        <script>
+            function validateForm() {
+                const errorDiv = document.getElementById('errorMessages');
+                const submitButton = document.getElementById('submitButton');
+                errorDiv.innerHTML = '';  // Clear previous error messages
+                let errors = [];
     
-            const form = document.getElementById('ramForm');
-            const inputs = form.querySelectorAll('input[required], textarea[required]');
+                const form = document.getElementById('ramForm');
+                const inputs = form.querySelectorAll('input[required], textarea[required]');
     
-            inputs.forEach(input => {
-                if (!input.value.trim()) {
-                    const label = form.querySelector(`label[for="${input.id}"]`).innerText;
-                    errors.push(`${label} is required.`);
+                inputs.forEach(input => {
+                    if (!input.value.trim()) {
+                        const label = form.querySelector(`label[for="${input.id}"]`).innerText;
+                        errors.push(`${label} is required.`);
+                    }
+                });
+    
+                // Check if the description is valid
+                const description = document.getElementById('description').value.trim();
+                if (description.length === 0) {
+                    errors.push('Enter a valid Description.');
                 }
+    
+                // Check if the price is a valid number after removing commas and decimal places
+                const priceInput = document.getElementById('price');
+                const cutPriceInput = document.getElementById('cut_price');
+                const cutPriceValue = parseFloat(cutPriceInput.value.replace(/,/g, ''));
+                const priceValue = parseFloat(priceInput.value.replace(/,/g, ''));
+    
+                if (isNaN(cutPriceValue) || cutPriceValue <= 0 || !Number.isInteger(cutPriceValue)) {
+                    errors.push('Cut Price must be a valid whole number.');
+                } else if (isNaN(priceValue) || priceValue <= 0 || !Number.isInteger(priceValue)) {
+                    errors.push('Price must be a valid whole number.');
+                } else if (priceValue >= cutPriceValue) {
+                    errors.push('Cut Price must be greater than Price.');
+                }
+    
+                // Update the error messages div
+                errorDiv.innerHTML = errors.join('<br>');
+    
+                // Enable or disable the submit button based on the presence of errors
+                submitButton.disabled = errors.length > 0;
+            }
+    
+            document.addEventListener('DOMContentLoaded', () => {
+                const form = document.getElementById('ramForm');
+                form.addEventListener('input', validateForm);
+                form.addEventListener('submit', (event) => {
+                    validateForm();
+                    if (document.getElementById('errorMessages').innerHTML !== '') {
+                        event.preventDefault();
+                    }
+                });
             });
-    
-            // Check if the price is a valid number after removing commas
-            const priceInput = document.getElementById('price');
-            const cut_priceInput = document.getElementById('cut_price');
-            const cut_priceValue = cut_priceInput.value.replace(/,/g, '');
-            const priceValue = priceInput.value.replace(/,/g, '');
-    
-            if (cut_priceInput.value.length > 0) {
-                if (isNaN(cut_priceValue)) {
-                    errors.push('Cut Price must be a valid number.');
-                } else if (Number(priceValue) > Number(cut_priceValue)) {
-                    errors.push('Cut Price must be greater than or equal to Price.');
-                }
-            }
-    
-            if (priceValue && isNaN(priceValue)) {
-                errors.push('Price must be a valid number.');
-            }
-    
-            // Update the error messages div
-            errorDiv.innerHTML = errors.join('<br>');
-            error.innerHTML = errors.join('<br>');
-    
-            // Enable or disable the submit button based on the presence of errors
-            if (errors.length > 0) {
-                submitButton.disabled = true;
-            } else {
-                submitButton.disabled = false;
-            }
-        }
-    
-        document.addEventListener('DOMContentLoaded', () => {
-            const form = document.getElementById('ramForm');
-    
-            form.addEventListener('input', validateForm);
-        });
-    </script>
+        </script>
 </body>
 
 </html>

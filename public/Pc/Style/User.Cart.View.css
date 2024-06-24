@@ -207,6 +207,32 @@ ul li{
     /* background-color: #302d2d; */
     width: 100%;
 }
+
+/* .hideButton{
+    padding: 0px;
+    width: 55px;
+
+} */
+/* Hide the default checkbox */
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 30px; /* Width of the checkbox */
+    height: 30px; /* Height of the checkbox */
+    border: 1px solid #ccc; /* Border color */
+    border-radius: 4px; /* Rounded corners */
+    outline: none; /* Remove default focus style */
+    cursor: pointer;
+    background-color: #81cf84;
+}
+
+/* Increase size of the checkbox itself */
+input[type="checkbox"]:checked {
+    transform: scale(1.5); /* Increase the scale of the checkbox */
+    background-color: #d86f6f;
+}
+
 .buttons{
     margin-top: 10px;
     display: flex;

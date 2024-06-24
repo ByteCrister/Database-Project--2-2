@@ -49,6 +49,11 @@ input {
     border-radius: 4px;
 }
 
+#adminPassword{
+    width: 100%;
+    
+}
+
 button {
     padding: 10px;
     background-color: #333;
@@ -78,9 +83,13 @@ button:hover {
     margin: 5px 0px 5px 0px;
 }
 
-input[type=text], input[type=password]{
+input[type=email], input[type=password]{
     width: 100%;
     padding: 10px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     
+}
+
+label{
+    font-family: 'Times New Roman', Times, serif;
 }

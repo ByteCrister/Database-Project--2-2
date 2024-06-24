@@ -36,7 +36,8 @@
 
                     <!-- Display PC image -->
                     <div class="images">
-                      <div class="product-image" style="background-image: url('data:image;base64, <%= pc.product_image_path %>')"></div>
+                      <div class="product-image"
+                        style="background-image: url('data:image;base64, <%= pc.product_image_path %>')"></div>
                     </div>
         </div>
 
@@ -90,6 +91,10 @@
               <div class="update-button">
                 <a href="/update-pc/<%= pc.pc_information_No %>">Update</a>
               </div>
+
+              <input type="checkbox" id="myCheckbox" onclick="hideProduct('<%= pc.pc_information_No %>')" <% if(pc.Hide==1){ %> 
+              checked <% } %>>
+
               <div class="remove-button">
                 <a href="/remove-pc/<%= pc.pc_information_No %>">Remove</a>
               </div>
@@ -99,6 +104,20 @@
       </div>
       <% }); %>
   </div>
+
+
+  <script>
+    function hideProduct(ID) {
+      if (document.getElementById('myCheckbox').checked) {
+        window.location.href = `/Hide/Pc/${ID}`
+        console.log(document.getElementById('myCheckbox').checked);
+      } else {
+        window.location.href = `/Unhide/Pc/${ID}`
+        console.log(document.getElementById('myCheckbox').checked);
+
+      }
+    }
+  </script>
 
 </body>
 

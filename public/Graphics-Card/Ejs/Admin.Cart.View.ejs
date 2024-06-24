@@ -73,6 +73,8 @@
                         <div class="update-button">
                             <a href="/update-graphics-card/<%= card.gp_card_No %>">Update</a>
                         </div>
+                        <input type="checkbox" id="myCheckbox" onclick="hideProduct('<%= card.gp_card_No %>')" <% if(card.Hide==1){ %> 
+                        checked <% } %>>
                         <div class="remove-button">
                             <a href="/remove-graphics-card/<%= card.gp_card_No %>">Remove</a>
                         </div>
@@ -82,6 +84,19 @@
         </div>
         <% }); %>
     </div>
+
+    <script>
+        function hideProduct(ID) {
+          if (document.getElementById('myCheckbox').checked) {
+            window.location.href = `/Hide/Graphics-Card/${ID}`
+            console.log(document.getElementById('myCheckbox').checked);
+          } else {
+            window.location.href = `/Unhide/Graphics-Card/${ID}`
+            console.log(document.getElementById('myCheckbox').checked);
+    
+          }
+        }
+      </script>
     
 </body>
 </html>

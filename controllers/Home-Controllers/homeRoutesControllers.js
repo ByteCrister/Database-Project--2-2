@@ -18,7 +18,8 @@ exports.getHome = async (request, response) => {
                     FORMAT(CAST(REPLACE(final_price, ',', '') AS UNSIGNED), 0) AS final_price,
                     FORMAT(CAST(REPLACE(cut_price, ',', '') AS UNSIGNED) - CAST(REPLACE(final_price, ',', '') AS UNSIGNED), 0) AS saveText
                 FROM 
-                    brand_pc;
+                    brand_pc
+                    where Hide = 0;
             `, (error, data) => {
                 if (error) {
                     reject(error);
@@ -42,7 +43,8 @@ exports.getHome = async (request, response) => {
                     FORMAT(CAST(REPLACE(final_price, ',', '') AS UNSIGNED), 0) AS final_price,
                     FORMAT(CAST(REPLACE(cut_price, ',', '') AS UNSIGNED) - CAST(REPLACE(final_price, ',', '') AS UNSIGNED), 0) AS saveText
                 FROM 
-                    graphics_card;
+                    graphics_card
+                    where Hide = 0;
             `, (error, data) => {
                 if (error) {
                     reject(error);
@@ -66,7 +68,8 @@ exports.getHome = async (request, response) => {
                     FORMAT(CAST(REPLACE(price, ',', '') AS UNSIGNED), 0) AS final_price,
                     FORMAT(CAST(REPLACE(cut_price, ',', '') AS UNSIGNED) - CAST(REPLACE(price, ',', '') AS UNSIGNED), 0) AS saveText
                 FROM 
-                    ram_informations;
+                    ram_informations
+                    where Hide = 0;
             `, (error, data) => {
                 if (error) {
                     reject(error);
@@ -90,7 +93,8 @@ exports.getHome = async (request, response) => {
                     FORMAT(CAST(REPLACE(price, ',', '') AS UNSIGNED), 0) AS final_price,
                     FORMAT(CAST(REPLACE(cut_price, ',', '') AS UNSIGNED) - CAST(REPLACE(price, ',', '') AS UNSIGNED), 0) AS saveText
                 FROM 
-                    pc_information;
+                    pc_information
+                    where Hide = 0;
             `, (error, data) => {
                 if (error) {
                     reject(error);
