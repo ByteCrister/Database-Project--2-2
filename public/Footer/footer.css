@@ -6,7 +6,7 @@
 }
 .footer {
     width: 100%;
-    background-color: #77B0AA;
+    background-color: #172563;
     color: white;
     padding: 20px 0;
     display: flex;
@@ -64,7 +64,7 @@
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 5px;
-    color: #003C43;
+    color: #d9f4ff;
 }
 
 .contact-detail {
@@ -83,7 +83,7 @@
     flex-basis: calc(50% - 20px);
    margin: 20px 15px 20px 15px;
     
-    background-color: #003C43;
+    background-color: #30618a;
     border-radius: 5px;
     padding: 20px;
     text-align: center;
@@ -140,7 +140,7 @@
 }
 .copyright{
     text-align: center;
-    background-color: #102C57;
+    background-color: #30618a;
     width: 100%;
     padding: 10px;
     /* margin-top: 15px; */
