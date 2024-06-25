@@ -65,13 +65,13 @@ exports.getDesktopRamViews = (request, response) => {
        AND CAST(REPLACE(price, ',', '') AS UNSIGNED) <= ${priceRange}
        AND capacity LIKE '${size1}%'
        AND model LIKE '${model1}%'
-       and Hide=0;
+       and Hide=0
    `;
 
         if (highOrLow == 'High-to-Low') {
-            sql += ' ORDER BY CAST(REPLACE(price, ",", "") AS UNSIGNED) DESC where Hide=0;';
+            sql += ' ORDER BY CAST(REPLACE(price, ",", "") AS UNSIGNED) DESC ;';
         } else if (highOrLow == 'Low-to-High') {
-            sql += ' ORDER BY CAST(REPLACE(price, ",", "") AS UNSIGNED) ASC where Hide=0;';
+            sql += ' ORDER BY CAST(REPLACE(price, ",", "") AS UNSIGNED) ASC ;';
         }
 
         console.log("Ram Type - " + RamBrand);

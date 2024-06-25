@@ -66,13 +66,13 @@ exports.getDesktopGraphicsCard = (request, response) => {
        AND CAST(REPLACE(final_price, ',', '') AS UNSIGNED) <= ${priceRange}
        AND size LIKE '${size1}%'
        AND model LIKE '${model1}%'
-       and Hide=0;
+       and Hide=0
    `;
 
         if (highOrLow == 'High-to-Low') {
-            sql += ' ORDER BY CAST(REPLACE(final_price, ",", "") AS UNSIGNED) DESC where Hide=0;';
+            sql += ' ORDER BY CAST(REPLACE(final_price, ",", "") AS UNSIGNED) DESC ;';
         } else if (highOrLow == 'Low-to-High') {
-            sql += ' ORDER BY CAST(REPLACE(final_price, ",", "") AS UNSIGNED) ASC where Hide=0;';
+            sql += ' ORDER BY CAST(REPLACE(final_price, ",", "") AS UNSIGNED) ASC ;';
         }
 
         console.log("Graphics Card - " + GraphicsCardType);

@@ -17,7 +17,14 @@ exports.postAdmin = async  (request, response) => {
 
     const password = await bcrypt.hash(adminPassword, 10);
     const admin = await bcrypt.hash(adminName, 10);
-    dataBase.query('update admin_information set admin_name = ?, admin_password = ? where admin_no = 0 ', [admin, password], (e,d)=>{});
+    dataBase.query('update admin_information set admin_name = ?, admin_password = ? where admin_no = 0 ', [admin, password], (e,d)=>{
+        if(e){
+            console.log(e);
+        }else{
+            console.log('Admin pass updated');
+            response.redirect('/');
+        }
+    });
 
 
     // dataBase.query('SELECT * FROM admin_information;',  async(e, d) => {
