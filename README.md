@@ -43,7 +43,7 @@
 
 ## Technologies Used
 
-- Frontend: HTML, CSS, Tailwind CSS, JavaScript, React.js (optional)
+- Frontend: HTML, Vanilla CSS, Vanilla JavaScript, React.js (optional)
 - Backend: JavaScript (Node.js), Express.js
 - Database: MySQL
 
