@@ -28,7 +28,7 @@
 
 ## Features
 
-- Intuitive Inventory Management: Effortlessly add, update, and delete product information without direct knowledge of the underlying database structure.
+- Intuitive Inventory Management: Effortlessly add, update, hide and delete product information without direct knowledge of the underlying database structure.
 
 - User-Friendly Interface: A meticulously crafted dashboard ensures ease of use and navigation for website owners.
 
@@ -43,7 +43,7 @@
 
 ## Technologies Used
 
-- Frontend: HTML, CSS, Tailwind CSS, JavaScript, React.js (optional)
+- Frontend: HTML, Vanilla CSS, Vanilla JavaScript, React.js (optional)
 - Backend: JavaScript (Node.js), Express.js
 - Database: MySQL
 
