@@ -105,13 +105,19 @@
         <div class="left">
             <div class="main-wrapper">
                 <div class="slider-btns">
-                    <span id="prev-btn"></span>
-                    <span id="next-btn"></span>
+                    <%for(let i = 0 ; i< Sliders.length; i++){ %>
+                        <span id="prev-btn"></span>
+                        <span id="next-btn"></span>
+
+                    <%}%>
                 </div>
                 <div class="slider-wrapper">
                     <div class="dots">
-                        <div class="dot"></div>
-                        <div class="dot"></div>
+                        <% for(let i = 0 ; i< Sliders.length; i++){ %>
+
+                            <div class="dot"></div>
+
+                       <% } %>
 
                     </div>
 
