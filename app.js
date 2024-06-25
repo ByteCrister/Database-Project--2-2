@@ -144,8 +144,10 @@ app.use(userQuestionsRoutes);
 app.use(adminQuestionUpdates);
 app.use(adminHomeViewRoutes);
 app.use(usersViewRoutes);
-app.use(require('./routes/Desktop-View-Routes/Product-Hide-Route'));
 
+app.use(require('./routes/Desktop-View-Routes/Product-Hide-Route'));
+app.use(require('./routes/Desktop-View-Routes/Advertisements'));
+app.use(require('./routes/Desktop-View-Routes/TextUpdate'));
 
 
 

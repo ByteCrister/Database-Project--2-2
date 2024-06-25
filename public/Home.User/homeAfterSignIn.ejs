@@ -52,15 +52,11 @@
                             <div class="dot"></div>
 
                         </div>
-                        <div class="slides">
-
-                            <img src="/images/t20-world-cup-2024-projector-offer-home-banner-2-982x500.webp"
-                                alt="nature">
-                        </div>
-                        <div class="slides">
-
-                            <img src="/images/home-delivery-web-banner-982x500.webp" alt="nature">
-                        </div>
+                        <% Sliders.forEach((slider)=>{ %>
+                            <div class="slides">
+                                <img src="data:image;base64, <%= slider.Image %>" alt="nature">
+                            </div>
+                      <%  }) %>
 
                     </div>
                 </div>
@@ -110,9 +106,10 @@
 
         <div class="support-text">
             <div class="inner-text">
-                <p>Eid Mubarak! Due to Eid Holiday our online activities and some outlets are out of operation. For Eid
+                <!-- <p>Eid Mubarak! Due to Eid Holiday our online activities and some outlets are out of operation. For Eid
                     holiday schedule please visit our contact page.
-                </p>
+                </p> -->
+                <p><%=MovingText[0].TextValue%></p>
 
             </div>
         </div>

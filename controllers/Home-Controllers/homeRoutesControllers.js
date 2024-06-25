@@ -103,19 +103,39 @@ exports.getHome = async (request, response) => {
                 }
             });
         });
-
+        const Sliders = await new Promise((resolve, reject) => {
+            dataBase.query(
+                `select * from ads where Hide = 0`, (error, data) => {
+                if (error) {
+                    reject(error);
+                } else {
+                    resolve(data);
+                }
+            });
+        });
+        const MovingText = await new Promise((resolve, reject) => {
+            dataBase.query(
+                `select TextValue from movingtext where ID = 1`, (error, data) => {
+                if (error) {
+                    reject(error);
+                } else {
+                    resolve(data);
+                }
+            });
+        });
+    
 
 
 
 
 
         if (request.session.isLoggedIn) {
-            response.render(path.join(__dirname, '..', '..', 'public', 'Home.User', 'homeAfterSignIn.ejs'), { brandPcList, graphicsCardList, ramList, pcList });
+            response.render(path.join(__dirname, '..', '..', 'public', 'Home.User', 'homeAfterSignIn.ejs'), { brandPcList, graphicsCardList, ramList, pcList, Sliders, MovingText });
         } else if (request.session.isAdminLoggedIn) {
             response.render(path.join(__dirname, '..', '..', 'public', 'Home.Admin', 'Home', 'adminHome.ejs'));
 
         } else {
-            response.render(path.join(__dirname, '..', '..', 'public', 'Home.User', 'homeBeforeSignIn.ejs'), { brandPcList, graphicsCardList, ramList, pcList });
+            response.render(path.join(__dirname, '..', '..', 'public', 'Home.User', 'homeBeforeSignIn.ejs'), { brandPcList, graphicsCardList, ramList, pcList, Sliders, MovingText });
         }
     } catch (error) {
         console.log(error);
