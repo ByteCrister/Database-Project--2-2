@@ -92,7 +92,7 @@
                 <a href="/update-pc/<%= pc.pc_information_No %>">Update</a>
               </div>
 
-              <input type="checkbox" id="myCheckbox" onclick="hideProduct('<%= pc.pc_information_No %>')" <% if(pc.Hide==1){ %> 
+              <input type="checkbox" id="checkbox-<%= pc.pc_information_No %>" onclick="hideProduct('<%= pc.pc_information_No %>')" <% if(pc.Hide==1){ %> 
               checked <% } %>>
 
               <div class="remove-button">
@@ -108,12 +108,12 @@
 
   <script>
     function hideProduct(ID) {
-      if (document.getElementById('myCheckbox').checked) {
+      if (document.getElementById(`checkbox-${ID}`).checked) {
         window.location.href = `/Hide/Pc/${ID}`
-        console.log(document.getElementById('myCheckbox').checked);
+        console.log(document.getElementById(`checkbox-${ID}`).checked);
       } else {
         window.location.href = `/Unhide/Pc/${ID}`
-        console.log(document.getElementById('myCheckbox').checked);
+        console.log(document.getElementById(`checkbox-${ID}`).checked);
 
       }
     }
