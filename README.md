@@ -48,7 +48,7 @@
 ## Files and Media
 - [Project Proposal.pdf](https://drive.google.com/file/d/124WgAUmIx9Fp4VSmY-JRE8cgB9e2SvFb/view?usp=sharing)
 - [Project Slider.pptx](https://docs.google.com/presentation/d/1L52EQZVm_NCPp1nk3y-G3Bf1zkzQ_9kV/edit?usp=sharing&ouid=105383669355188695909&rtpof=true&sd=true)
-- [ER Diagram.png](https://drive.google.com/file/d/17eXUZBf9KvDg9y1P7fzvkXfYdzZyNg3r/view?usp=sharing)
+- [ER Diagram.png](https://drive.google.com/file/d/1kLo9mgk2Er5pZVLdZl7RKzhDSN-LwhTD/view?usp=sharing)
 - [Flow Chart.pdf](https://drive.google.com/file/d/1ubu8S9Vg3_bMDskrQAIE-58yk4lsFdLs/view?usp=sharing)
 - [Project Overview.mp4](https://drive.google.com/file/d/1ej4blzkYd6M2zhHDBxXeMDc74AiJufUQ/view?usp=drivesdk)
 
