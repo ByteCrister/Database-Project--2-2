@@ -51,6 +51,7 @@
 - [Project Slider.pptx](https://docs.google.com/presentation/d/1MOsdJX31ZZLsQJErCeDNE5GgJEjxN9wY/edit?usp=sharing&ouid=105383669355188695909&rtpof=true&sd=true)
 - [ER Diagram.png](https://drive.google.com/file/d/17eXUZBf9KvDg9y1P7fzvkXfYdzZyNg3r/view?usp=drive_link)
 - [Flow Chart.pdf](https://drive.google.com/file/d/1kLo9mgk2Er5pZVLdZl7RKzhDSN-LwhTD/view?usp=sharing)
+- [Project Features.png](https://drive.google.com/file/d/1Xobf1HWs8WJEuJp4uehT8KXiZFaikgUm/view?usp=sharing)
 - [Project Overview.mp4](https://drive.google.com/file/d/1ej4blzkYd6M2zhHDBxXeMDc74AiJufUQ/view?usp=drivesdk)
 
 ## How to Contribute
