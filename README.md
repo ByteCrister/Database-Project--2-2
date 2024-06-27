@@ -22,7 +22,8 @@
   - Product ratings by category and sorting.
   - Answer user questions.
   - For each user you can view their individual purchases, reviews and questions etc.
-  - Update or Delete any product.
+  - Update, Delete, Hide or Unhide any product.
+  - Manage Advertisement's : Hide/Unhide, Add or delete Advertisements Cover.
   - Fully integrated with database.
 
 ## Features
