@@ -12,7 +12,7 @@
 - Followed MVC architecture throughout the project.
 - Integrated User and Admin authentication
 - Worked on complex SQL commands.
-- Integrated CRUD operations for all products
+- Integrated CRUD operations for all products - Add, Hide or Delete Product.
 - Implemented Sorting on the user pages like sort by category, price, model, brand ..
 - Admin Dashboard features
   - Search users by email
@@ -20,7 +20,7 @@
   - Find purchase history by date.
   - User questions by date.
   - Product ratings by category and sorting.
-  - Answer user questions.
+  - Answer of user's question.
   - For each user you can view their individual purchases, reviews and questions etc.
   - Update, Delete, Hide or Unhide any product.
   - Manage Advertisement's : Hide/Unhide, Add or delete Advertisements Cover.
