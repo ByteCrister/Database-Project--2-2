@@ -35,7 +35,7 @@
 - Future-Proof Architecture: Designed for scalability, with potential for future enhancements such as payment integration and live chat support.
 
 ## Technologies Used
-- Frontend: HTML, Vanilla CSS, Vanilla JavaScript, React.js (optional)
+- Frontend: HTML, Vanilla CSS, Vanilla JavaScript
 - Backend: JavaScript (Node.js), Express.js
 - Database: MySQL
 
