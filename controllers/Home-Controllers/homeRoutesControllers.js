@@ -106,26 +106,23 @@ exports.getHome = async (request, response) => {
         const Sliders = await new Promise((resolve, reject) => {
             dataBase.query(
                 `select * from ads where Hide = 0`, (error, data) => {
-                if (error) {
-                    reject(error);
-                } else {
-                    resolve(data);
-                }
-            });
+                    if (error) {
+                        reject(error);
+                    } else {
+                        resolve(data);
+                    }
+                });
         });
         const MovingText = await new Promise((resolve, reject) => {
             dataBase.query(
                 `select TextValue from movingtext where ID = 1`, (error, data) => {
-                if (error) {
-                    reject(error);
-                } else {
-                    resolve(data);
-                }
-            });
+                    if (error) {
+                        reject(error);
+                    } else {
+                        resolve(data);
+                    }
+                });
         });
-    
-
-
 
 
 
@@ -137,6 +134,7 @@ exports.getHome = async (request, response) => {
         } else {
             response.render(path.join(__dirname, '..', '..', 'public', 'Home.User', 'homeBeforeSignIn.ejs'), { brandPcList, graphicsCardList, ramList, pcList, Sliders, MovingText });
         }
+        console.log("Is logged in: " + request.session.isLoggedIn);
     } catch (error) {
         console.log(error);
         // Handle error appropriately

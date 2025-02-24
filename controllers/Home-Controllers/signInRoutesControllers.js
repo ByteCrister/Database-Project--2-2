@@ -53,7 +53,7 @@ exports.postSignIn = async (request, response) => {
             }
           );
         } else {
-          // console.log("Email already exists:", returnEmail[0].email);
+          console.log("Email already exists:", returnEmail[0].email);
           response.json({ success: false, message: "Email already exists" });
         }
       }
