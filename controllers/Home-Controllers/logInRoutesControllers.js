@@ -43,7 +43,12 @@ exports.postLogIn = async (request, response) => {
                                 request.session.isLoggedIn = true;
                                 request.session.userId = data[0].user_id;
                                 console.log('Old user successfully logged in  - User ID : ' + request.session.userId);
-                                response.json({ success: true });
+                                request.session.save((err) => {
+                                    if (err) {
+                                        console.error("Session Save Error:", err);
+                                    }
+                                    response.json({ success: true });
+                                });
                             } else {
                                 console.log('User entered wrong info : ' + email + ', ' + password);
                                 response.json({ success: false });
