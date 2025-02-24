@@ -1,10 +1,11 @@
-require('dotenv').config();
-const MySQLStore = require("express-mysql-session")(session);
 const express = require('express');
 const session = require('express-session');
+const MySQLStore = require("express-mysql-session")(session);
 const cors = require('cors');
-const app = express();
+const path = require("path");
+require('dotenv').config();
 
+const app = express();
 
 /************ session variable setup *************/
 const sessionStore = new MySQLStore({
