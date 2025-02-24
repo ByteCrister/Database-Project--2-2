@@ -20,12 +20,14 @@ const sessionStore = new MySQLStore({
 
 app.use(session({
     secret: process.env.Session_secret,
-    resave: false,
-    saveUninitialized: false,
-    store: sessionStore,  // MySQL-based session store
+    resave: true,
+    saveUninitialized: true,
+    store: sessionStore,
     cookie: {
-        maxAge: 1000 * 60 * 60 * 24, // 1 day
-        secure: true, // Change to `true` if using HTTPS
+        maxAge: 1000 * 60 * 60 * 24,
+        secure: process.env.NODE_ENV === "production",
+        httpOnly: true,
+        sameSite: "strict"
     },
 }));
 
