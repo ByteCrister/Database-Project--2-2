@@ -1,17 +1,32 @@
+require('dotenv').config();
+const MySQLStore = require("express-mysql-session")(session);
 const express = require('express');
 const session = require('express-session');
 const cors = require('cors');
-require('dotenv').config();
 const app = express();
 
 
 /************ session variable setup *************/
+const sessionStore = new MySQLStore({
+    host: process.env.DB_host,
+    user: process.env.DB_user,
+    password: process.env.DB_password,
+    database: process.env.DB,
+    clearExpired: true,
+    checkExpirationInterval: 900000, // Clear expired sessions every 15 min
+    expiration: 86400000, // 1-day session expiration
+});
+
 app.use(session({
     secret: process.env.Session_secret,
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
+    store: sessionStore,  // MySQL-based session store
+    cookie: {
+        maxAge: 1000 * 60 * 60 * 24, // 1 day
+        secure: true, // Change to `true` if using HTTPS
+    },
 }));
-
 
 /**************** Home Routes Handling *****************/
 const homeRoutes = require('./routes/Home-Routes/homeBeforeSignInRoutes');
@@ -32,7 +47,7 @@ const DesktopView = require('./routes/Pc-Routes/Desktop-views-Routes');
 /****************** Brand PC Routes Requiring *************/
 const addBrandPcRoutes = require('./routes/Brand-Pc-Routes/Add-brand-pc');
 const BrandPcCartsRoutes = require('./routes/Brand-Pc-Routes/Brand-Pc-Carts');
-const UpdateBrandPC  = require('./routes/Brand-Pc-Routes/Update-brand-pc');
+const UpdateBrandPC = require('./routes/Brand-Pc-Routes/Update-brand-pc');
 const DeleteBrandPC = require('./routes/Brand-Pc-Routes/Delete-brand-pc');
 const DesktopBrandPcView = require('./routes/Brand-Pc-Routes/Desktop-brand-pc-Routes');
 
@@ -76,7 +91,7 @@ const usersViewRoutes = require('./routes/Desktop-View-Routes/Users.view');
 
 
 /************** required environment setup *****************/
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 app.use(express.static('public'));
@@ -156,12 +171,12 @@ app.use(require('./routes/Desktop-View-Routes/TextUpdate'));
 
 
 /*************** Route Related Error Handling *************/
-app.use((request, response, next)=>{
+app.use((request, response, next) => {
     response.status(404).send('<h1>Invalid Url 404 !</h1>');
     next();
 })
 app.use((error, request, response, next) => {
-    console.error(error); 
+    console.error(error);
     response.status(500).send('<h1>Server is broken</h1>');
     next();
 });
