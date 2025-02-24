@@ -46,6 +46,7 @@ exports.postLogIn = async (request, response) => {
                                 request.session.save((err) => {
                                     if (err) {
                                         console.error("Session Save Error:", err);
+                                        response.json({ success: false });
                                     }
                                     response.json({ success: true });
                                 });
