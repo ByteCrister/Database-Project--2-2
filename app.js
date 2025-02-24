@@ -83,73 +83,73 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
 
-app.get('/', (req, res) => {
-    res.send('Welcome to the Home Page');
-});
+// app.get('/', (req, res) => {
+//     res.send('Welcome to the Home Page');
+// });
 /*************** Home and Authentication Routes ***************/
-// app.use(homeRoutes);
-// app.use(logInRoutes);
-// app.use(adminLogInRoutes);
-// app.use(signInRoutes);
-// app.use(logOutRoutes);
-// // app.use(require('./routes/Home-Routes/confirm'));
+app.use(homeRoutes);
+app.use(logInRoutes);
+app.use(adminLogInRoutes);
+app.use(signInRoutes);
+app.use(logOutRoutes);
+app.use(require('./routes/Home-Routes/confirm'));
 
-// /**************** PC Routes ************/
-// app.use(addPCRoutes);
-// app.use(PcCartsRouters);
-// app.use(UpdatePc);
-// app.use(DeletePC);
-// app.use(DesktopView);
-
-
-
-// /***************** Brand Pc Routes **********/
-// app.use(addBrandPcRoutes);
-// app.use(BrandPcCartsRoutes);
-// app.use(UpdateBrandPC);
-// app.use(DeleteBrandPC);
-// app.use(DesktopBrandPcView);
+/**************** PC Routes ************/
+app.use(addPCRoutes);
+app.use(PcCartsRouters);
+app.use(UpdatePc);
+app.use(DeletePC);
+app.use(DesktopView);
 
 
 
-// /******************* Graphics Card Routes  ***********/
-// app.use(addGraphicsCardRoutes);
-// app.use(GraphicsCardCartsRoutes);
-// app.use(UpdateGraphicsCard);
-// app.use(DeleteGraphicsCard);
-// app.use(DesktopGraphicsCardViews);
+/***************** Brand Pc Routes **********/
+app.use(addBrandPcRoutes);
+app.use(BrandPcCartsRoutes);
+app.use(UpdateBrandPC);
+app.use(DeleteBrandPC);
+app.use(DesktopBrandPcView);
 
 
 
-
-// /******************* Ram Routes *********************/
-// app.use(addRamRoutes);
-// app.use(RamCartsRoutes);
-// app.use(UpdateRam);
-// app.use(DeleteRam);
-// app.use(DesktopRamViews);
+/******************* Graphics Card Routes  ***********/
+app.use(addGraphicsCardRoutes);
+app.use(GraphicsCardCartsRoutes);
+app.use(UpdateGraphicsCard);
+app.use(DeleteGraphicsCard);
+app.use(DesktopGraphicsCardViews);
 
 
 
 
-// /******************* Desktop Routes ************/
-// app.use(DesktopViewRoutes);
-// app.use(DesktopViewQuestionRoutes);
-// app.use(DesktopQuestionPostRoutes);
-// app.use(DesktopReviewPostRouter);
+/******************* Ram Routes *********************/
+app.use(addRamRoutes);
+app.use(RamCartsRoutes);
+app.use(UpdateRam);
+app.use(DeleteRam);
+app.use(DesktopRamViews);
 
 
-// app.use(AdminQuestionRoutes);
-// app.use(viewSellingHistoryRoutes);
-// app.use(userRatingsRoutes);
-// app.use(userQuestionsRoutes);
-// app.use(adminQuestionUpdates);
-// app.use(adminHomeViewRoutes);
-// app.use(usersViewRoutes);
 
-// app.use(require('./routes/Desktop-View-Routes/Product-Hide-Route'));
-// app.use(require('./routes/Desktop-View-Routes/Advertisements'));
-// app.use(require('./routes/Desktop-View-Routes/TextUpdate'));
+
+/******************* Desktop Routes ************/
+app.use(DesktopViewRoutes);
+app.use(DesktopViewQuestionRoutes);
+app.use(DesktopQuestionPostRoutes);
+app.use(DesktopReviewPostRouter);
+
+
+app.use(AdminQuestionRoutes);
+app.use(viewSellingHistoryRoutes);
+app.use(userRatingsRoutes);
+app.use(userQuestionsRoutes);
+app.use(adminQuestionUpdates);
+app.use(adminHomeViewRoutes);
+app.use(usersViewRoutes);
+
+app.use(require('./routes/Desktop-View-Routes/Product-Hide-Route'));
+app.use(require('./routes/Desktop-View-Routes/Advertisements'));
+app.use(require('./routes/Desktop-View-Routes/TextUpdate'));
 
 
 
