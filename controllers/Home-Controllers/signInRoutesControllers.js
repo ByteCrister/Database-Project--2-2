@@ -45,10 +45,14 @@ exports.postSignIn = async (request, response) => {
                 request.session.isLoggedIn = true;
                 request.session.userId = data.insertId;
 
-                console.log(
-                  "New user entered successfully - User ID : " + data.insertId
-                );
-                response.json({ success: true });
+                request.session.save((err) => {
+                  if (err) {
+                    console.error("Session Save Error:", err);
+                    response.json({ success: false, message:  err});
+                  }
+                  console.log("New user entered successfully - User ID : " + data.insertId);
+                  response.json({ success: true });
+                });
               }
             }
           );

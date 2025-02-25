@@ -5,5 +5,11 @@ exports.getLogOut = (request, response) => {
     
     console.log('User ID : '+request.session.userId+" Logged Out");
     request.session.userId = null;
-    response.redirect('/');
+    request.session.save((err) => {
+        if (err) {
+          console.error("Session Save Error:", err);
+          response.json({ success: false, message:  err});
+        }
+        response.redirect('/');
+      });
 };
