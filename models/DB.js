@@ -6,18 +6,16 @@ const dataBase = mysql.createConnection({
     user: process.env.DB_user,
     password: process.env.DB_password,
     database: process.env.DB,
-    port: process.env.PORT,
-    connectTimeout: 10000, 
-    acquireTimeout: 10000, 
-    timeout: 60000
+    port: process.env.DB_port || 3306,
+    connectTimeout: 10000 // 10s to connect
 });
 
 dataBase.connect((err) => {
     if (err) {
-      console.error("Database connection failed:", err);
-      return;
+        console.error("Database connection failed:", err);
+        return;
     }
     console.log("Connected to MySQL Database!");
-  });
+});
 
-module.exports =  dataBase ;
+module.exports = dataBase;
